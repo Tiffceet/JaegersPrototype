@@ -26,16 +26,16 @@ void Engine::Start(int argc, char** argv) {
 	glutMainLoop();
 }
 
-void Engine::Add(Object3D obj) {
-	this->object_list.push_back(obj);
+void Engine::Add(Object3D &obj) {
+	this->object_list.push_back(&obj);
 }
 
 void Engine::Display(void) {
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (Object3D obj : this->object_list) {
-		obj.Draw(0);
+	for (Object3D* obj : this->object_list) {
+		obj->Draw(0);
 	}
 
 	glFlush();

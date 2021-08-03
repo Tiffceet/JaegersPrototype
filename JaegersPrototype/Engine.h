@@ -8,7 +8,7 @@ class Engine {
 public:
 	Engine(std::string window_title, int win_width, int win_height, int FRAME_RATE);
 	void Start(int argc, char** argv);
-	void Add(Object3D obj);
+	void Add(Object3D& obj);
 private:
 	
 	void Display(void);
@@ -19,7 +19,7 @@ private:
 	int win_height;
 	int frame_rate;
 
-	std::list<Object3D> object_list;
+	std::list<Object3D*> object_list;
 
 	static void DisplayCallback(void);
 	static void TimerCallback(int);

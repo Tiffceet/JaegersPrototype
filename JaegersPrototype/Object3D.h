@@ -11,7 +11,7 @@ public:
 
 	Object3D();
 	Object3D(Vector3Df position, Rotation rotation, Color3f color);
-	void Draw(int frameNumber);
+	virtual void Draw(int frameNumber);
 	
 private:
 };
