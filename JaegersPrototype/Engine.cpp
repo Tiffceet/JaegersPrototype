@@ -13,6 +13,7 @@ Engine::Engine(std::string window_title, int win_width, int win_height, int fram
 	this->win_height = win_height;
 	this->frame_rate = frame_rate;
 	EngineInstance = this;
+	kbListener = NULL;
 }
 
 void Engine::Start(int argc, char** argv) {
@@ -26,11 +27,17 @@ void Engine::Start(int argc, char** argv) {
 	glutMainLoop();
 }
 
+void Engine::registerKeyboardListener(void (*f)(unsigned char, int, int)) {
+	kbListener = f;
+}
+
 void Engine::Add(Object3D &obj) {
 	this->object_list.push_back(&obj);
 }
 
 void Engine::Display(void) {
+	glutKeyboardFunc(kbListener);
+
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();

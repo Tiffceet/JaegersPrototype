@@ -8,6 +8,8 @@ class Engine {
 public:
 	Engine(std::string window_title, int win_width, int win_height, int FRAME_RATE);
 	void Start(int argc, char** argv);
+
+	void registerKeyboardListener(void (*)(unsigned char, int , int));
 	void Add(Object3D& obj);
 private:
 	
@@ -25,3 +27,4 @@ private:
 	static void TimerCallback(int);
 };
 static Engine* EngineInstance;
+static void (*kbListener)(unsigned char, int, int);

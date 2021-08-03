@@ -22,6 +22,12 @@
     <Filter Include="Header Files\3DObject">
       <UniqueIdentifier>{a96e1d41-042e-4823-9cba-6ed95f4d2c2d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EventListener">
+      <UniqueIdentifier>{9f55d73e-fa36-4311-a322-63239b9a9615}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EventListener">
+      <UniqueIdentifier>{3d6a4036-c140-4c4e-ba4a-780b49910597}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -35,6 +41,9 @@
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
       <Filter>Source Files\3DObject</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyPressListener.cpp">
+      <Filter>Source Files\EventListener</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -58,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="Color3f.h">
       <Filter>Header Files\structdefs</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyPressListener.h">
+      <Filter>Header Files\EventListener</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
