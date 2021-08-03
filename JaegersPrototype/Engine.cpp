@@ -3,6 +3,8 @@
 #include <iostream>
 #include <GL/glut.h>
 #include <list>
+
+#include "Rectangle.h"
 #include "Object3D.h"
 
 Engine::Engine(std::string window_title, int win_width, int win_height, int frame_rate) {

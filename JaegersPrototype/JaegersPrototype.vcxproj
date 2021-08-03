@@ -151,13 +151,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object3D.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Color3f.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Object3D.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Rotation.h" />
     <ClInclude Include="Vector3Df.h" />

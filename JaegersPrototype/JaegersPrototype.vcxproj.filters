@@ -19,6 +19,9 @@
     <Filter Include="Header Files\structdefs">
       <UniqueIdentifier>{4c83497c-b0d3-4f68-bba1-c8940bdfefcf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\3DObject">
+      <UniqueIdentifier>{a96e1d41-042e-4823-9cba-6ed95f4d2c2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -30,6 +33,9 @@
     <ClCompile Include="Object3D.cpp">
       <Filter>Source Files\3DObject</Filter>
     </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>Source Files\3DObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -38,13 +44,19 @@
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Object3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3Df.h">
       <Filter>Header Files\structdefs</Filter>
     </ClInclude>
     <ClInclude Include="Rotation.h">
+      <Filter>Header Files\structdefs</Filter>
+    </ClInclude>
+    <ClInclude Include="Object3D.h">
+      <Filter>Header Files\3DObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>Header Files\3DObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Color3f.h">
       <Filter>Header Files\structdefs</Filter>
     </ClInclude>
   </ItemGroup>
