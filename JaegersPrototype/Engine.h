@@ -10,14 +10,18 @@ public:
 	void Start(int argc, char** argv);
 	void Add(Object3D obj);
 private:
-	static int FRAME_RATE;
-
-	static void Display(void);
-	static void Timer(int);
+	
+	void Display(void);
+	void Timer(int);
 
 	std::string window_title;
 	int win_width;
 	int win_height;
+	int frame_rate;
 
-	static std::list<Object3D> object_list;
+	std::list<Object3D> object_list;
+
+	static void DisplayCallback(void);
+	static void TimerCallback(int);
 };
+static Engine* EngineInstance;
