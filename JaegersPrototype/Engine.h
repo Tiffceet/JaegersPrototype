@@ -27,5 +27,5 @@ private:
 	static void DisplayCallback(void);
 	static void TimerCallback(int);
 };
-static Engine* EngineInstance;
+extern Engine* EngineInstance;
 static void (*kbListener)(unsigned char, int, int);

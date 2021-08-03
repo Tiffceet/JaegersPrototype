@@ -2,6 +2,9 @@
 #include "Engine.h"
 #include "Rectangle.h"
 #include "KeyPressListener.h"
+
+Engine* EngineInstance;
+
 int main(int argc, char** argv) {
 	// There can be only 1 instance of Engine because of opengl
 	// This instance can be accessed using EngineInstance static variable by including Engine.h
