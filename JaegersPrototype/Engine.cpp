@@ -33,6 +33,7 @@ void Engine::Add(Object3D &obj) {
 void Engine::Display(void) {
 	glEnable(GL_DEPTH_TEST);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glLoadIdentity();
 
 	for (Object3D* obj : this->object_list) {
 		obj->Draw(0);

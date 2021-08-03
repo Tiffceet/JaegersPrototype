@@ -15,5 +15,26 @@ Object3D::Object3D(Vector3Df position, Rotation rotation, Color3f color) {
 
 void Object3D::Draw(int frameNumber) {
 	glColor3f(this->color.r, this->color.g, this->color.b);
+	glTranslatef(this->position.x, this->position.y, this->position.z);
 	glRotatef(this->rotation.angle, this->rotation.axis.x, this->rotation.axis.y, this->rotation.axis.z);
+}
+
+void Object3D::setPosition(Vector3Df pos) {
+	this->position = pos;
+}
+void Object3D::setRotation(Rotation rotate) {
+	this->rotation = rotate;
+}
+void Object3D::setColor(Color3f color) {
+	this->color = color;
+}
+
+Vector3Df Object3D::getPosition() {
+	return this->position;
+}
+Rotation Object3D::getRotation() {
+	return this->rotation;
+}
+Color3f Object3D::getColor() {
+	return this->color;
 }

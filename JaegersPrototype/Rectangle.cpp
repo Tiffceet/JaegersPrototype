@@ -1,8 +1,12 @@
 #include "Rectangle.h"
 #include <GL/glut.h>
 
-Rectangle::Rectangle() {
-	Object3D();
+Rectangle::Rectangle() : Object3D() {
+	
+}
+
+Rectangle::Rectangle(Vector3Df position, Rotation rotation, Color3f color): Object3D(position, rotation, color) {
+
 }
 
 void Rectangle::Draw(int frameNumber) {
