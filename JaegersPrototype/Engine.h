@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <GL/glut.h>
-#include <list>
+#include <vector>
 #include "Object3D.h"
 class Engine {
 public:
@@ -22,7 +22,7 @@ private:
 	int win_height;
 	int frame_rate;
 
-	std::list<Object3D*> object_list;
+	std::vector<Object3D*> object_list;
 
 	static void DisplayCallback(void);
 	static void TimerCallback(int);

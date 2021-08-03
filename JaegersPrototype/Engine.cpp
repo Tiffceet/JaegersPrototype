@@ -32,11 +32,11 @@ void Engine::registerKeyboardListener(void (*f)(unsigned char, int, int)) {
 }
 
 void Engine::Add(Object3D &obj) {
-	this->object_list.push_back(&obj);
+	EngineInstance->object_list.push_back(&obj);
 }
 
 Object3D* Engine::GetObject() {
-	return NULL;
+	return EngineInstance->object_list[0];
 }
 
 void Engine::Display(void) {
@@ -46,7 +46,7 @@ void Engine::Display(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
-	for (Object3D* obj : this->object_list) {
+	for (Object3D* obj : EngineInstance->object_list) {
 		obj->Draw(0);
 	}
 
@@ -54,7 +54,7 @@ void Engine::Display(void) {
 }
 
 void Engine::Timer(int) {
-	glutTimerFunc(1000 / this->frame_rate, TimerCallback, 0);
+	glutTimerFunc(1000 / EngineInstance->frame_rate, TimerCallback, 0);
 	glutPostRedisplay();
 }
 
