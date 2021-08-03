@@ -7,6 +7,6 @@ int main(int argc, char** argv) {
 	Rectangle r;
 	e.Add(r);
 	e.Start(argc, argv);
-	
+	//testing
 	return 0;
 }
