@@ -11,6 +11,7 @@ public:
 
 	void registerKeyboardListener(void (*)(unsigned char, int , int));
 	void Add(Object3D& obj);
+	Object3D* GetObject();
 private:
 	
 	void Display(void);

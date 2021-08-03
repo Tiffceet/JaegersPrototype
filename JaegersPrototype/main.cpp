@@ -4,6 +4,8 @@
 #include "KeyPressListener.h"
 int main(int argc, char** argv) {
 	Engine e("Window Title here", 800, 800, 60);
+
+	// KeyPressListener::Init(&e);
 	e.registerKeyboardListener(KeyPressListener::listen);
 
 	Rectangle r({ 0,0,0 }, { 60,{0,0,1} }, { 1,0,0 }, 1, 1);

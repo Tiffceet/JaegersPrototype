@@ -35,6 +35,10 @@ void Engine::Add(Object3D &obj) {
 	this->object_list.push_back(&obj);
 }
 
+Object3D* Engine::GetObject() {
+	return NULL;
+}
+
 void Engine::Display(void) {
 	glutKeyboardFunc(kbListener);
 
