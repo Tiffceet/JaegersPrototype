@@ -7,6 +7,6 @@ class Object3D {
 public:
 	Vector3Df position;
 	Rotation rotation;
-	void Draw();
+	void Draw(int frameNumber);
 private:
 };
