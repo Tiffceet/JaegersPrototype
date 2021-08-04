@@ -27,5 +27,7 @@ private:
 	static void DisplayCallback(void);
 	static void TimerCallback(int);
 };
+
+// This pointer will always point to the last instance created, refer to Engine::Engine()
 extern Engine* EngineInstance;
 static void (*kbListener)(unsigned char, int, int);

@@ -8,7 +8,7 @@ Engine* EngineInstance;
 int main(int argc, char** argv) {
 	// There can be only 1 instance of Engine because of opengl
 	// This instance can be accessed using EngineInstance static variable by including Engine.h
-	EngineInstance = new Engine("Window Title here", 800, 800, 60);
+	Engine e("Window Title here", 800, 800, 60);
 
 	EngineInstance->registerKeyboardListener(KeyPressListener::listen);
 
