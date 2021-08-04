@@ -35,8 +35,15 @@ void Engine::Add(Object3D &obj) {
 	this->object_list.push_back(&obj);
 }
 
-Object3D* Engine::GetObject() {
-	return this->object_list[0];
+Object3D* Engine::GetObject(std::string id) {
+	Object3D* ptr = NULL;
+	for (auto i = 0; i < this->object_list.size(); i++) {
+		ptr = this->object_list[i];
+		if (id == ptr->getId()) {
+			return ptr;
+		}
+	}
+	return ptr;
 }
 
 void Engine::Display(void) {

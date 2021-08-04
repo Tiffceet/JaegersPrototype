@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
 
 	EngineInstance->registerKeyboardListener(KeyPressListener::listen);
 
-	Rectangle r({ 0,0,0 }, { 60,{0,0,1} }, { 1,0,0 }, 1, 1);
+	Rectangle r("rect",{ 0, 0, 0 }, {60,{0,0,1}}, {1,0,0}, 1, 1);
 	EngineInstance->Add(r);
 
 	EngineInstance->Start(argc, argv);
