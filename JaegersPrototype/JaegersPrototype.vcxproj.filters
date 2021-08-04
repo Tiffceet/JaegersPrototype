@@ -45,6 +45,9 @@
     <ClCompile Include="KeyPressListener.cpp">
       <Filter>Source Files\EventListener</Filter>
     </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\3DObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -70,6 +73,9 @@
     </ClInclude>
     <ClInclude Include="KeyPressListener.h">
       <Filter>Header Files\EventListener</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\3DObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
