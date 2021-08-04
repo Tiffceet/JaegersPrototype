@@ -54,7 +54,9 @@ void Engine::Display(void) {
 	glLoadIdentity();
 
 	for (Object3D* obj : this->object_list) {
+		glPushMatrix();
 		obj->Draw(0);
+		glPopMatrix();
 	}
 
 	glFlush();
