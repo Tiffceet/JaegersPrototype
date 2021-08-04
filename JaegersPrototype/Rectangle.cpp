@@ -1,17 +1,17 @@
 #include "Rectangle.h"
 #include <GL/glut.h>
 
-Rectangle::Rectangle() : Object3D() {
+Rectangle::Rectangle(std::string id) : Object3D(id) {
 	this->width = 0;
 	this->height = 0;
 }
 
-Rectangle::Rectangle(Vector3Df position, Rotation rotation, Color3f color) : Object3D(position, rotation, color) {
+Rectangle::Rectangle(std::string id, Vector3Df position, Rotation rotation, Color3f color) : Object3D(id, position, rotation, color) {
 	this->width = 0;
 	this->height = 0;
 }
 
-Rectangle::Rectangle(Vector3Df position, Rotation rotation, Color3f color, float width, float height) : Rectangle(position, rotation, color) {
+Rectangle::Rectangle(std::string id, Vector3Df position, Rotation rotation, Color3f color, float width, float height) : Object3D(id, position, rotation, color) {
 	this->width = width;
 	this->height = height;
 }

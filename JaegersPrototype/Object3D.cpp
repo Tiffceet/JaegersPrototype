@@ -1,13 +1,16 @@
 #include "Object3D.h"
 #include <GL/glut.h>
+#include <iostream>
 
-Object3D::Object3D() {
+Object3D::Object3D(std::string id) {
+	this->id = id;
 	this->position = { 0,0,0 };
 	this->rotation = { 0,0,0,0 };
 	this->color = { 1,1,1 };
 }
 
-Object3D::Object3D(Vector3Df position, Rotation rotation, Color3f color) {
+Object3D::Object3D(std::string id, Vector3Df position, Rotation rotation, Color3f color) {
+	this->id = id;
 	this->position = position;
 	this->rotation = rotation;
 	this->color = color;
@@ -37,4 +40,8 @@ Rotation Object3D::getRotation() {
 }
 Color3f Object3D::getColor() {
 	return this->color;
+}
+
+std::string Object3D::getId() {
+	return this->id;
 }
