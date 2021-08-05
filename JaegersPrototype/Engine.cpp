@@ -12,6 +12,7 @@ Engine::Engine(std::string window_title, int win_width, int win_height, int fram
 	this->win_width = win_width;
 	this->win_height = win_height;
 	this->frame_rate = frame_rate;
+	this->frameNumber = 0;
 	EngineInstance = this;
 	kbListener = NULL;
 }
@@ -55,7 +56,7 @@ void Engine::Display(void) {
 
 	for (Object3D* obj : this->object_list) {
 		glPushMatrix();
-		obj->Draw(0);
+		obj->Draw(this->frameNumber++);
 		glPopMatrix();
 	}
 

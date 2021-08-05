@@ -48,6 +48,9 @@
     <ClCompile Include="Triangle.cpp">
       <Filter>Source Files\3DObject</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Source Files\3DObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files\EventListener</Filter>
     </ClInclude>
     <ClInclude Include="Triangle.h">
+      <Filter>Header Files\3DObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
       <Filter>Header Files\3DObject</Filter>
     </ClInclude>
   </ItemGroup>

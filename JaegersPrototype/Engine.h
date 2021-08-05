@@ -21,6 +21,7 @@ private:
 	int win_width;
 	int win_height;
 	int frame_rate;
+	int frameNumber;
 
 	std::vector<Object3D*> object_list;
 
