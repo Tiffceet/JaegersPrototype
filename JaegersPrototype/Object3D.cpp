@@ -7,6 +7,7 @@ Object3D::Object3D(std::string id) {
 	this->position = { 0,0,0 };
 	this->rotation = { 0,0,0,0 };
 	this->color = { 1,1,1 };
+	this->origin = { 0,0,0 };
 }
 
 Object3D::Object3D(std::string id, Vector3Df position, Rotation rotation, Color3f color) {
@@ -14,6 +15,7 @@ Object3D::Object3D(std::string id, Vector3Df position, Rotation rotation, Color3
 	this->position = position;
 	this->rotation = rotation;
 	this->color = color;
+	this->origin = { 0,0,0 };
 }
 
 void Object3D::Draw(int frameNumber) {
@@ -32,6 +34,10 @@ void Object3D::setColor(Color3f color) {
 	this->color = color;
 }
 
+void Object3D::setOrigin(Vector3Df origin) {
+	this->origin = origin;
+}
+
 Vector3Df Object3D::getPosition() {
 	return this->position;
 }
@@ -40,6 +46,10 @@ Rotation Object3D::getRotation() {
 }
 Color3f Object3D::getColor() {
 	return this->color;
+}
+
+Vector3Df Object3D::getOrigin() {
+	return this->origin;
 }
 
 std::string Object3D::getId() {
