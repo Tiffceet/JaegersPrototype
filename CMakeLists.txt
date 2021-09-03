@@ -7,7 +7,7 @@ SET(MINGW_FREEGLUT "libfreeglut")
 include(CTest)
 enable_testing()
 
-add_executable(JaegarPrototype main.cpp camera.cpp lighting.cpp primitives.cpp texture.cpp typedefs.cpp)
+add_executable(JaegarPrototype main.cpp camera.cpp lighting.cpp primitives.cpp texture.cpp)
 target_include_directories(JaegarPrototype PUBLIC "include")
 target_include_directories(JaegarPrototype PUBLIC "header")
 target_link_directories(JaegarPrototype PUBLIC "lib")
@@ -19,8 +19,8 @@ endif()
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
     target_link_libraries(JaegarPrototype "opengl32" ${MINGW_FREEGLUT} "glu32")
+    SET(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} -std=gnu++11")
 endif()
-
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
