@@ -19,10 +19,10 @@ void arrowKeyUp(int key, int x, int y)
         rotateCamera({-2, 0, 0});
         break;
     case GLUT_KEY_LEFT:
-        rotateCamera({0, 2, 0});
+        rotateCamera({0, -2, 0});
         break;
     case GLUT_KEY_RIGHT:
-        rotateCamera({0, -2, 0});
+        rotateCamera({0, 2, 0});
         break;
     }
 }
@@ -56,10 +56,10 @@ void kbKeyUp(unsigned char key, int x, int y)
         setViewMode('p');
         break;
     case '=':
-        changeZoom(-0.1);
+        changeZoom(-0.05);
         break;
     case '-':
-        changeZoom(0.1);
+        changeZoom(0.05);
         break;
     }
 }
@@ -78,8 +78,9 @@ void displayMe(void)
 
     Prop3D props;
     props.pos = {0, 0, 1};
-    props.rot = {frameNum, frameNum, frameNum};
+    // props.rot = {frameNum, frameNum, frameNum};
     Vec3f size = {0.5, 0.5, 0.5};
+    bindTexture(0);
     drawCube(props, size);
 
     glFlush();
@@ -92,6 +93,10 @@ void timer(int)
     glutPostRedisplay();
 }
 
+void init() {
+    LoadAllTexture();
+}
+
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
@@ -101,6 +106,7 @@ int main(int argc, char **argv)
     glutCreateWindow("Title is here");
     glutDisplayFunc(displayMe);
     glutTimerFunc(0, timer, 0);
+    init();
     glutMainLoop();
     return 0;
 };

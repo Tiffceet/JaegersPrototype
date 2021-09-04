@@ -30,44 +30,68 @@ void drawCube(Prop3D props, Vec3f size)
     GLfloat bbl[3] = {-size.x / 2, -size.y / 2, size.z / 2};
     GLfloat bbr[3] = {size.x / 2, -size.y / 2, size.z / 2};
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(ftl[0], ftl[1], ftl[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(ftr[0], ftr[1], ftr[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(fbr[0], fbr[1], fbr[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(fbl[0], fbl[1], fbl[2]);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(ftr[0], ftr[1], ftr[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(btr[0], btr[1], btr[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(bbr[0], bbr[1], bbr[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(fbr[0], fbr[1], fbr[2]);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(fbl[0], fbl[1], fbl[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(fbr[0], fbr[1], fbr[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(bbr[0], bbr[1], bbr[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(bbl[0], bbl[1], bbl[2]);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(fbl[0], fbl[1], fbl[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(bbl[0], bbl[1], bbl[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(btl[0], btl[1], btl[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(ftl[0], ftl[1], ftl[2]);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(btl[0], btl[1], btl[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(btr[0], btr[1], btr[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(ftr[0], ftr[1], ftr[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(ftl[0], ftl[1], ftl[2]);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
     glVertex3f(btl[0], btl[1], btl[2]);
+    glTexCoord2f(1, 1);
     glVertex3f(btr[0], btr[1], btr[2]);
+    glTexCoord2f(1, 0);
     glVertex3f(bbr[0], bbr[1], bbr[2]);
+    glTexCoord2f(0, 0);
     glVertex3f(bbl[0], bbl[1], bbl[2]);
     glEnd();
     glPopMatrix();
