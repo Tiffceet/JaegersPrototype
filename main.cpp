@@ -14,6 +14,39 @@ void arrowKeyUp(int key, int x, int y)
 
 void kbKeyUp(unsigned char key, int x, int y)
 {
+    switch (key)
+    {
+    case 'w':
+        moveCamera({0, 0.1, 0});
+        break;
+    case 'a':
+        moveCamera({0.1, 0, 0});
+        break;
+    case 's':
+        moveCamera({0, -0.1, 0});
+        break;
+    case 'd':
+        moveCamera({-0.1, 0, 0});
+        break;
+    case 'q':
+        moveCamera({0, 0, -0.1});
+        break;
+    case 'e':
+        moveCamera({0, 0, 0.1});
+        break;
+    case 'o':
+        setViewMode('o');
+        break;
+    case 'p':
+        setViewMode('p');
+        break;
+    case '=':
+        changeZoom(-0.1);
+        break;
+    case '-':
+        changeZoom(0.1);
+        break;
+    }
 }
 
 void displayMe(void)
@@ -26,8 +59,11 @@ void displayMe(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
+    initCamera(10, 100);
+
     Prop3D props;
-    props.rot = {frameNum, frameNum,frameNum};
+    props.pos = {0, 0, 1};
+    props.rot = {frameNum, frameNum, frameNum};
     Vec3f size = {0.5, 0.5, 0.5};
     drawCube(props, size);
 
@@ -52,4 +88,4 @@ int main(int argc, char **argv)
     glutTimerFunc(0, timer, 0);
     glutMainLoop();
     return 0;
-}
+};
