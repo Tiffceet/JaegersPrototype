@@ -4,6 +4,6 @@
 
 void loadTexture(LPCSTR filename);
 void LoadAllTexture();
-void bindTexture(int idx);
+void useTexture(int idx);
 
 #endif

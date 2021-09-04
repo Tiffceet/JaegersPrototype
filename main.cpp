@@ -78,11 +78,13 @@ void displayMe(void)
     initCamera(10, 100);
 
     Prop3D props;
-    props.pos = {0, 0, 1};
+    props.pos = {0, 0, 0};
     // props.rot = {frameNum, frameNum, frameNum};
     Vec3f size = {0.5, 0.5, 0.5};
-    bindTexture(0);
-    drawCube(props, size);
+    useTexture(0);
+    // drawCube(props, size);
+    // drawCylinder(props, 4, 4, 10, 30, 30);
+    drawPyramid(props, 5, 5, 5);
 
     glFlush();
 }

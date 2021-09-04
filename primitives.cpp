@@ -1,6 +1,9 @@
+#define _USE_MATH_DEFINES
 #include "primitives.h"
 #include "typedefs.h"
 #include <GL/freeglut.h>
+#include <cmath>
+#include "texture.h"
 
 void applyProps(Prop3D props)
 {
@@ -94,5 +97,91 @@ void drawCube(Prop3D props, Vec3f size)
     glTexCoord2f(0, 0);
     glVertex3f(bbl[0], bbl[1], bbl[2]);
     glEnd();
+    glPopMatrix();
+}
+
+void draw2DCircle(Prop3D props, float r)
+{
+    glPushMatrix();
+    applyProps(props);
+    float i = 0.0f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    for (i = 0.0f; i <= 360; i++)
+        glVertex2f(r * cos(M_PI * i / 180.0), r * sin(M_PI * i / 180.0));
+
+    glEnd();
+    glPopMatrix();
+}
+
+void drawCylinder(Prop3D props, GLdouble baseRadius, GLdouble topRadius, GLdouble height, GLint slices, GLint stacks)
+{
+    glPushMatrix();
+    applyProps(props);
+    GLUquadricObj *cylinder = gluNewQuadric();
+    // gluQuadricTexture(cylinder, true);
+    gluQuadricDrawStyle(cylinder, GL_FILL);
+    gluCylinder(cylinder, baseRadius, topRadius, height, slices, stacks);
+    gluDeleteQuadric(cylinder);
+
+    Prop3D cover_props;
+    draw2DCircle(cover_props, baseRadius);
+    cover_props.pos = {0, 0, (float)height};
+    draw2DCircle(cover_props, topRadius);
+
+    glPopMatrix();
+}
+
+void drawPyramid(Prop3D props, float length, float width, float height)
+{
+    glPushMatrix();
+    applyProps(props);
+    Vec3f peak = {0, height / 2, 0};
+    Vec3f tl = {-length / 2, -height / 2, width / 2};
+    Vec3f tr = {length / 2, -height / 2, width / 2};
+    Vec3f bl = {-length / 2, -height / 2, -width / 2};
+    Vec3f br = {length / 2, -height / 2, -width / 2};
+
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 1);
+    glVertex3f(tl.x, tl.y, tl.z);
+    glTexCoord2f(1, 1);
+    glVertex3f(tr.x, tr.y, tr.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(br.x, br.y, br.z);
+    glTexCoord2f(0, 0);
+    glVertex3f(bl.x, bl.y, bl.z);
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+    glTexCoord2f(0, 0);
+    glVertex3f(tl.x, tl.y, tl.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(tr.x, tr.y, tr.z);
+    glTexCoord2f(0.5, 1);
+    glVertex3f(peak.x, peak.y, peak.z);
+
+    glTexCoord2f(0, 0);
+    glVertex3f(tr.x, tr.y, tr.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(br.x, br.y, br.z);
+    glTexCoord2f(0.5, 1);
+    glVertex3f(peak.x, peak.y, peak.z);
+
+    glTexCoord2f(0, 0);
+    glVertex3f(br.x, br.y, br.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(bl.x, bl.y, bl.z);
+    glTexCoord2f(0.5, 1);
+    glVertex3f(peak.x, peak.y, peak.z);
+
+    glTexCoord2f(0, 0);
+    glVertex3f(bl.x, bl.y, bl.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(tl.x, tl.y, tl.z);
+    glTexCoord2f(0.5, 1);
+    glVertex3f(peak.x, peak.y, peak.z);
+    glEnd();
+
     glPopMatrix();
 }

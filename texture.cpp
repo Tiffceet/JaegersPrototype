@@ -30,6 +30,6 @@ void loadTexture(LPCSTR filename)
     textures.push_back(tex);
 }
 
-void bindTexture(int idx) {
+void useTexture(int idx) {
     glBindTexture(GL_TEXTURE_2D, textures.at(idx));
 }
