@@ -2,7 +2,7 @@
 #include "typedefs.h"
 
 Vec3f camera_pos = {0, 0, 0};
-Vec3f look_direction = {0, 0, 1};
+Vec3f look_direction = {0, 0, -1};
 Vec3d camera_rot = {0, 0, 0};
 float zoom_factor = 1;
 char view_mode = 'o';

@@ -29,7 +29,7 @@ void arrowKeyUp(int key, int x, int y)
 
 void kbKeyUp(unsigned char key, int x, int y)
 {
-    float movement_spd = 0.05;
+    float movement_spd = 0.1;
     switch (key)
     {
     case 'w':
@@ -78,7 +78,7 @@ void displayMe(void)
     initCamera(10, 100);
 
     Prop3D props;
-    props.pos = {0, 0, 0};
+    props.pos = {0, 0, -2};
     // props.rot = {frameNum, frameNum, frameNum};
     Vec3f size = {0.5, 0.5, 0.5};
     useTexture(0);
