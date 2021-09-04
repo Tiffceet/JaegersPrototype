@@ -10,6 +10,21 @@ const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
 {
+    switch (key)
+    {
+    case GLUT_KEY_UP:
+        rotateCamera({2, 0, 0});
+        break;
+    case GLUT_KEY_DOWN:
+        rotateCamera({-2, 0, 0});
+        break;
+    case GLUT_KEY_LEFT:
+        rotateCamera({0, 2, 0});
+        break;
+    case GLUT_KEY_RIGHT:
+        rotateCamera({0, -2, 0});
+        break;
+    }
 }
 
 void kbKeyUp(unsigned char key, int x, int y)
