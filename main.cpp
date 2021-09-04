@@ -29,25 +29,26 @@ void arrowKeyUp(int key, int x, int y)
 
 void kbKeyUp(unsigned char key, int x, int y)
 {
+    float movement_spd = 0.05;
     switch (key)
     {
     case 'w':
-        moveCamera({0, 0.1, 0});
+        moveCamera({0, movement_spd, 0});
         break;
     case 'a':
-        moveCamera({0.1, 0, 0});
+        moveCamera({movement_spd, 0, 0});
         break;
     case 's':
-        moveCamera({0, -0.1, 0});
+        moveCamera({0, -movement_spd, 0});
         break;
     case 'd':
-        moveCamera({-0.1, 0, 0});
+        moveCamera({-movement_spd, 0, 0});
         break;
     case 'q':
-        moveCamera({0, 0, -0.1});
+        moveCamera({0, 0, -movement_spd});
         break;
     case 'e':
-        moveCamera({0, 0, 0.1});
+        moveCamera({0, 0, movement_spd});
         break;
     case 'o':
         setViewMode('o');
@@ -93,7 +94,8 @@ void timer(int)
     glutPostRedisplay();
 }
 
-void init() {
+void init()
+{
     LoadAllTexture();
 }
 
