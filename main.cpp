@@ -4,6 +4,7 @@
 #include "lighting.h"
 #include "primitives.h"
 #include "texture.h"
+#include "material.h"
 
 int frameNum = 0;
 const int FRAME_RATE = 60;
@@ -93,12 +94,7 @@ void displayMe(void)
     Prop3D props;
     props.pos = {0, 0, -2};
     props.rot.x = frameNum;
-    setMaterial(
-        {0.0, 0.0, 0.0, 1.0}, // Ka
-        {1.0, 1.0, 1.0, 1.0}, // Kd
-        {1.0, 1.0, 1.0, 1.0}, // Ks
-        100.0f                // n
-    );
+    setMaterial(MAT_WHITE);
     drawCube(props, {3, 3, 3});
 
     glFlush();
@@ -115,9 +111,9 @@ void init()
 {
     LoadAllTexture();
     SetDistantLighting(
-        {1.0, 0, 0, -2}, // Pos
-        {0.1, 0.1, 0.1, 0.0}, // Amb
-        {1.0, 0.0, 0.0, 0.0}, // Diff
+        {1.0, 0.0, 0.0, -2},  // Pos
+        {0.1, 0.1, 0.1, 1.0}, // Amb
+        {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
     toggleLight();

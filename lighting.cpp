@@ -54,15 +54,15 @@ void ApplyLight()
     glEnable(GL_LIGHTING);
 }
 
-void setMaterial(Rgba4f amb, Rgba4f diff, Rgba4f spec, GLfloat shinyness)
+void setMaterial(Material mat)
 {
-    float lightAmbient[] = {amb.r, amb.g, amb.b, amb.a};
-    float lightDiffuse[] = {diff.r, diff.g, diff.b, diff.a};
-    float lightSpecular[] = {spec.r, spec.g, spec.b, spec.a};
+    float lightAmbient[] = {mat.amb.r, mat.amb.g, mat.amb.b, mat.amb.a};
+    float lightDiffuse[] = {mat.diff.r, mat.diff.g, mat.diff.b, mat.diff.a};
+    float lightSpecular[] = {mat.spec.r, mat.spec.g, mat.spec.b, mat.spec.a};
     glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, lightAmbient);
     glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, lightDiffuse);
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, lightSpecular);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &shinyness);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SHININESS, &mat.shinyness);
 }
 
 void moveLightPosition(Vec3f delta)

@@ -1,6 +1,6 @@
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
-
+#include <gl/freeglut.h>
 struct Vec3f
 {
     float x;
@@ -8,7 +8,8 @@ struct Vec3f
     float z;
 };
 
-struct Vec4f {
+struct Vec4f
+{
     float w;
     float x;
     float y;
@@ -29,7 +30,8 @@ struct Vec4d
     int z;
 };
 
-struct Rgba4f {
+struct Rgba4f
+{
     float r;
     float g;
     float b;
@@ -42,6 +44,14 @@ struct Prop3D
     Vec3f pos = {0, 0, 0};
     Vec3f scale = {1, 1, 1};
     Vec3d rot = {0, 0, 0};
+};
+
+struct Material
+{
+    Rgba4f amb;
+    Rgba4f diff;
+    Rgba4f spec;
+    GLfloat shinyness;
 };
 
 #endif
