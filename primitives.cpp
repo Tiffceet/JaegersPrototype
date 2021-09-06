@@ -33,6 +33,7 @@ void drawCube(Prop3D props, Vec3f size)
     GLfloat bbl[3] = {-size.x / 2, -size.y / 2, size.z / 2};
     GLfloat bbr[3] = {size.x / 2, -size.y / 2, size.z / 2};
     glBegin(GL_QUADS);
+    glNormal3f(0, 0, -1);
     glTexCoord2f(0, 1);
     glVertex3f(ftl[0], ftl[1], ftl[2]);
     glTexCoord2f(1, 1);
@@ -44,6 +45,7 @@ void drawCube(Prop3D props, Vec3f size)
     glEnd();
 
     glBegin(GL_QUADS);
+    glNormal3f(1, 0, 0);
     glTexCoord2f(0, 1);
     glVertex3f(ftr[0], ftr[1], ftr[2]);
     glTexCoord2f(1, 1);
@@ -55,6 +57,7 @@ void drawCube(Prop3D props, Vec3f size)
     glEnd();
 
     glBegin(GL_QUADS);
+    glNormal3f(0, -1, 0);
     glTexCoord2f(0, 1);
     glVertex3f(fbl[0], fbl[1], fbl[2]);
     glTexCoord2f(1, 1);
@@ -66,6 +69,7 @@ void drawCube(Prop3D props, Vec3f size)
     glEnd();
 
     glBegin(GL_QUADS);
+    glNormal3f(-1, 0, 0);
     glTexCoord2f(0, 1);
     glVertex3f(fbl[0], fbl[1], fbl[2]);
     glTexCoord2f(1, 1);
@@ -77,6 +81,7 @@ void drawCube(Prop3D props, Vec3f size)
     glEnd();
 
     glBegin(GL_QUADS);
+    glNormal3f(0, 1, 0);
     glTexCoord2f(0, 1);
     glVertex3f(btl[0], btl[1], btl[2]);
     glTexCoord2f(1, 1);
@@ -88,6 +93,7 @@ void drawCube(Prop3D props, Vec3f size)
     glEnd();
 
     glBegin(GL_QUADS);
+    glNormal3f(0, 0, 1);
     glTexCoord2f(0, 1);
     glVertex3f(btl[0], btl[1], btl[2]);
     glTexCoord2f(1, 1);

@@ -92,11 +92,11 @@ void displayMe(void)
 
     Prop3D props;
     props.pos = {0, 0, -2};
-
+    props.rot.x = frameNum;
     setMaterial(
-        {0.3, 0.0, 0.0, 1.0}, // Ka
+        {0.0, 0.0, 0.0, 1.0}, // Ka
         {1.0, 1.0, 1.0, 1.0}, // Kd
-        {0.8, 0.6, 0.6, 1.0}, // Ks
+        {1.0, 1.0, 1.0, 1.0}, // Ks
         100.0f                // n
     );
     drawCube(props, {3, 3, 3});
@@ -116,8 +116,8 @@ void init()
     LoadAllTexture();
     SetDistantLighting(
         {1.0, 0, 0, -2}, // Pos
-        {0.1, 0.1, 0.1, 1.0}, // Amb
-        {1.0, 0.0, 0.0, 1.0}, // Diff
+        {0.1, 0.1, 0.1, 0.0}, // Amb
+        {1.0, 0.0, 0.0, 0.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
     toggleLight();
