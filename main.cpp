@@ -62,6 +62,18 @@ void kbKeyUp(unsigned char key, int x, int y)
     case '-':
         changeZoom(0.05);
         break;
+    case 'i':
+        moveLightPosition({0, movement_spd, 0});
+        break;
+    case 'j':
+        moveLightPosition({-movement_spd, 0, 0});
+        break;
+    case 'k':
+        moveLightPosition({0, -movement_spd, 0});
+        break;
+    case 'l':
+        moveLightPosition({movement_spd, 0, 0});
+        break;
     }
 }
 
@@ -76,15 +88,18 @@ void displayMe(void)
     glLoadIdentity();
 
     initCamera(10, 100);
+    ApplyLight();
 
     Prop3D props;
     props.pos = {0, 0, -2};
-    // props.rot = {frameNum, frameNum, frameNum};
-    Vec3f size = {0.5, 0.5, 0.5};
-    useTexture(0);
-    // drawCube(props, size);
-    // drawCylinder(props, 4, 4, 10, 30, 30);
-    drawPyramid(props, 5, 5, 5);
+
+    setMaterial(
+        {0.3, 0.0, 0.0, 1.0}, // Ka
+        {1.0, 1.0, 1.0, 1.0}, // Kd
+        {0.8, 0.6, 0.6, 1.0}, // Ks
+        100.0f                // n
+    );
+    drawCube(props, {3, 3, 3});
 
     glFlush();
 }
@@ -99,6 +114,13 @@ void timer(int)
 void init()
 {
     LoadAllTexture();
+    SetDistantLighting(
+        {1.0, 0, 0, -2}, // Pos
+        {0.1, 0.1, 0.1, 1.0}, // Amb
+        {1.0, 0.0, 0.0, 1.0}, // Diff
+        {1.0, 1.0, 1.0, 1.0}  // Spec
+    );
+    toggleLight();
 }
 
 int main(int argc, char **argv)
