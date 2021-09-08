@@ -5,6 +5,7 @@
 #include "primitives.h"
 #include "texture.h"
 #include "material.h"
+#include "body.h"
 
 int frameNum = 0;
 const int FRAME_RATE = 60;
@@ -89,13 +90,15 @@ void displayMe(void)
     glLoadIdentity();
 
     initCamera(10, 100);
-    ApplyLight();
+    //ApplyLight();
 
-    Prop3D props;
+    body();
+
+    /*Prop3D props;
     props.pos = {0, 0, -2};
     props.rot.x = frameNum;
     setMaterial(MAT_WHITE);
-    drawCube(props, {3, 3, 3});
+    drawCube(props, {3, 3, 3});*/
 
     glFlush();
 }
@@ -116,7 +119,7 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    toggleLight();
+    //toggleLight();
 }
 
 int main(int argc, char **argv)

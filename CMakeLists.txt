@@ -7,7 +7,7 @@ SET(MINGW_FREEGLUT "libfreeglut")
 include(CTest)
 enable_testing()
 
-add_executable(JaegarPrototype main.cpp camera.cpp lighting.cpp primitives.cpp texture.cpp)
+add_executable(JaegarPrototype main.cpp camera.cpp lighting.cpp primitives.cpp texture.cpp "body.cpp" "header/body.h")
 target_include_directories(JaegarPrototype PUBLIC "include")
 target_include_directories(JaegarPrototype PUBLIC "header")
 target_link_directories(JaegarPrototype PUBLIC "lib")
