@@ -7,6 +7,7 @@ void applyProps(Prop3D props);
 void drawCube(Prop3D props, Vec3f size);
 void draw2DCircle(Prop3D props, float r);
 void drawCylinder(Prop3D props, GLdouble baseRadius, GLdouble topRadius, GLdouble height, GLint slices, GLint stacks);
+void drawSphere(Prop3D props, GLdouble radius, GLint slices, GLint stacks);
 void drawPyramid(Prop3D props, float length, float width, float height);
 
 #endif

@@ -138,6 +138,18 @@ void drawCylinder(Prop3D props, GLdouble baseRadius, GLdouble topRadius, GLdoubl
     glPopMatrix();
 }
 
+void drawSphere(Prop3D props, GLdouble radius, GLint slices, GLint stacks)
+{
+    glPushMatrix();
+    applyProps(props);
+    GLUquadricObj *sphere = gluNewQuadric();
+    // gluQuadricTexture(cylinder, true);
+    gluQuadricDrawStyle(sphere, GL_FILL);
+    gluSphere(sphere, radius, slices, stacks);
+    gluDeleteQuadric(sphere);
+    glPopMatrix();
+}
+
 void drawPyramid(Prop3D props, float length, float width, float height)
 {
     glPushMatrix();

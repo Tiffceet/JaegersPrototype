@@ -6,6 +6,7 @@
 int hand_frame = 0;
 void drawRobotHand(Prop3D props) {
     glPushMatrix();
+    applyProps(props);
     useTexture(-1);
     glColor3f(1,1,1);
     Prop3D upper_joint;
@@ -24,6 +25,9 @@ void drawRobotHand(Prop3D props) {
     drawCylinder(lower_arm, 2, 1, 4, 30, 30);
 
     glColor3f(1,0,0);
+    Prop3D palm;
+    palm.pos = {2.5, -13.5, 0};
+    drawSphere(palm, 2, 30, 30);
 
     glPopMatrix();
 }
