@@ -6,6 +6,7 @@
 #include "texture.h"
 #include "material.h"
 #include "body.h"
+#include "_hand.h"
 
 int frameNum = 0;
 const int FRAME_RATE = 60;
@@ -92,13 +93,9 @@ void displayMe(void)
     initCamera(10, 100);
     //ApplyLight();
 
-    body();
-
-    /*Prop3D props;
-    props.pos = {0, 0, -2};
-    props.rot.x = frameNum;
-    setMaterial(MAT_WHITE);
-    drawCube(props, {3, 3, 3});*/
+    Prop3D props;
+    props.pos = {0,0,-2};
+    drawRobotHand(props);
 
     glFlush();
 }
