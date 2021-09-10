@@ -1,18 +1,19 @@
 #include "texture.h"
 #include <GL/freeglut.h>
-#include <vector>
+#include <iostream>
+#include <map>
 
-std::vector<GLuint> textures;
+std::map<std::string, GLuint> textures;
 
 void LoadAllTexture()
 {
-    loadTexture((LPCSTR) "texture/Brick.bmp");
-    loadTexture((LPCSTR) "texture/Shiny.bmp");
-    loadTexture((LPCSTR) "texture/Box.bmp");
+    loadTexture((LPCSTR) "texture/Brick.bmp", "brick");
+    loadTexture((LPCSTR) "texture/Shiny.bmp", "shiny");
+    loadTexture((LPCSTR) "texture/Box.bmp", "box");
 }
 
 // "resources/Brick.bmp"
-void loadTexture(LPCSTR filename)
+void loadTexture(LPCSTR filename, std::string label)
 {
     GLuint tex;
     BITMAP BMP;
@@ -27,15 +28,14 @@ void loadTexture(LPCSTR filename)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, BMP.bmWidth, BMP.bmHeight, 0, GL_BGR_EXT, GL_UNSIGNED_BYTE, BMP.bmBits);
     DeleteObject(hBMP);
-    textures.push_back(tex);
+    textures[label] = tex;
 }
 
-void useTexture(int idx)
+void useTexture(std::string label)
 {
-    if (idx == -1)
-    {
-        glBindTexture(GL_TEXTURE_2D, 0);
-        return;
-    }
-    glBindTexture(GL_TEXTURE_2D, textures.at(idx));
+    glBindTexture(GL_TEXTURE_2D, textures[label]);
+}
+
+void useDefaultTexture() {
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

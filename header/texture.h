@@ -1,9 +1,11 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
 #include <gl/freeglut.h>
+#include <iostream>
 
-void loadTexture(LPCSTR filename);
 void LoadAllTexture();
-void useTexture(int idx);
+void loadTexture(LPCSTR filename, std::string label);
+void useTexture(std::string label);
+void useDefaultTexture();
 
 #endif

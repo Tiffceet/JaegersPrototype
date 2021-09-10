@@ -8,24 +8,24 @@ void drawRobotHand(Prop3D props)
 {
     glPushMatrix();
     applyProps(props);
-    useTexture(-1);
+    useDefaultTexture();
     glColor3f(1, 1, 1);
     Prop3D upper_joint;
     upper_joint.origin.y = -2.5;
     upper_joint.rot.z = 30;
-    useTexture(0);
+    useTexture("brick");
     drawCube(upper_joint, {2, 5, 2});
 
     Prop3D upper_arm;
     upper_arm.pos = {2.5, -4, 0};
     upper_arm.rot.x = 90;
-    useTexture(1);
+    useTexture("shiny");
     drawCylinder(upper_arm, 1, 2, 4, 30, 30);
 
     Prop3D lower_arm;
     lower_arm.pos = {2.5, -8, 0};
     lower_arm.rot.x = 90;
-    useTexture(2);
+    useTexture("box");
     drawCylinder(lower_arm, 2, 1, 4, 30, 30);
 
     // glColor3f(1, 0, 0);
@@ -47,7 +47,7 @@ void drawRobotPalm(Prop3D props)
     applyProps(props);
     Prop3D palm;
     palm.origin = {0, 0, 1};
-    useTexture(0);
+    useTexture("brick");
     drawCube(palm, {3, 1, 3});
 
     Prop3D fing_1;
@@ -84,16 +84,16 @@ void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_r
     Prop3D finger_joint;
     Prop3D upper_fing;
 
-    useTexture(1);
+    useTexture("shiny");
     lower_fing.origin = {0, 0, 1};
     lower_fing.rot = lower_fing_rotation;
     drawCube(lower_fing, {0.5, 0.5, 2});
 
-    useTexture(0);
+    useTexture("brick");
     finger_joint.pos = {0, 0, 2};
     drawSphere(finger_joint, 0.2, 30, 30);
 
-    useTexture(2);
+    useTexture("box");
     upper_fing.pos = {0, 0, 2.2};
     upper_fing.rot = upper_fing_rotation;
     upper_fing.origin = {0, 0, 0.75};
