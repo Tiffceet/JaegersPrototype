@@ -93,14 +93,12 @@ void displayMe(void)
     initCamera(10, 100);
     //ApplyLight();
 
-    Prop3D hand;
-    hand.pos = {0, 0, -3};
-    drawRobotHand(hand);
 
-    // Prop3D hand2;
-    // hand2.rot.y = 180;
-    // hand2.pos = {-5, 0, -3};
-    // drawRobotHand(hand2);
+    Prop3D props;
+    props.pos = {-2, 2, -2};
+    props.rot.x = frameNum;
+    setMaterial(MAT_WHITE);
+    drawCube(props, {3, 3, 3});
 
     glFlush();
 }
