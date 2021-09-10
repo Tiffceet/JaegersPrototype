@@ -1,5 +1,6 @@
 #include <GL/freeglut.h>
 #include "typedefs.h"
+#include <iostream>
 
 Vec3f camera_pos = {0, 0, 0};
 Vec3f look_direction = {0, 0, -1};
@@ -25,6 +26,18 @@ void initCamera(float world_size, float view_sight)
     glRotatef(camera_rot.x, 1, 0, 0);
     glRotatef(camera_rot.y, 0, 1, 0);
     glRotatef(camera_rot.z, 0, 0, 1);
+
+    // Debug
+    std::cout << "Pos: {" << camera_pos.x << ", " << camera_pos.y << ", " << camera_pos.z << "}; ";
+    std::cout << "Cam Rotate: {" << camera_rot.x << ", " << camera_rot.y << ", " << camera_rot.z << "}; ";
+    std::cout << "Zoom: " << zoom_factor << std::endl;
+}
+
+void setCameraAt(Vec3f pos, Vec3d rot, float zoom)
+{
+    camera_pos = pos;
+    camera_rot = rot;
+    zoom_factor = zoom;
 }
 
 void resetCamera()
@@ -53,6 +66,7 @@ void rotateCamera(Vec3d delta)
     camera_rot.z += delta.z;
 }
 
-void changeZoom(float delta) {
+void changeZoom(float delta)
+{
     zoom_factor += delta;
 }
