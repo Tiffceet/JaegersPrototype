@@ -97,10 +97,10 @@ void displayMe(void)
     hand.pos = {0, 0, -3};
     drawRobotHand(hand);
 
-    Prop3D hand2;
-    hand2.rot.y = 180;
-    hand2.pos = {-5, 0, -3};
-    drawRobotHand(hand2);
+    // Prop3D hand2;
+    // hand2.rot.y = 180;
+    // hand2.pos = {-5, 0, -3};
+    // drawRobotHand(hand2);
 
     glFlush();
 }

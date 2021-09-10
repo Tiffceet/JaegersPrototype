@@ -125,7 +125,7 @@ void drawCylinder(Prop3D props, GLdouble baseRadius, GLdouble topRadius, GLdoubl
     glPushMatrix();
     applyProps(props);
     GLUquadricObj *cylinder = gluNewQuadric();
-    // gluQuadricTexture(cylinder, true);
+    gluQuadricTexture(cylinder, true);
     gluQuadricDrawStyle(cylinder, GL_FILL);
     gluCylinder(cylinder, baseRadius, topRadius, height, slices, stacks);
     gluDeleteQuadric(cylinder);
@@ -143,7 +143,7 @@ void drawSphere(Prop3D props, GLdouble radius, GLint slices, GLint stacks)
     glPushMatrix();
     applyProps(props);
     GLUquadricObj *sphere = gluNewQuadric();
-    // gluQuadricTexture(cylinder, true);
+    gluQuadricTexture(sphere, true);
     gluQuadricDrawStyle(sphere, GL_FILL);
     gluSphere(sphere, radius, slices, stacks);
     gluDeleteQuadric(sphere);
