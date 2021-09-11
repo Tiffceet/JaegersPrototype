@@ -77,6 +77,12 @@ void kbKeyUp(unsigned char key, int x, int y)
     case 'l':
         moveLightPosition({movement_spd, 0, 0});
         break;
+    case ';':
+        moveLightPosition({0, 0, movement_spd});
+        break;
+    case '\'':
+        moveLightPosition({0, 0, -movement_spd});
+        break;
     }
 }
 
@@ -91,14 +97,11 @@ void displayMe(void)
     glLoadIdentity();
 
     initCamera(10, 100);
-    //ApplyLight();
-
+    ApplyLight();
 
     Prop3D props;
-    props.pos = {-2, 2, -2};
-    props.rot.x = frameNum;
-    setMaterial(MAT_WHITE);
-    drawCube(props, {3, 3, 3});
+    props.pos = {0, 0, -2};
+    drawRobotHand(props);
 
     glFlush();
 }
@@ -119,9 +122,9 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    // Pos: {-0.6, -1.3, 4.5}; Cam Rotate: {14, 4, 0}; Zoom: 1.5
-    setCameraAt({-0.6, -1.3, 4.5}, {14, 4, 0}, 1.5);
-    //toggleLight();
+    // Pos: {-0.6, -5.2, 7.2}; Cam Rotate: {-10, 8, 0}; Zoom: 1.5
+    setCameraAt({-0.6, -5.2, 18.2}, {-10, 8, 0}, 1.5);
+    toggleLight();
 }
 
 int main(int argc, char **argv)
