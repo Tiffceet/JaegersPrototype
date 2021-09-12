@@ -97,9 +97,9 @@ void displayMe(void)
     // ApplyLight();
 
     Prop3D props;
-    props.pos = {0, 0, -10};
-    // drawRobotLeg(props);
-    drawRobotHand(props);
+    props.pos = {0, 0, 0};
+    drawRobotLeg(props);
+    // drawRobotHand(props);
 
     glFlush();
 }
