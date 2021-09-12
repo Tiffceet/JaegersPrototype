@@ -1,6 +1,11 @@
 #ifndef TYPEDEFS_H
 #define TYPEDEFS_H
 #include <gl/freeglut.h>
+struct Vec2d
+{
+    int x;
+    int y;
+};
 struct Vec3f
 {
     float x;

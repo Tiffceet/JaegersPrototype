@@ -4,7 +4,7 @@
 
 Vec3f camera_pos = {0, 0, 0};
 Vec3f look_direction = {0, 0, -1};
-Vec3d camera_rot = {0, 0, 0};
+Vec3f camera_rot = {0, 0, 0};
 float zoom_factor = 1;
 char view_mode = 'o';
 
@@ -33,7 +33,7 @@ void initCamera(float world_size, float view_sight)
     std::cout << "Zoom: " << zoom_factor << std::endl;
 }
 
-void setCameraAt(Vec3f pos, Vec3d rot, float zoom)
+void setCameraAt(Vec3f pos, Vec3f rot, float zoom)
 {
     camera_pos = pos;
     camera_rot = rot;
@@ -59,7 +59,7 @@ void setViewMode(char vm)
     view_mode = vm;
 }
 
-void rotateCamera(Vec3d delta)
+void rotateCamera(Vec3f delta)
 {
     camera_rot.x += delta.x;
     camera_rot.y += delta.y;

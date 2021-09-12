@@ -7,27 +7,30 @@
 #include "material.h"
 #include "body.h"
 #include "_hand.h"
+#include "_leg.h"
+#define WIN_WIDTH 800
+#define WIN_HEIGHT 800
 
 int frameNum = 0;
 const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
 {
-    switch (key)
-    {
-    case GLUT_KEY_UP:
-        rotateCamera({2, 0, 0});
-        break;
-    case GLUT_KEY_DOWN:
-        rotateCamera({-2, 0, 0});
-        break;
-    case GLUT_KEY_LEFT:
-        rotateCamera({0, -2, 0});
-        break;
-    case GLUT_KEY_RIGHT:
-        rotateCamera({0, 2, 0});
-        break;
-    }
+    // switch (key)
+    // {
+    // case GLUT_KEY_UP:
+    //     rotateCamera({2.0f, 0.0f, 0.0f});
+    //     break;
+    // case GLUT_KEY_DOWN:
+    //     rotateCamera({-2.0f, 0.0f, 0.0f});
+    //     break;
+    // case GLUT_KEY_LEFT:
+    //     rotateCamera({0.0f, -2.0f, 0.0f});
+    //     break;
+    // case GLUT_KEY_RIGHT:
+    //     rotateCamera({0.0f, 2.0f, 0.0f});
+    //     break;
+    // }
 }
 
 void kbKeyUp(unsigned char key, int x, int y)
@@ -39,13 +42,13 @@ void kbKeyUp(unsigned char key, int x, int y)
         moveCamera({0, movement_spd, 0});
         break;
     case 'a':
-        moveCamera({movement_spd, 0, 0});
+        moveCamera({-movement_spd, 0, 0});
         break;
     case 's':
         moveCamera({0, -movement_spd, 0});
         break;
     case 'd':
-        moveCamera({-movement_spd, 0, 0});
+        moveCamera({movement_spd, 0, 0});
         break;
     case 'q':
         moveCamera({0, 0, -movement_spd});
@@ -58,12 +61,6 @@ void kbKeyUp(unsigned char key, int x, int y)
         break;
     case 'p':
         setViewMode('p');
-        break;
-    case '=':
-        changeZoom(-0.05);
-        break;
-    case '-':
-        changeZoom(0.05);
         break;
     case 'i':
         moveLightPosition({0, movement_spd, 0});
@@ -97,10 +94,11 @@ void displayMe(void)
     glLoadIdentity();
 
     initCamera(10, 100);
-    ApplyLight();
+    // ApplyLight();
 
     Prop3D props;
-    props.pos = {0, 0, -2};
+    props.pos = {0, 0, -10};
+    // drawRobotLeg(props);
     drawRobotHand(props);
 
     glFlush();
@@ -122,20 +120,70 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    // Pos: {-0.6, -5.2, 7.2}; Cam Rotate: {-10, 8, 0}; Zoom: 1.5
-    setCameraAt({-0.6, -5.2, 18.2}, {-10, 8, 0}, 1.5);
-    toggleLight();
+    // toggleLight();
+}
+
+bool isDragging = false;
+Vec2d dragStart = {0, 0};
+
+void mouse(int button, int state, int x, int y)
+{
+    // std::cout << "x: " << x << "; y: " << y << std::endl;
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
+        // std::cout << "LEFT DOWN" << std::endl;
+        isDragging = true;
+        dragStart = {x, y};
+        return;
+    }
+
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_UP)
+    {
+        // std::cout << "LEFT UP" << std::endl;
+        isDragging = false;
+        return;
+    }
+
+    // Wheel reports as button 3(scroll up) and button 4(scroll down)
+    if (button == 3)
+    {
+        changeZoom(-0.05);
+        return;
+    }
+    if (button == 4)
+    {
+        changeZoom(0.05);
+        return;
+    }
+}
+
+void drag(int x, int y)
+{
+    // std::cout << "Drag Start X: " << dragStart.x - x << std::endl;
+    // std::cout << "Rot X: " << (float)(dragStart.x - x) / WIN_WIDTH * 360 << std::endl;
+    // std::cout << "Rot Y: " << (float)(dragStart.y - y) / WIN_HEIGHT * 360 << std::endl;
+    if (isDragging)
+    {
+        rotateCamera(
+            {(float)(-dragStart.y + y) / WIN_HEIGHT * 180.0f,
+             (float)(-dragStart.x + x) / WIN_WIDTH * 180.0f,
+             0});
+        dragStart = {x, y};
+    }
 }
 
 int main(int argc, char **argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowSize(800, 800);
+    glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Title is here");
     glutDisplayFunc(displayMe);
     glutTimerFunc(0, timer, 0);
+
+    glutMouseFunc(mouse);
+    glutMotionFunc(drag);
     init();
     glutMainLoop();
     return 0;
