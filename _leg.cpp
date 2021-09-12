@@ -3,6 +3,7 @@
 #include "typedefs.h"
 #include "primitives.h"
 #include "texture.h"
+int foot_frame = 0;
 void drawRobotLeg(Prop3D props)
 {
     glPushMatrix();
@@ -19,9 +20,44 @@ void drawFoot(Prop3D props)
     glPushMatrix();
     applyProps(props);
 
+    Prop3D lower_foot;
+    lower_foot.origin = {-1, -6, 0};
+    lower_foot.rot.z = -foot_frame++;
+    drawLowerFoot(lower_foot);
+
+    Prop3D foot_joint;
+    foot_joint.pos = {0, 0, -1};
+    useTexture("brick");
+    drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
+
+    glPopMatrix();
+}
+
+void drawLowerFoot(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+
     Prop3D base;
+    base.scale = {2, 2, 2};
     useTexture("box");
     drawTrapezoid(base);
+
+    Prop3D lower_foot;
+    useTexture("shiny");
+    lower_foot.pos = {1, 3.5, 0};
+    drawCube(lower_foot, {1.9, 5, 1.9});
+
+    Prop3D blueball_1;
+    blueball_1.pos = {0.2, 0, 0.75};
+    useTexture("shiny");
+    drawSphere(blueball_1, 0.75, 30, 30);
+
+    Prop3D blueball_2;
+    blueball_1.pos = {0.2, 0, -0.75};
+    useTexture("shiny");
+    drawSphere(blueball_1, 0.75, 30, 30);
+
     glPopMatrix();
 }
 
