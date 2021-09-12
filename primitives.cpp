@@ -15,6 +15,25 @@ void applyProps(Prop3D props)
     glTranslatef(props.origin.x, props.origin.y, props.origin.z);
 }
 
+void applyPropsDebug(Prop3D props) {
+    glScalef(props.scale.x, props.scale.y, props.scale.z);
+    glTranslatef(props.pos.x, props.pos.y, props.pos.z);
+    glRotatef(props.rot.x, 1, 0, 0);
+    glRotatef(props.rot.y, 0, 1, 0);
+    glRotatef(props.rot.z, 0, 0, 1);
+
+    // Debug: Draw origin
+    glDisable(GL_DEPTH_TEST);
+    glColor3f(1, 1, 1);
+    glPointSize(10);
+    glBegin(GL_POINTS);
+    glVertex3f(0, 0, 0);
+    glEnd();
+    glEnable(GL_DEPTH_TEST);
+
+    glTranslatef(props.origin.x, props.origin.y, props.origin.z);
+}
+
 /**
  * Draw a cube on screen
  * @param props
