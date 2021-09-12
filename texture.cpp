@@ -33,6 +33,7 @@ void loadTexture(LPCSTR filename, std::string label)
 
 void useTexture(std::string label)
 {
+    glColor3f(1,1,1);
     glBindTexture(GL_TEXTURE_2D, textures[label]);
 }
 
