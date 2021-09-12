@@ -19,16 +19,31 @@ void drawFoot(Prop3D props)
 {
     glPushMatrix();
     applyProps(props);
+    Prop3D upper_foot;
+    drawUpperFoot(upper_foot);
+    glPopMatrix();
+}
+
+void drawUpperFoot(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
 
     Prop3D lower_foot;
     lower_foot.origin = {-1, -6, 0};
-    lower_foot.rot.z = -foot_frame++;
     drawLowerFoot(lower_foot);
 
     Prop3D foot_joint;
     foot_joint.pos = {0, 0, -1};
     useTexture("brick");
     drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
+    
+    Prop3D upper_foot;
+    useTexture("shiny");
+    upper_foot.origin = {0, -2.5, 0};
+    upper_foot.pos = {0, 5.5, 0};
+    // upper_foot.rot.x = foot_frame++;
+    drawCube(upper_foot, {1.9, 5, 1.9});
 
     glPopMatrix();
 }
