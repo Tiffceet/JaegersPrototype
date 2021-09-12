@@ -10,6 +10,7 @@ void LoadAllTexture()
     loadTexture((LPCSTR) "texture/Brick.bmp", "brick");
     loadTexture((LPCSTR) "texture/Shiny.bmp", "shiny");
     loadTexture((LPCSTR) "texture/Box.bmp", "box");
+    loadTexture((LPCSTR) "texture/sky.bmp", "sky");
 }
 
 // "resources/Brick.bmp"

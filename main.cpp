@@ -93,6 +93,11 @@ void displayMe(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
+    useTexture("sky");
+    Prop3D background;
+    background.pos = {0,0,-200};
+    drawCube(background, {200,200,200});
+
     initCamera(10, 100);
     // ApplyLight();
 
