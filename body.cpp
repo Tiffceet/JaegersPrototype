@@ -207,86 +207,167 @@ void drowGem(double x, Prop3D props) {
 void drowArmor(double x, Prop3D props) {
 	useTexture("box");
 
-	//back//
 	glBegin(GL_QUADS);
+	//Armor_top_top
+	glTexCoord2f(0, 1);
+	glVertex3f(-x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(x, 7.5 * x, -1.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-x, 7.5 * x, -1.5 * x);
+
+	//Armor_top_front
+	glTexCoord2f(0, 1);
+	glVertex3f(-x, 7.5 * x, -1.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(x, 7.5 * x, -1.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(3 * x, 7 * x, -x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-3 * x, 7 * x, -x);
+
+	//Armor_top_back
+	glTexCoord2f(0, 1);
+	glVertex3f(-x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(3 * x, 7 * x, -3.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-3 * x, 7 * x, -3.5 * x);
+
+	//Armor_top_left
+	glTexCoord2f(0, 1);
+	glVertex3f(-x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(-x, 7.5 * x, -1.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(-3 * x, 7 * x, -x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-3 * x, 7 * x, -3.5 * x);
+
+	//Armor_top_right
+	glTexCoord2f(0, 1);
+	glVertex3f(x, 7.5 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(x, 7.5 * x, -1.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(3 * x, 7 * x, -x);
+	glTexCoord2f(0, 0);
+	glVertex3f(3 * x, 7 * x, -3.5 * x);
+	glEnd();
+
+	glBegin(GL_QUADS);
+	//Armor_middle_back
 	glTexCoord2f(0, 1);
 	glVertex3f(-3 * x, 7 * x, -3.5 * x);
 	glTexCoord2f(1, 1);
 	glVertex3f(3 * x, 7 * x, -3.5 * x);
 	glTexCoord2f(1, 0);
-	glVertex3f(3 * x, 3 * x, -3.5 * x);
+	glVertex3f(3 * x, 4 * x, -3.5 * x);
 	glTexCoord2f(0, 0);
-	glVertex3f(-3 * x, 3 * x, -3.5 * x);
+	glVertex3f(-3 * x, 4 * x, -3.5 * x);
+
+	//Armor_bottom_back
+	glTexCoord2f(0, 1);
+	glVertex3f(-3 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(3 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(2.5 * x, 1.5 * x, -3.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-2.5 * x, 1.5 * x, -3.5 * x);
 	glEnd();
 
-	//middle_left
+	//Armor_middle_left
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1);
 	glVertex3f(-3 * x, 7 * x, -3.5 * x);
 	glTexCoord2f(0.75, 1);
 	glVertex3f(-3 * x, 7 * x, -x);
-	glTexCoord2f(1, 0.5);
-	glVertex3f(-3 * x, 5 * x, 0.5 * x);
 	glTexCoord2f(1, 0);
-	glVertex3f(-3 * x, 3 * x, 0.5 * x);
+	glVertex3f(-3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(0, 0);
-	glVertex3f(-3 * x, 3 * x, -3.5 * x);
+	glVertex3f(-3 * x, 4 * x, -3.5 * x);
 	glEnd();
 
-	//middle_right
+	//Armor_middle_right
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0, 1);
 	glVertex3f(3 * x, 7 * x, -3.5 * x);
 	glTexCoord2f(0.75, 1);
 	glVertex3f(3 * x, 7 * x, -x);
-	glTexCoord2f(1, 0.5);
-	glVertex3f(3 * x, 5 * x, 0.5 * x);
 	glTexCoord2f(1, 0);
-	glVertex3f(3 * x, 3 * x, 0.5 * x);
+	glVertex3f(3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(0, 0);
-	glVertex3f(3 * x, 3 * x, -3.5 * x);
+	glVertex3f(3 * x, 4 * x, -3.5 * x);
 	glEnd();
 
-	//middle_front
+	//Armor_middle_front
 	glBegin(GL_QUADS);
 	glTexCoord2f(1, 0);
 	glVertex3f(-3 * x, 7 * x, -x);
 	glTexCoord2f(1, 1);
 	glVertex3f(3 * x, 7 * x, -x);
 	glTexCoord2f(0, 1);
-	glVertex3f(3 * x, 5 * x, 0.5 * x);
-	glTexCoord2f(0, 0);
-	glVertex3f(-3 * x, 5 * x, 0.5 * x);
-	glEnd();
-
-	//middle_front
-	glBegin(GL_QUADS);
-	glTexCoord2f(0, 1);
-	glVertex3f(-3 * x, 5 * x, 0.5 * x);
-	glTexCoord2f(1, 1);
-	glVertex3f(3 * x, 5 * x, 0.5 * x);
-	glTexCoord2f(1, 0);
-	glVertex3f(3 * x, 4 * x, 0.5 * x); 
+	glVertex3f(3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-3 * x, 4 * x, 0.5 * x);
+	glEnd();
 
+	glBegin(GL_QUADS);
+	//Armor_bottom_front_right
 	glTexCoord2f(0, 1);
 	glVertex3f(0.5 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(1, 1);
 	glVertex3f(3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(1, 0);
-	glVertex3f(3 * x, 3 * x, 0.5 * x);
+	glVertex3f(2.5 * x, 1.5 * x, 0);
 	glTexCoord2f(0, 0);
-	glVertex3f(x, 3 * x, 0.5 * x);
+	glVertex3f(1.7 * x, 1.5 * x, 0);
 
+	//Armor_bottom_front_left
 	glTexCoord2f(0, 1);
 	glVertex3f(-3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(1, 1);
 	glVertex3f(-0.5 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(1, 0);
-	glVertex3f(-x, 3 * x, 0.5 * x);
+	glVertex3f(-1.7 * x, 1.5 * x, 0);
 	glTexCoord2f(0, 0);
-	glVertex3f(-3 * x, 3 * x, 0.5 * x);
+	glVertex3f(-2.5 * x, 1.5 * x, 0);
+
+	//Armor_bottom_left
+	glTexCoord2f(1, 0);
+	glVertex3f(-3 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(-3 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(0, 1);
+	glVertex3f(-2.5 * x, 1.5 * x, 0);
+	glTexCoord2f(0, 0);
+	glVertex3f(-2.5 * x, 1.5 * x, -3.5 * x);
+
+	//Armor_bottom_right
+	glTexCoord2f(1, 0);
+	glVertex3f(3 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(3 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(0, 1);
+	glVertex3f(2.5 * x, 1.5 * x, -3.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(2.5 * x, 1.5 * x, 0);
 	glEnd();
 
+	glBegin(GL_QUADS);
+	//middle_front_gem_top
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(0.5 * x, 4 * x, 0);
+	glTexCoord2f(0, 0);
+	glVertex3f(-0.5 * x, 4 * x, 0);
+	glEnd();
 }
