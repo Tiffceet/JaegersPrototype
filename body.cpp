@@ -13,7 +13,7 @@ void drawRobotBody(double x, Prop3D props) {
 	props_wing_right.pos.x = 1.25 * x;
 	props_wing_right.pos.z = (-3.6 * x);
 	props_wing_right.pos.y = (5 * x);
-	props_wing_right.rot.z = (75);
+	//props_wing_right.rot.z = (75);
 	applyProps(props_wing_right);
 	drawWingRight(x, props_wing_right);
 	glPopMatrix();
@@ -23,7 +23,7 @@ void drawRobotBody(double x, Prop3D props) {
 	props_wing_left.pos.x = -1.25 * x;
 	props_wing_left.pos.z = (-3.6 * x);
 	props_wing_left.pos.y = (5 * x);
-	props_wing_left.rot.z = (-75);
+	//props_wing_left.rot.z = (-75);
 	applyProps(props_wing_left);
 	drawWingLeft(x, props_wing_left);
 	glPopMatrix();
@@ -128,7 +128,7 @@ void drawAbdomen(double x, Prop3D props) {
 
 void drawGem(double x, Prop3D props) {
 	useTexture("shiny");
-
+	glColor3f(0, 0, 1);
 	//back//
 	glBegin(GL_POLYGON);
 	glTexCoord2f(0.25, 1);
@@ -525,9 +525,10 @@ void drawWingRight(double x, Prop3D props) {
 }
 
 void drawSphere(double r) {
+	useTexture("shiny");
+
 	GLUquadricObj* sphere1 = NULL;
 	sphere1 = gluNewQuadric();
-	glColor3f(1, 0, 0);
 	gluQuadricTexture(sphere1, true);
 	gluSphere(sphere1, r, 50, 50);
 	gluDeleteQuadric(sphere1);
