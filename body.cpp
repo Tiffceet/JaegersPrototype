@@ -4,13 +4,33 @@
 #include "primitives.h"
 #include "texture.h"
 
-void drowRobotBody(double x, Prop3D props) {
-	drowAbdomen(x, props);
-	drowGem(x, props);
-	drowArmor(x, props);
+void drawRobotBody(double x, Prop3D props) {
+	drawAbdomen(x, props);
+	drawGem(x, props);
+	drawArmor(x, props);
+	glPushMatrix();
+	Prop3D props_wing_right;
+	props_wing_right.pos.x = 1.25 * x;
+	props_wing_right.pos.z = (-3.6 * x);
+	props_wing_right.pos.y = (5 * x);
+	props_wing_right.rot.z = (75);
+	applyProps(props_wing_right);
+	drawWingRight(x, props_wing_right);
+	glPopMatrix();
+
+	glPushMatrix();
+	Prop3D props_wing_left;
+	props_wing_left.pos.x = -1.25 * x;
+	props_wing_left.pos.z = (-3.6 * x);
+	props_wing_left.pos.y = (5 * x);
+	props_wing_left.rot.z = (-75);
+	applyProps(props_wing_left);
+	drawWingLeft(x, props_wing_left);
+	glPopMatrix();
+
 }
 
-void drowAbdomen(double x, Prop3D props) {
+void drawAbdomen(double x, Prop3D props) {
 	useTexture("brick");
 
 	glBegin(GL_POLYGON);
@@ -106,7 +126,7 @@ void drowAbdomen(double x, Prop3D props) {
 	glEnd();
 }
 
-void drowGem(double x, Prop3D props) {
+void drawGem(double x, Prop3D props) {
 	useTexture("shiny");
 
 	//back//
@@ -204,7 +224,7 @@ void drowGem(double x, Prop3D props) {
 	glEnd();
 }
 
-void drowArmor(double x, Prop3D props) {
+void drawArmor(double x, Prop3D props) {
 	useTexture("box");
 
 	glBegin(GL_QUADS);
@@ -328,6 +348,16 @@ void drowArmor(double x, Prop3D props) {
 	glTexCoord2f(0, 0);
 	glVertex3f(1.7 * x, 1.5 * x, 0);
 
+	//Armor_bottom_front_right_bottom
+	glTexCoord2f(0, 1);
+	glVertex3f(0.5 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(0.5 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(1.7 * x, 1.5 * x, 0);
+	glTexCoord2f(0, 0);
+	glVertex3f(1.7 * x, 1.5 * x, -3.5 * x);
+
 	//Armor_bottom_front_left
 	glTexCoord2f(0, 1);
 	glVertex3f(-3 * x, 4 * x, 0.5 * x);
@@ -338,6 +368,16 @@ void drowArmor(double x, Prop3D props) {
 	glTexCoord2f(0, 0);
 	glVertex3f(-2.5 * x, 1.5 * x, 0);
 
+	//Armor_bottom_front_left_bottom
+	glTexCoord2f(0, 1);
+	glVertex3f(-0.5 * x, 4 * x, 0.5 * x);
+	glTexCoord2f(1, 1);
+	glVertex3f(-0.5 * x, 4 * x, -3.5 * x);
+	glTexCoord2f(1, 0);
+	glVertex3f(-1.7 * x, 1.5 * x, -3.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(-1.7 * x, 1.5 * x, 0);
+
 	//Armor_bottom_left
 	glTexCoord2f(1, 0);
 	glVertex3f(-3 * x, 4 * x, -3.5 * x);
@@ -345,6 +385,16 @@ void drowArmor(double x, Prop3D props) {
 	glVertex3f(-3 * x, 4 * x, 0.5 * x);
 	glTexCoord2f(0, 1);
 	glVertex3f(-2.5 * x, 1.5 * x, 0);
+	glTexCoord2f(0, 0);
+	glVertex3f(-2.5 * x, 1.5 * x, -3.5 * x);
+
+	//Armor_bottom_left_bottom
+	glTexCoord2f(1, 0);
+	glVertex3f(-2.5 * x, 1.5 * x, 0);
+	glTexCoord2f(1, 1);
+	glVertex3f(-1.7 * x, 1.5 * x, 0);
+	glTexCoord2f(0, 1);
+	glVertex3f(-1.7 * x, 1.5 * x, -3.5 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-2.5 * x, 1.5 * x, -3.5 * x);
 
@@ -357,6 +407,16 @@ void drowArmor(double x, Prop3D props) {
 	glVertex3f(2.5 * x, 1.5 * x, -3.5 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(2.5 * x, 1.5 * x, 0);
+
+	//Armor_bottom_right_bottom
+	glTexCoord2f(1, 0);
+	glVertex3f(2.5 * x, 1.5 * x, 0);
+	glTexCoord2f(1, 1);
+	glVertex3f(1.7 * x, 1.5 * x, 0);
+	glTexCoord2f(0, 1);
+	glVertex3f(1.7 * x, 1.5 * x, -3.5 * x);
+	glTexCoord2f(0, 0);
+	glVertex3f(2.5 * x, 1.5 * x, -3.5 * x);
 	glEnd();
 
 	glBegin(GL_QUADS);
@@ -370,4 +430,105 @@ void drowArmor(double x, Prop3D props) {
 	glTexCoord2f(0, 0);
 	glVertex3f(-0.5 * x, 4 * x, 0);
 	glEnd();
+}
+
+void drawWingLeft(double x, Prop3D props) {
+
+	drawSphere(1.2 * x);
+
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	//back
+	glVertex3f(-x, 0, 0);
+	glVertex3f(x, 0, 0);
+	glVertex3f(x, -9.5 * x, 0);
+	glVertex3f(0, -9 * x, 0);
+
+	glColor3f(1, 0, 0);
+	//top
+	glVertex3f(-x, 0, 0);
+	glVertex3f(x, 0, 0);
+	glVertex3f(x, 0, -0.5 * x);
+	glVertex3f(-0.75 * x, 0, -0.5 * x);
+
+	//left
+	glVertex3f(x, 0, 0);
+	glVertex3f(x, 0, -0.5 * x);
+	glVertex3f(x, -9.25 * x, -0.5 * x);
+	glVertex3f(x, -9.5 * x, 0);
+
+	//right
+	glVertex3f(-x, 0, 0);
+	glVertex3f(-0.75 * x, 0, -0.5 * x);
+	glVertex3f(0.25 * x, -8.75 * x, -0.5 * x);
+	glVertex3f(0, -9 * x, 0);
+
+	//bottom
+	glVertex3f(x, -9.5 * x, 0);
+	glVertex3f(x, -9.25 * x, -0.5 * x);
+	glVertex3f(0.25 * x, -8.75 * x, -0.5 * x);
+	glVertex3f(0, -9 * x, 0);
+
+	//front
+	glColor3f(0, 0, 0);
+	glVertex3f(-0.75 * x, 0, -0.5 * x);
+	glVertex3f(x, 0, -0.5 * x);
+	glVertex3f(x, -9.25 * x, -0.5 * x);
+	glVertex3f(0.25 * x, -8.75 * x, -0.5 * x);
+	glEnd();
+}
+
+void drawWingRight(double x, Prop3D props) {
+
+	drawSphere(1.2 * x);
+
+	glBegin(GL_QUADS);
+	glColor3f(0, 0, 0);
+	//back
+	glVertex3f(x, 0, 0);
+	glVertex3f(-x, 0, 0);
+	glVertex3f(-x, -9.5 * x, 0);
+	glVertex3f(0, -9 * x, 0);
+
+	glColor3f(1, 0, 0);
+	//top
+	glVertex3f(x, 0, 0);
+	glVertex3f(-x, 0, 0);
+	glVertex3f(-x, 0, -0.5 * x);
+	glVertex3f(0.75 * x, 0, -0.5 * x);
+
+	//left
+	glVertex3f(-x, 0, 0);
+	glVertex3f(-x, 0, -0.5 * x);
+	glVertex3f(-x, -9.25 * x, -0.5 * x);
+	glVertex3f(-x, -9.5 * x, 0);
+
+	//right
+	glVertex3f(x, 0, 0);
+	glVertex3f(0.75 * x, 0, -0.5 * x);
+	glVertex3f(-0.25 * x, -8.75 * x, -0.5 * x);
+	glVertex3f(0, -9 * x, 0);
+
+	//bottom
+	glVertex3f(-x, -9.5 * x, 0);
+	glVertex3f(-x, -9.25 * x, -0.5 * x);
+	glVertex3f(-0.25 * x, -8.75 * x, -0.5 * x);
+	glVertex3f(0, -9 * x, 0);
+
+	//front
+	glColor3f(0, 0, 0);
+	glVertex3f(0.75 * x, 0, -0.5 * x);
+	glVertex3f(-x, 0, -0.5 * x);
+	glVertex3f(-x, -9.25 * x, -0.5 * x);
+	glVertex3f(-0.25 * x, -8.75 * x, -0.5 * x);
+	glEnd();
+}
+
+void drawSphere(double r) {
+	GLUquadricObj* sphere1 = NULL;
+	sphere1 = gluNewQuadric();
+	glColor3f(1, 0, 0);
+	gluQuadricTexture(sphere1, true);
+	gluSphere(sphere1, r, 50, 50);
+	gluDeleteQuadric(sphere1);
 }
