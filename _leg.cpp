@@ -14,9 +14,19 @@ void drawRobotLeg(Prop3D props)
     Prop3D foot_props;
     drawFoot(foot_props);
 
-    Prop3D leg_shield_prop;
-    leg_shield_prop.pos = {0, 5, 1};
-    drawLegShield(leg_shield_prop);
+    Prop3D leg_badge_props;
+    leg_badge_props.pos = {0, 6, 1};
+    drawLegBadge(leg_badge_props);
+
+    Prop3D leg_shield_1;
+    leg_shield_1.pos = {-0.25, 6, 1.25};
+    leg_shield_1.rot.y = -60;
+    drawLegShield(leg_shield_1);
+
+    Prop3D leg_shield_2;
+    leg_shield_2.pos = {0.25, 6, 1.25};
+    leg_shield_2.rot.y = 60;
+    drawLegShield(leg_shield_2);
 
     glPopMatrix();
 }
@@ -323,7 +333,7 @@ void drawOctoid(Prop3D props, float thickness)
     glPopMatrix();
 }
 
-void drawLegShield(Prop3D props)
+void drawLegBadge(Prop3D props)
 {
     glPushMatrix();
     applyProps(props);
@@ -334,6 +344,13 @@ void drawLegShield(Prop3D props)
     Prop3D badge_cont_props;
     badge_cont_props.scale = {1.5, 1.5, 1.5};
     drawOctoid(badge_cont_props, 0.5);
+    glPopMatrix();
+}
+
+void drawLegShield(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
 
     Prop3D leg_shield_prop;
     leg_shield_prop.pos = {0, -1, 0.5};

@@ -11,4 +11,5 @@ void drawOctoid(Prop3D props, float thickness);
 void drawLegShield(Prop3D props);
 void drawLegShieldPiece(Prop3D props);
 void drawLegShieldCont(Prop3D props);
+void drawLegBadge(Prop3D props);
 #endif
