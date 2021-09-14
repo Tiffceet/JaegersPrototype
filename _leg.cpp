@@ -14,6 +14,10 @@ void drawRobotLeg(Prop3D props)
     Prop3D foot_props;
     drawFoot(foot_props);
 
+    Prop3D leg_shield_prop;
+    leg_shield_prop.pos = {0, 5, 1};
+    drawLegShield(leg_shield_prop);
+
     glPopMatrix();
 }
 
@@ -184,27 +188,27 @@ void p(Vec3f v, std::string label)
  * |    |
  * \ _ / 
  **/
-void drawOctoid(Prop3D props)
+void drawOctoid(Prop3D props, float thickness)
 {
     glPushMatrix();
     applyProps(props);
-    Vec3f f_1 = {cos(0 * M_PI / 180.0), sin(0 * M_PI / 180.0), 0.1};
-    Vec3f f_2 = {cos(45 * M_PI / 180.0), sin(45 * M_PI / 180.0), 0.1};
-    Vec3f f_3 = {cos(90 * M_PI / 180.0), sin(90 * M_PI / 180.0), 0.1};
-    Vec3f f_4 = {cos(135 * M_PI / 180.0), sin(135 * M_PI / 180.0), 0.1};
-    Vec3f f_5 = {cos(180 * M_PI / 180.0), sin(180 * M_PI / 180.0), 0.1};
-    Vec3f f_6 = {cos(225 * M_PI / 180.0), sin(225 * M_PI / 180.0), 0.1};
-    Vec3f f_7 = {cos(270 * M_PI / 180.0), sin(270 * M_PI / 180.0), 0.1};
-    Vec3f f_8 = {cos(315 * M_PI / 180.0), sin(315 * M_PI / 180.0), 0.1};
+    Vec3f f_1 = {cos(0 * M_PI / 180.0), sin(0 * M_PI / 180.0), thickness / 2};
+    Vec3f f_2 = {cos(45 * M_PI / 180.0), sin(45 * M_PI / 180.0), thickness / 2};
+    Vec3f f_3 = {cos(90 * M_PI / 180.0), sin(90 * M_PI / 180.0), thickness / 2};
+    Vec3f f_4 = {cos(135 * M_PI / 180.0), sin(135 * M_PI / 180.0), thickness / 2};
+    Vec3f f_5 = {cos(180 * M_PI / 180.0), sin(180 * M_PI / 180.0), thickness / 2};
+    Vec3f f_6 = {cos(225 * M_PI / 180.0), sin(225 * M_PI / 180.0), thickness / 2};
+    Vec3f f_7 = {cos(270 * M_PI / 180.0), sin(270 * M_PI / 180.0), thickness / 2};
+    Vec3f f_8 = {cos(315 * M_PI / 180.0), sin(315 * M_PI / 180.0), thickness / 2};
 
-    Vec3f b_1 = {1.1 * cos(0 * M_PI / 180.0), 1.1 * sin(0 * M_PI / 180.0), -0.1};
-    Vec3f b_2 = {1.1 * cos(45 * M_PI / 180.0), 1.1 * sin(45 * M_PI / 180.0), -0.1};
-    Vec3f b_3 = {1.1 * cos(90 * M_PI / 180.0), 1.1 * sin(90 * M_PI / 180.0), -0.1};
-    Vec3f b_4 = {1.1 * cos(135 * M_PI / 180.0), 1.1 * sin(135 * M_PI / 180.0), -0.1};
-    Vec3f b_5 = {1.1 * cos(180 * M_PI / 180.0), 1.1 * sin(180 * M_PI / 180.0), -0.1};
-    Vec3f b_6 = {1.1 * cos(225 * M_PI / 180.0), 1.1 * sin(225 * M_PI / 180.0), -0.1};
-    Vec3f b_7 = {1.1 * cos(270 * M_PI / 180.0), 1.1 * sin(270 * M_PI / 180.0), -0.1};
-    Vec3f b_8 = {1.1 * cos(315 * M_PI / 180.0), 1.1 * sin(315 * M_PI / 180.0), -0.1};
+    Vec3f b_1 = {1.1 * cos(0 * M_PI / 180.0), 1.1 * sin(0 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_2 = {1.1 * cos(45 * M_PI / 180.0), 1.1 * sin(45 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_3 = {1.1 * cos(90 * M_PI / 180.0), 1.1 * sin(90 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_4 = {1.1 * cos(135 * M_PI / 180.0), 1.1 * sin(135 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_5 = {1.1 * cos(180 * M_PI / 180.0), 1.1 * sin(180 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_6 = {1.1 * cos(225 * M_PI / 180.0), 1.1 * sin(225 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_7 = {1.1 * cos(270 * M_PI / 180.0), 1.1 * sin(270 * M_PI / 180.0), -thickness / 2};
+    Vec3f b_8 = {1.1 * cos(315 * M_PI / 180.0), 1.1 * sin(315 * M_PI / 180.0), -thickness / 2};
 
     useDefaultTexture();
     glColor3f(1, 1, 1);
@@ -265,7 +269,7 @@ void drawOctoid(Prop3D props)
     glVertex3f(f_4.x, f_4.y, f_4.z);
     glVertex3f(b_4.x, b_4.y, b_4.z);
     glEnd();
-    
+
     glBegin(GL_QUADS);
     norm = calculate_normal(b_4, f_4, f_5);
     glNormal3f(norm.x, norm.y, norm.z);
@@ -316,5 +320,55 @@ void drawOctoid(Prop3D props)
     glVertex3f(b_1.x, b_1.y, b_1.z);
     glEnd();
 
+    glPopMatrix();
+}
+
+void drawLegShield(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D badge_props;
+    badge_props.pos = {0, 0, 0.5};
+    drawOctoid(badge_props, 0.2);
+
+    Prop3D badge_cont_props;
+    badge_cont_props.scale = {1.5, 1.5, 1.5};
+    drawOctoid(badge_cont_props, 0.5);
+
+    Prop3D leg_shield_prop;
+    leg_shield_prop.pos = {0, -1, 0.5};
+    leg_shield_prop.scale = {2, 3, 2};
+    drawLegShieldCont(leg_shield_prop);
+    glPopMatrix();
+}
+
+void drawLegShieldCont(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D p1;
+    p1.pos.x = -0.5;
+    p1.rot.y = -20;
+    useTexture("box");
+    drawLegShieldPiece(p1);
+    Prop3D p2;
+    p2.pos.x = 0.5;
+    p2.rot.y = 200;
+    drawLegShieldPiece(p2);
+    glPopMatrix();
+}
+
+void drawLegShieldPiece(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D vertical_cube;
+    drawCube(vertical_cube, {1, 2, 0.2});
+
+    Prop3D slanted_cube;
+    slanted_cube.pos = {0.5, -1, 0};
+    slanted_cube.origin = {-0.5, -0.5, 0};
+    slanted_cube.rot.z = -30;
+    drawCube(slanted_cube, {1, 1, 0.19});
     glPopMatrix();
 }

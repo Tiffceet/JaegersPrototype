@@ -140,6 +140,31 @@ void draw2DCircle(Prop3D props, float r)
     glPopMatrix();
 }
 
+void draw2DSquare(Prop3D props, float size) {
+    glPushMatrix();
+    applyProps(props);
+
+    Vec3f p1 = {-size/2, size/2, 0};
+    Vec3f p2 = {size/2, size/2, 0};
+    Vec3f p3 = {size/2, -size/2, 0};
+    Vec3f p4 = {-size/2, -size/2, 0};
+
+    glBegin(GL_QUADS);
+    Vec3f norm = calculate_normal(p1, p2, p3);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glTexCoord2f(0, 1);
+    glVertex3f(p1.x, p1.y, p1.z);
+    glTexCoord2f(1, 1);
+    glVertex3f(p2.x, p2.y, p2.z);
+    glTexCoord2f(1, 0);
+    glVertex3f(p3.x, p3.y, p3.z);
+    glTexCoord2f(0, 0);
+    glVertex3f(p4.x, p4.y, p4.z);
+    glEnd();
+
+    glPopMatrix();
+}
+
 void drawCylinder(Prop3D props, GLdouble baseRadius, GLdouble topRadius, GLdouble height, GLint slices, GLint stacks)
 {
     glPushMatrix();

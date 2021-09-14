@@ -99,14 +99,13 @@ void displayMe(void)
     drawCube(background, {200, 200, 200});
 
     initCamera(10, 100);
-    ApplyLight();
+    // ApplyLight();
 
     Prop3D props;
     // props.pos = {0, 0, 0};
-    // drawRobotLeg(props);
+    useDefaultTexture();
+    drawRobotLeg(props);
     // drawRobotHand(props);
-    setMaterial(MAT_WHITE);
-    drawOctoid(props);
     glFlush();
 }
 
@@ -126,7 +125,7 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    toggleLight();
+    // toggleLight();
 }
 
 bool isDragging = false;
