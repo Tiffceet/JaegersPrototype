@@ -6,6 +6,7 @@
 #include "texture.h"
 #include "material.h"
 #include "body.h"
+#include "head.h"
 #include "_hand.h"
 #include "_leg.h"
 #define WIN_WIDTH 800
