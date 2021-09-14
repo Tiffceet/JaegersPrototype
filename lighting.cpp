@@ -43,15 +43,20 @@ void ApplyLight()
 
     // Debug
     glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
     glPushMatrix();
     glTranslatef(light_pos.x, light_pos.y, light_pos.z);
     glPointSize(10.0f);
+    glColor3f(1,1,1);
     glBegin(GL_POINTS);
     glVertex3f(0, 0, 0);
     glEnd();
     glPopMatrix();
-    if(light_state)
-    glEnable(GL_LIGHTING);
+    if (light_state)
+    {
+        glEnable(GL_LIGHTING);
+    }
+    glEnable(GL_DEPTH_TEST);
 }
 
 void setMaterial(Material mat)
