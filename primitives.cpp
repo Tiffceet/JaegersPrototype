@@ -15,7 +15,8 @@ void applyProps(Prop3D props)
     glTranslatef(props.origin.x, props.origin.y, props.origin.z);
 }
 
-void applyPropsDebug(Prop3D props) {
+void applyPropsDebug(Prop3D props)
+{
     glScalef(props.scale.x, props.scale.y, props.scale.z);
     glTranslatef(props.pos.x, props.pos.y, props.pos.z);
     glRotatef(props.rot.x, 1, 0, 0);
@@ -221,4 +222,11 @@ void drawPyramid(Prop3D props, float length, float width, float height)
     glEnd();
 
     glPopMatrix();
+}
+
+Vec3f calculate_normal(Vec3f pt1, Vec3f pt2, Vec3f pt3)
+{
+    Vec3f x = pt2 - pt1;
+    Vec3f y = pt3 - pt1;
+    return x * y;
 }

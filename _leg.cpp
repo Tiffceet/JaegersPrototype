@@ -209,6 +209,8 @@ void drawOctoid(Prop3D props)
     useDefaultTexture();
     glColor3f(1, 1, 1);
     glBegin(GL_POLYGON);
+    Vec3f norm = calculate_normal(f_1, f_2, f_3);
+    glNormal3f(norm.x, norm.y, norm.z);
     glVertex3f(f_1.x, f_1.y, f_1.z);
     glVertex3f(f_2.x, f_2.y, f_2.z);
     glVertex3f(f_3.x, f_3.y, f_3.z);
@@ -220,6 +222,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_POLYGON);
+    norm = calculate_normal(b_1, b_2, b_3);
+    norm = -norm;
+    glNormal3f(norm.x, norm.y, norm.z);
     glVertex3f(b_1.x, b_1.y, b_1.z);
     glVertex3f(b_2.x, b_2.y, b_2.z);
     glVertex3f(b_3.x, b_3.y, b_3.z);
@@ -232,6 +237,9 @@ void drawOctoid(Prop3D props)
 
     glColor3f(0, 1, 0);
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_1, f_1, f_2);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_1.x, b_1.y, b_1.z);
     glVertex3f(f_1.x, f_1.y, f_1.z);
     glVertex3f(f_2.x, f_2.y, f_2.z);
@@ -239,6 +247,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_2, f_2, f_3);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_2.x, b_2.y, b_2.z);
     glVertex3f(f_2.x, f_2.y, f_2.z);
     glVertex3f(f_3.x, f_3.y, f_3.z);
@@ -246,6 +257,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_3, f_3, f_4);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_3.x, b_3.y, b_3.z);
     glVertex3f(f_3.x, f_3.y, f_3.z);
     glVertex3f(f_4.x, f_4.y, f_4.z);
@@ -253,6 +267,9 @@ void drawOctoid(Prop3D props)
     glEnd();
     
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_4, f_4, f_5);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_4.x, b_4.y, b_4.z);
     glVertex3f(f_4.x, f_4.y, f_4.z);
     glVertex3f(f_5.x, f_5.y, f_5.z);
@@ -260,6 +277,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_5, f_5, f_6);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_5.x, b_5.y, b_5.z);
     glVertex3f(f_5.x, f_5.y, f_5.z);
     glVertex3f(f_6.x, f_6.y, f_6.z);
@@ -267,6 +287,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_6, f_6, f_7);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_6.x, b_6.y, b_6.z);
     glVertex3f(f_6.x, f_6.y, f_6.z);
     glVertex3f(f_7.x, f_7.y, f_7.z);
@@ -274,6 +297,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_7, f_7, f_8);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_7.x, b_7.y, b_7.z);
     glVertex3f(f_7.x, f_7.y, f_7.z);
     glVertex3f(f_8.x, f_8.y, f_8.z);
@@ -281,6 +307,9 @@ void drawOctoid(Prop3D props)
     glEnd();
 
     glBegin(GL_QUADS);
+    norm = calculate_normal(b_8, f_8, b_1);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glNormal3f(-norm.x, -norm.y, -norm.z);
     glVertex3f(b_8.x, b_8.y, b_8.z);
     glVertex3f(f_8.x, f_8.y, f_8.z);
     glVertex3f(f_1.x, f_1.y, f_1.z);

@@ -6,11 +6,47 @@ struct Vec2d
     int x;
     int y;
 };
+
 struct Vec3f
 {
     float x;
     float y;
     float z;
+
+    Vec3f operator+(const Vec3f &a)
+    {
+        Vec3f ret;
+        ret.x = x + a.x;
+        ret.y = y + a.y;
+        ret.z = z + a.z;
+        return ret;
+    }
+
+    Vec3f operator-() {
+        Vec3f ret;
+        ret.x = -x;
+        ret.y = -y;
+        ret.z = -z;
+        return ret;
+    }
+
+    Vec3f operator-(const Vec3f &a)
+    {
+        Vec3f ret;
+        ret.x = x - a.x;
+        ret.y = y - a.y;
+        ret.z = z - a.z;
+        return ret;
+    }
+
+    Vec3f operator*(const Vec3f &a)
+    {
+        Vec3f ret;
+        ret.x = y * a.z - z * a.y;
+        ret.y = -x * a.z + z * a.x;
+        ret.z = x * a.y - y * a.x;
+        return ret;
+    }
 };
 
 struct Vec4f

@@ -95,8 +95,8 @@ void displayMe(void)
 
     useTexture("sky");
     Prop3D background;
-    background.pos = {0,0,-200};
-    drawCube(background, {200,200,200});
+    background.pos = {0, 0, -200};
+    drawCube(background, {200, 200, 200});
 
     initCamera(10, 100);
     ApplyLight();
@@ -107,7 +107,6 @@ void displayMe(void)
     // drawRobotHand(props);
     setMaterial(MAT_WHITE);
     drawOctoid(props);
-
     glFlush();
 }
 
