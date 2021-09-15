@@ -1,5 +1,6 @@
 #include <GL/freeglut.h>
 #include <math.h>
+#include "animation.h"
 #include "camera.h"
 #include "lighting.h"
 #include "primitives.h"
@@ -82,17 +83,20 @@ void kbKeyUp(unsigned char key, int x, int y)
         moveLightPosition({0, 0, -movement_spd});
         break;
     case 'f':
-        if (animation_fly_confirmation == 0) {
+        if (animation_fly_confirmation == 0)
+        {
             animation_fly_confirmation = 1;
         }
-        else {
+        else
+        {
             animation_fly_confirmation = 0;
         }
         break;
     }
 }
 
-void drawMainRobot(Prop3D props) {
+void drawMainRobot(Prop3D props)
+{
     glPushMatrix();
     applyProps(props);
 
@@ -106,26 +110,26 @@ void drawMainRobot(Prop3D props) {
 
     Prop3D props_leg_right;
     props_leg_right.rot.y = 90;
-    props_leg_right.scale = { 0.5, 0.5 , 0.5 };
-    props_leg_right.pos = { 1.5, -6 , -1.5 };
+    props_leg_right.scale = {0.5, 0.5, 0.5};
+    props_leg_right.pos = {1.5, -6, -1.5};
     drawRobotLeg(props_leg_right);
 
     Prop3D props_leg_left;
     props_leg_left.rot.y = -90;
-    props_leg_left.scale = { 0.5, 0.5 , 0.5 };
-    props_leg_left.pos = { -1.5, -6 , -1.5 };
+    props_leg_left.scale = {0.5, 0.5, 0.5};
+    props_leg_left.pos = {-1.5, -6, -1.5};
     drawRobotLeg(props_leg_left);
 
     ////drawPantShield(props);
     Prop3D props_hand_right;
-    props_hand_right.scale = { 0.3, 0.3 , 0.3 };
-    props_hand_right.pos = { 5, 10 , -3 };
+    props_hand_right.scale = {0.3, 0.3, 0.3};
+    props_hand_right.pos = {5, 10, -3};
     drawRobotLeftHand(props_hand_right);
 
     Prop3D props_hand_left;
     props_hand_left.rot.y = 180;
-    props_hand_left.scale = { 0.3, 0.3 , 0.3 };
-    props_hand_left.pos = { -5, 10 , -3 };
+    props_hand_left.scale = {0.3, 0.3, 0.3};
+    props_hand_left.pos = {-5, 10, -3};
     drawRobotLeftHand(props_hand_left);
 
     glPopMatrix();
@@ -147,33 +151,37 @@ void displayMe(void)
     drawCube(background, {200, 200, 200});
 
     initCamera(10, 100);
+    ProcessAnimation();
     //ApplyLight();
     useDefaultTexture();
 
     Prop3D props_hold;
-    if (animation_fly_confirmation == 1) {
-        if (animation_fly_angle < 45) {
+    if (animation_fly_confirmation == 1)
+    {
+        if (animation_fly_angle < 45)
+        {
             props_hold.rot.x = animation_fly_angle++;
             drawMainRobot(props_hold);
         }
-        else {
+        else
+        {
             props_hold.rot.x = 45;
             drawMainRobot(props_hold);
         }
     }
-    else {
-        if (animation_fly_angle > 0) {
+    else
+    {
+        if (animation_fly_angle > 0)
+        {
             props_hold.rot.x = animation_fly_angle--;
             drawMainRobot(props_hold);
         }
-        else {
+        else
+        {
             drawMainRobot(props_hold);
         }
     }
-    
-    
-    
-    
+
     glFlush();
 }
 
@@ -187,6 +195,7 @@ void timer(int)
 void init()
 {
     LoadAllTexture();
+    InitObjectsPosition();
     SetDistantLighting(
         {1.0, 0.0, 0.0, -2},  // Pos
         {0.1, 0.1, 0.1, 1.0}, // Amb
