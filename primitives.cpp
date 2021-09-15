@@ -251,7 +251,15 @@ void drawPyramid(Prop3D props, float length, float width, float height)
 
 Vec3f calculate_normal(Vec3f pt1, Vec3f pt2, Vec3f pt3)
 {
+    // Calculate 2 vector + cross product
     Vec3f x = pt2 - pt1;
     Vec3f y = pt3 - pt1;
-    return x * y;
+    Vec3f norm = x * y;
+
+    // Normalize the vector
+    float magnitude = sqrt(norm.x * norm.x + norm.y * norm.y + norm.z * norm.z);
+    norm.x = norm.x / magnitude;
+    norm.y = norm.y / magnitude;
+    norm.z = norm.z / magnitude;
+    return norm;
 }
