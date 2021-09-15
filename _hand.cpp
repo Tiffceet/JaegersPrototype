@@ -4,40 +4,44 @@
 #include "primitives.h"
 #include "texture.h"
 int hand_frame = 0;
-void drawRobotHand(Prop3D props)
+void drawRobotLeftHand(Prop3D props)
 {
     glPushMatrix();
     applyProps(props);
     useDefaultTexture();
     glColor3f(1, 1, 1);
-    Prop3D upper_joint;
-    upper_joint.origin.y = -2.5;
-    upper_joint.rot.z = 30;
+    Prop3D lhand_upper_joint;
+    lhand_upper_joint.origin.y = -2.5;
+    lhand_upper_joint.rot.z = 30;
     useTexture("brick");
-    drawCube(upper_joint, {2, 5, 2});
+    drawCube(lhand_upper_joint, {2, 5, 2});
 
-    Prop3D upper_arm;
-    upper_arm.pos = {2.5, -4, 0};
-    upper_arm.rot.x = 90;
+    Prop3D lhand_arm;
+    drawLeftArm(lhand_arm);
+
+    glPopMatrix();
+}
+
+void drawLeftArm(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D lhand_upper_arm;
+    lhand_upper_arm.pos = {2.5, -4, 0};
+    lhand_upper_arm.rot.x = 90;
     useTexture("shiny");
-    drawCylinder(upper_arm, 1, 2, 4, 30, 30);
+    drawCylinder(lhand_upper_arm, 1, 2, 4, 30, 30);
 
-    Prop3D lower_arm;
-    lower_arm.pos = {2.5, -8, 0};
-    lower_arm.rot.x = 90;
+    Prop3D lhand_lower_arm;
+    lhand_lower_arm.pos = {2.5, -8, 0};
+    lhand_lower_arm.rot.x = 90;
     useTexture("box");
-    drawCylinder(lower_arm, 2, 1, 4, 30, 30);
+    drawCylinder(lhand_lower_arm, 2, 1, 4, 30, 30);
 
-    // glColor3f(1, 0, 0);
-    // Prop3D palm;
-    // palm.pos = {2.5, -13.5, 0};
-    // drawSphere(palm, 2, 30, 30);
-
-    Prop3D palm;
-    palm.rot.x = 90;
-    palm.pos = {2.5, -12, 0};
-    drawRobotPalm(palm);
-
+    Prop3D lhand_palm;
+    lhand_palm.rot.x = 90;
+    lhand_palm.pos = {2.5, -12, 0};
+    drawRobotPalm(lhand_palm);
     glPopMatrix();
 }
 
@@ -50,27 +54,27 @@ void drawRobotPalm(Prop3D props)
     useTexture("brick");
     drawCube(palm, {3, 1, 3});
 
-    Prop3D fing_1;
-    fing_1.pos = {-1.1, 0, 2};
-    drawRobotFinger(fing_1, {0, 0, 0}, {0, 0, 0});
+    Prop3D lhand_fing_1;
+    lhand_fing_1.pos = {-1.1, 0, 2};
+    drawRobotFinger(lhand_fing_1, {0, 0, 0}, {0, 0, 0});
 
-    Prop3D fing_2;
-    fing_2.pos = {-0.4, 0, 2};
-    drawRobotFinger(fing_2, {0, 0, 0}, {0, 0, 0});
+    Prop3D lhand_fing_2;
+    lhand_fing_2.pos = {-0.4, 0, 2};
+    drawRobotFinger(lhand_fing_2, {0, 0, 0}, {0, 0, 0});
 
-    Prop3D fing_3;
-    fing_3.pos = {0.3, 0, 2};
-    drawRobotFinger(fing_3, {0, 0, 0}, {0, 0, 0});
+    Prop3D lhand_fing_3;
+    lhand_fing_3.pos = {0.3, 0, 2};
+    drawRobotFinger(lhand_fing_3, {0, 0, 0}, {0, 0, 0});
 
-    Prop3D fing_4;
-    fing_4.pos = {1, 0, 2};
-    drawRobotFinger(fing_4, {0, 0, 0}, {0, 0, 0});
+    Prop3D lhand_fing_4;
+    lhand_fing_4.pos = {1, 0, 2};
+    drawRobotFinger(lhand_fing_4, {0, 0, 0}, {0, 0, 0});
 
     // Thumb
-    Prop3D fing_5;
-    fing_5.rot.y = 30;
-    fing_5.pos = {1, 0, 2};
-    drawRobotFinger(fing_5, {0, 0, 0}, {0, -30, 0});
+    Prop3D lhand_fing_5;
+    lhand_fing_5.rot.y = 30;
+    lhand_fing_5.pos = {1, 0, 2};
+    drawRobotFinger(lhand_fing_5, {0, 0, 0}, {0, -30, 0});
 
     glPopMatrix();
 }

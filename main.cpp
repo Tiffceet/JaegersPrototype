@@ -120,13 +120,13 @@ void drawMainRobot(Prop3D props) {
     Prop3D props_hand_right;
     props_hand_right.scale = { 0.3, 0.3 , 0.3 };
     props_hand_right.pos = { 5, 10 , -3 };
-    drawRobotHand(props_hand_right);
+    drawRobotLeftHand(props_hand_right);
 
     Prop3D props_hand_left;
     props_hand_left.rot.y = 180;
     props_hand_left.scale = { 0.3, 0.3 , 0.3 };
     props_hand_left.pos = { -5, 10 , -3 };
-    drawRobotHand(props_hand_left);
+    drawRobotLeftHand(props_hand_left);
 
     glPopMatrix();
 }
