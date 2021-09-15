@@ -1,6 +1,7 @@
 #include "animation.h"
 #include "_hand.h"
 #include <map>
+#include "primitives.h"
 
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
@@ -25,23 +26,31 @@ void InitObjectsPosition()
 
 void InitLeftHandPosition()
 {
+    clearProps(lhand_upper_joint);
     lhand_upper_joint.origin.y = -2.5;
     lhand_upper_joint.rot.z = 30;
 
+    clearProps(lhand_upper_arm);
     lhand_upper_arm.pos = {2.5, -4, 0};
     lhand_upper_arm.rot.x = 90;
 
+    clearProps(lhand_lower_arm);
     lhand_lower_arm.pos = {2.5, -8, 0};
     lhand_lower_arm.rot.x = 90;
 
+    clearProps(lhand_palm);
     lhand_palm.rot.x = 90;
     lhand_palm.pos = {2.5, -12, 0};
 
+    clearProps(lhand_fing_1);
     lhand_fing_1.pos = {-1.1, 0, 2};
+    clearProps(lhand_fing_2);
     lhand_fing_2.pos = {-0.4, 0, 2};
+    clearProps(lhand_fing_3);
     lhand_fing_3.pos = {0.3, 0, 2};
+    clearProps(lhand_fing_4);
     lhand_fing_4.pos = {1, 0, 2};
-
+    clearProps(lhand_fing_5);
     lhand_fing_5.rot.y = 30;
     lhand_fing_5.pos = {1, 0, 2};
 }

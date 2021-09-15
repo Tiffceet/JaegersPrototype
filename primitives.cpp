@@ -15,6 +15,14 @@ void applyProps(Prop3D props)
     glTranslatef(props.origin.x, props.origin.y, props.origin.z);
 }
 
+void clearProps(Prop3D &props)
+{
+    props.origin = {0, 0, 0};
+    props.pos = {0, 0, 0};
+    props.scale = {1, 1, 1};
+    props.rot = {0, 0, 0};
+}
+
 void applyPropsDebug(Prop3D props)
 {
     glScalef(props.scale.x, props.scale.y, props.scale.z);
@@ -140,14 +148,15 @@ void draw2DCircle(Prop3D props, float r)
     glPopMatrix();
 }
 
-void draw2DSquare(Prop3D props, float size) {
+void draw2DSquare(Prop3D props, float size)
+{
     glPushMatrix();
     applyProps(props);
 
-    Vec3f p1 = {-size/2, size/2, 0};
-    Vec3f p2 = {size/2, size/2, 0};
-    Vec3f p3 = {size/2, -size/2, 0};
-    Vec3f p4 = {-size/2, -size/2, 0};
+    Vec3f p1 = {-size / 2, size / 2, 0};
+    Vec3f p2 = {size / 2, size / 2, 0};
+    Vec3f p3 = {size / 2, -size / 2, 0};
+    Vec3f p4 = {-size / 2, -size / 2, 0};
 
     glBegin(GL_QUADS);
     Vec3f norm = calculate_normal(p1, p2, p3);
@@ -264,7 +273,8 @@ Vec3f calculate_normal(Vec3f pt1, Vec3f pt2, Vec3f pt3)
     return norm;
 }
 
-Vec3lf calculate_normallf(Vec3lf pt1, Vec3lf pt2, Vec3lf pt3) {
+Vec3lf calculate_normallf(Vec3lf pt1, Vec3lf pt2, Vec3lf pt3)
+{
     // Calculate 2 vector + cross product
     Vec3lf x = pt2 - pt1;
     Vec3lf y = pt3 - pt1;
