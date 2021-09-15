@@ -13,7 +13,7 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
-int frameNum = 0, animation_fly_angle = 0, animation_fly_confirmation = 0;
+int frameNum = 0, animation_fly_angle = 0, animation_fly_confirmation = 0, animation_head_angle = 0, animation_head_confirmation = 0;
 const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
@@ -95,6 +95,26 @@ void kbKeyUp(unsigned char key, int x, int y)
             animation_fly_confirmation = 0;
         }
         break;
+    case 'h':
+        if (animation_head_confirmation != 1)
+        {
+            animation_head_confirmation = 1;
+        }
+        else
+        {
+            animation_head_confirmation = 0;
+        }
+        break;
+    case 'g':
+        if (animation_head_confirmation != 2)
+        {
+            animation_head_confirmation = 2;
+        }
+        else
+        {
+            animation_head_confirmation = 0;
+        }
+        break;
     }
 }
 
@@ -103,10 +123,60 @@ void drawMainRobot(Prop3D props)
     glPushMatrix();
     applyProps(props);
 
+    
+    glPushMatrix();
+
     Prop3D propsA;
     propsA.pos.y = 9 * 0.5;
     propsA.pos.z = -2.5 * 0.5;
-    drawRobotHead(0.5, propsA);
+    applyProps(propsA);
+
+    glPushMatrix();
+
+    Prop3D props_head_rotated;
+    if (animation_head_confirmation == 1) {
+        if (animation_head_angle < 45) {
+            props_head_rotated.rot.y = animation_head_angle++;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+        else {
+            props_head_rotated.rot.y = 45;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+    }
+    else if (animation_head_confirmation == 2) {
+        if (animation_head_angle > -45) {
+            props_head_rotated.rot.y = animation_head_angle--;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+        else {
+            props_head_rotated.rot.y = -45;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+    }
+    else {
+        if (animation_head_angle > 0) {
+            props_head_rotated.rot.y = animation_head_angle--;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+        else if (animation_head_angle < 0) {
+            props_head_rotated.rot.y = animation_head_angle++;
+            applyProps(props_head_rotated);
+            drawRobotHead(0.5, props);
+        }
+        else {
+            animation_head_angle = 0;
+            drawRobotHead(0.5, props);
+        }
+    }
+
+    glPopMatrix();
+    glPopMatrix();
 
     Prop3D propsB;
     drawRobotBody(0.5, propsB, animation_fly_confirmation);

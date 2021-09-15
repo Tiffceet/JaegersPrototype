@@ -5,8 +5,8 @@
 #include "texture.h"
 
 void drawRobotHead(double x, Prop3D props) {
+	
 	glPushMatrix();
-	applyProps(props);
 	drawRobotMouth(x, props);
 	drawRobotEye(x, props);
 
