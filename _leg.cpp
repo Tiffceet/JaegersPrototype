@@ -18,7 +18,7 @@ void drawRobotLeg(Prop3D props)
     leg_badge_props.pos = {0, 6, 1};
     drawLegBadge(leg_badge_props);
 
-    Prop3D leg_shield_1;
+    /*Prop3D leg_shield_1;
     leg_shield_1.pos = {-0.25, 6, 1.25};
     leg_shield_1.rot.y = -60;
     drawLegShield(leg_shield_1);
@@ -26,7 +26,7 @@ void drawRobotLeg(Prop3D props)
     Prop3D leg_shield_2;
     leg_shield_2.pos = {0.25, 6, 1.25};
     leg_shield_2.rot.y = 60;
-    drawLegShield(leg_shield_2);
+    drawLegShield(leg_shield_2);*/
 
     glPopMatrix();
 }

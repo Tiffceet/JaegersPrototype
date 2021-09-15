@@ -264,7 +264,7 @@ Vec3f calculate_normal(Vec3f pt1, Vec3f pt2, Vec3f pt3)
     return norm;
 }
 
-Vec3lf calculate_normal(Vec3lf pt1, Vec3lf pt2, Vec3lf pt3) {
+Vec3lf calculate_normallf(Vec3lf pt1, Vec3lf pt2, Vec3lf pt3) {
     // Calculate 2 vector + cross product
     Vec3lf x = pt2 - pt1;
     Vec3lf y = pt3 - pt1;

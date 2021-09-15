@@ -4,9 +4,15 @@
 #include "primitives.h"
 #include "texture.h"
 
+int gemrot = 0;
+
 void drawRobotBody(double x, Prop3D props) {
 	drawAbdomen(x, props);
+
+
 	drawGem(x, props);
+
+
 	drawArmor(x, props);
 
 	glPushMatrix();
@@ -127,6 +133,8 @@ void drawAbdomen(double x, Prop3D props) {
 }
 
 void drawGem(double x, Prop3D props) {
+	glPushMatrix();
+
 	useTexture("shiny");
 	glColor3f(0, 0, 1);
 	//back//
@@ -222,6 +230,8 @@ void drawGem(double x, Prop3D props) {
 	glTexCoord2f(0, 0);
 	glVertex3f(0.3 * x, 2.2 * x, 0.5 * x);
 	glEnd();
+
+	glPopMatrix();
 }
 
 void drawArmor(double x, Prop3D props) {
