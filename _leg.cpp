@@ -28,7 +28,6 @@ void drawRobotLeg(Prop3D props)
     foot_joint.pos = {0, -3, -1};
     useTexture("brick");
     drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
-    glPopMatrix();
     
     glPushMatrix();
     Prop3D lower_foot_cont;
