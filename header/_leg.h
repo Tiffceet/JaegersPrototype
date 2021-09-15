@@ -12,4 +12,6 @@ void drawLegShield(Prop3D props);
 void drawLegShieldPiece(Prop3D props);
 void drawLegShieldCont(Prop3D props);
 void drawLegBadge(Prop3D props);
+void drawPantShieldPointedPart(Prop3D props);
+void drawPantShield(Prop3D props);
 #endif

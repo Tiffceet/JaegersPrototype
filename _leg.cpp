@@ -389,3 +389,105 @@ void drawLegShieldPiece(Prop3D props)
     drawCube(slanted_cube, {1, 1, 0.19});
     glPopMatrix();
 }
+
+void drawPantShield(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D pointed_part_1;
+    drawPantShieldPointedPart(pointed_part_1);
+    Prop3D pointed_part_2;
+    pointed_part_2.pos.x = 2;
+    drawPantShieldPointedPart(pointed_part_2);
+    glPopMatrix();
+}
+
+void drawPantShieldPointedPart(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Vec3f ftl = {0, 0, 0.1};
+    Vec3f ftr = {1, 0, 0.1};
+    Vec3f fbl = {0, -1.5, 0.1};
+    Vec3f fbr = {1, -1.5, 0.1};
+    Vec3f fbm = {0.5, -2, 0.1};
+
+    Vec3f btl = {0, 0, -0.1};
+    Vec3f btr = {1, 0, -0.1};
+    Vec3f bbl = {0, -1.5, -0.1};
+    Vec3f bbr = {1, -1.5, -0.1};
+    Vec3f bbm = {0.5, -2, -0.1};
+
+    // front
+    glBegin(GL_POLYGON);
+    Vec3f norm = -calculate_normal(ftl, ftr, fbr);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(ftl.x, ftl.y, ftl.z);
+    glVertex3f(ftr.x, ftr.y, ftr.z);
+    glVertex3f(fbr.x, fbr.y, fbr.z);
+    glVertex3f(fbm.x, fbm.y, fbm.z);
+    glVertex3f(fbl.x, fbl.y, fbl.z);
+    glEnd();
+
+    //back
+    glBegin(GL_POLYGON);
+    norm = calculate_normal(btl, btr, bbr);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(btl.x, btl.y, btl.z);
+    glVertex3f(btr.x, btr.y, btr.z);
+    glVertex3f(bbr.x, bbr.y, bbr.z);
+    glVertex3f(bbm.x, bbm.y, bbm.z);
+    glVertex3f(bbl.x, bbl.y, bbl.z);
+    glEnd();
+
+    //top
+    glBegin(GL_QUADS);
+    norm = calculate_normal(ftl, ftr, btr);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(ftl.x, ftl.y, ftl.z);
+    glVertex3f(ftr.x, ftr.y, ftr.z);
+    glVertex3f(btr.x, btr.y, btr.z);
+    glVertex3f(btl.x, btl.y, btl.z);
+    glEnd();
+
+    // left
+    glBegin(GL_QUADS);
+    norm = calculate_normal(ftl, fbl, bbl);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(ftl.x, ftl.y, ftl.z);
+    glVertex3f(fbl.x, fbl.y, fbl.z);
+    glVertex3f(bbl.x, bbl.y, bbl.z);
+    glVertex3f(btl.x, btl.y, btl.z);
+    glEnd();
+
+    // right
+    glBegin(GL_QUADS);
+    norm = calculate_normal(ftr, fbr, bbr);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(ftr.x, ftr.y, ftr.z);
+    glVertex3f(fbr.x, fbr.y, fbr.z);
+    glVertex3f(bbr.x, bbr.y, bbr.z);
+    glVertex3f(btr.x, btr.y, btr.z);
+    glEnd();
+
+    // lower left
+    glBegin(GL_QUADS);
+    norm = calculate_normal(fbl, fbm, bbm);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(fbl.x, fbl.y, fbl.z);
+    glVertex3f(fbm.x, fbm.y, fbm.z);
+    glVertex3f(bbm.x, bbm.y, bbm.z);
+    glVertex3f(bbl.x, bbl.y, bbl.z);
+    glEnd();
+
+    // lower right
+    glBegin(GL_QUADS);
+    norm = calculate_normal(fbr, fbm, bbm);
+    glNormal3f(norm.x, norm.y, norm.z);
+    glVertex3f(fbr.x, fbr.y, fbr.z);
+    glVertex3f(fbm.x, fbm.y, fbm.z);
+    glVertex3f(bbm.x, bbm.y, bbm.z);
+    glVertex3f(bbr.x, bbr.y, bbr.z);
+    glEnd();
+    glPopMatrix();
+}
