@@ -206,7 +206,7 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    //toggleLight();
+    toggleLight();
 }
 
 bool isDragging = false;
