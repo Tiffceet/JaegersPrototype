@@ -8,87 +8,60 @@
 int foot_frame = 0;
 void drawRobotLeg(Prop3D props)
 {
+    Prop3D clean;
     glPushMatrix();
     applyProps(props);
-
-    Prop3D foot_props;
-    drawFoot(foot_props);
-
     Prop3D leg_badge_props;
     leg_badge_props.pos = {0, 6, 1};
     drawLegBadge(leg_badge_props);
 
-    /*Prop3D leg_shield_1;
-    leg_shield_1.pos = {-0.25, 6, 1.25};
-    leg_shield_1.rot.y = -60;
-    drawLegShield(leg_shield_1);
-
-    Prop3D leg_shield_2;
-    leg_shield_2.pos = {0.25, 6, 1.25};
-    leg_shield_2.rot.y = 60;
-    drawLegShield(leg_shield_2);*/
-
-    glPopMatrix();
-}
-
-void drawFoot(Prop3D props)
-{
     glPushMatrix();
-    applyProps(props);
     Prop3D upper_foot;
-    drawUpperFoot(upper_foot);
-    glPopMatrix();
-}
-
-void drawUpperFoot(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-
-    Prop3D lower_foot;
-    lower_foot.origin = {-1, -6, 0};
-    drawLowerFoot(lower_foot);
-
-    Prop3D foot_joint;
-    foot_joint.pos = {0, 0, -1};
-    useTexture("brick");
-    drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
-
-    Prop3D upper_foot;
-    useTexture("shiny");
     upper_foot.origin = {0, -2.5, 0};
     upper_foot.pos = {0, 5.5, 0};
-    // upper_foot.rot.x = foot_frame++;
-    drawCube(upper_foot, {1.9, 5, 1.9});
+    applyProps(upper_foot);
+    useTexture("shiny");
+    drawCube(clean, {1.9, 5, 1.9});
 
-    glPopMatrix();
-}
-
-void drawLowerFoot(Prop3D props)
-{
     glPushMatrix();
-    applyProps(props);
+    Prop3D foot_joint;
+    foot_joint.pos = {0, -3, -1};
+    useTexture("brick");
+    drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
+    glPopMatrix();
+    
+    glPushMatrix();
+    Prop3D lower_foot_cont;
+    lower_foot_cont.origin = {-1, -9, 0};
+    applyProps(lower_foot_cont);
+
+    Prop3D lower_leg;
+    lower_leg.pos = {1, 3.5, 0};
+    glPushMatrix();
+    applyProps(lower_leg);
+    useTexture("shiny");
+    drawCube(clean, {1.9, 5, 1.9});
 
     Prop3D base;
     base.scale = {2, 2, 2};
+    base.pos = {-0.5, -1.75, 0};
     useTexture("box");
     drawTrapezoid(base);
 
-    Prop3D lower_foot;
-    useTexture("shiny");
-    lower_foot.pos = {1, 3.5, 0};
-    drawCube(lower_foot, {1.9, 5, 1.9});
-
     Prop3D blueball_1;
-    blueball_1.pos = {0.2, 0, 0.75};
+    blueball_1.pos = {0.2, -3.5, 0.75};
     useTexture("shiny");
     drawSphere(blueball_1, 0.75, 30, 30);
 
     Prop3D blueball_2;
-    blueball_1.pos = {0.2, 0, -0.75};
+    blueball_1.pos = {0.2, -3.5, -0.75};
     useTexture("shiny");
     drawSphere(blueball_1, 0.75, 30, 30);
 
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
     glPopMatrix();
 }
 
@@ -344,150 +317,5 @@ void drawLegBadge(Prop3D props)
     Prop3D badge_cont_props;
     badge_cont_props.scale = {1.5, 1.5, 1.5};
     drawOctoid(badge_cont_props, 0.5);
-    glPopMatrix();
-}
-
-void drawLegShield(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-
-    Prop3D leg_shield_prop;
-    leg_shield_prop.pos = {0, -1, 0.5};
-    leg_shield_prop.scale = {2, 3, 2};
-    drawLegShieldCont(leg_shield_prop);
-    glPopMatrix();
-}
-
-void drawLegShieldCont(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-    Prop3D p1;
-    p1.pos.x = -0.5;
-    p1.rot.y = -20;
-    useTexture("box");
-    drawLegShieldPiece(p1);
-    Prop3D p2;
-    p2.pos.x = 0.5;
-    p2.rot.y = 200;
-    drawLegShieldPiece(p2);
-    glPopMatrix();
-}
-
-void drawLegShieldPiece(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-    Prop3D vertical_cube;
-    drawCube(vertical_cube, {1, 2, 0.2});
-
-    Prop3D slanted_cube;
-    slanted_cube.pos = {0.5, -1, 0};
-    slanted_cube.origin = {-0.5, -0.5, 0};
-    slanted_cube.rot.z = -30;
-    drawCube(slanted_cube, {1, 1, 0.19});
-    glPopMatrix();
-}
-
-void drawPantShield(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-    Prop3D pointed_part_1;
-    drawPantShieldPointedPart(pointed_part_1);
-    Prop3D pointed_part_2;
-    pointed_part_2.pos.x = 2;
-    drawPantShieldPointedPart(pointed_part_2);
-    glPopMatrix();
-}
-
-void drawPantShieldPointedPart(Prop3D props)
-{
-    glPushMatrix();
-    applyProps(props);
-    Vec3f ftl = {0, 0, 0.1};
-    Vec3f ftr = {1, 0, 0.1};
-    Vec3f fbl = {0, -1.5, 0.1};
-    Vec3f fbr = {1, -1.5, 0.1};
-    Vec3f fbm = {0.5, -2, 0.1};
-
-    Vec3f btl = {0, 0, -0.1};
-    Vec3f btr = {1, 0, -0.1};
-    Vec3f bbl = {0, -1.5, -0.1};
-    Vec3f bbr = {1, -1.5, -0.1};
-    Vec3f bbm = {0.5, -2, -0.1};
-
-    // front
-    glBegin(GL_POLYGON);
-    Vec3f norm = -calculate_normal(ftl, ftr, fbr);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(ftl.x, ftl.y, ftl.z);
-    glVertex3f(ftr.x, ftr.y, ftr.z);
-    glVertex3f(fbr.x, fbr.y, fbr.z);
-    glVertex3f(fbm.x, fbm.y, fbm.z);
-    glVertex3f(fbl.x, fbl.y, fbl.z);
-    glEnd();
-
-    //back
-    glBegin(GL_POLYGON);
-    norm = calculate_normal(btl, btr, bbr);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(btl.x, btl.y, btl.z);
-    glVertex3f(btr.x, btr.y, btr.z);
-    glVertex3f(bbr.x, bbr.y, bbr.z);
-    glVertex3f(bbm.x, bbm.y, bbm.z);
-    glVertex3f(bbl.x, bbl.y, bbl.z);
-    glEnd();
-
-    //top
-    glBegin(GL_QUADS);
-    norm = calculate_normal(ftl, ftr, btr);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(ftl.x, ftl.y, ftl.z);
-    glVertex3f(ftr.x, ftr.y, ftr.z);
-    glVertex3f(btr.x, btr.y, btr.z);
-    glVertex3f(btl.x, btl.y, btl.z);
-    glEnd();
-
-    // left
-    glBegin(GL_QUADS);
-    norm = calculate_normal(ftl, fbl, bbl);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(ftl.x, ftl.y, ftl.z);
-    glVertex3f(fbl.x, fbl.y, fbl.z);
-    glVertex3f(bbl.x, bbl.y, bbl.z);
-    glVertex3f(btl.x, btl.y, btl.z);
-    glEnd();
-
-    // right
-    glBegin(GL_QUADS);
-    norm = calculate_normal(ftr, fbr, bbr);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(ftr.x, ftr.y, ftr.z);
-    glVertex3f(fbr.x, fbr.y, fbr.z);
-    glVertex3f(bbr.x, bbr.y, bbr.z);
-    glVertex3f(btr.x, btr.y, btr.z);
-    glEnd();
-
-    // lower left
-    glBegin(GL_QUADS);
-    norm = calculate_normal(fbl, fbm, bbm);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(fbl.x, fbl.y, fbl.z);
-    glVertex3f(fbm.x, fbm.y, fbm.z);
-    glVertex3f(bbm.x, bbm.y, bbm.z);
-    glVertex3f(bbl.x, bbl.y, bbl.z);
-    glEnd();
-
-    // lower right
-    glBegin(GL_QUADS);
-    norm = calculate_normal(fbr, fbm, bbm);
-    glNormal3f(norm.x, norm.y, norm.z);
-    glVertex3f(fbr.x, fbr.y, fbr.z);
-    glVertex3f(fbm.x, fbm.y, fbm.z);
-    glVertex3f(bbm.x, bbm.y, bbm.z);
-    glVertex3f(bbr.x, bbr.y, bbr.z);
-    glEnd();
     glPopMatrix();
 }
