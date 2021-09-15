@@ -42,11 +42,12 @@ void InitLeftHandPosition()
     lhand_upper_arm.pos = {2.5, -4, 0};
     lhand_upper_arm.rot.x = 90;
 
-    lhand_lower_arm.pos = {2.5, -8, 0};
-    lhand_lower_arm.rot.x = 90;
+    lhand_lower_arm.pos = {0, 0, 4};
+    // lhand_lower_arm.rot.x = 90;
 
-    lhand_palm.rot.x = 90;
-    lhand_palm.pos = {2.5, -12, 0};
+    // lhand_palm.rot.x = 90;
+    // lhand_palm.pos = {2.5, -12, 0};
+    lhand_palm.pos = {0, 0, 4};
 
     lhand_fing_1.pos = {-1.1, 0, 2};
     lhand_fing_2.pos = {-0.4, 0, 2};
@@ -74,16 +75,19 @@ void LeftArmGrab()
     {
         return;
     }
-    
+
     if (!flip && lhand_arm.rot.x < 30)
     {
         lhand_arm.rot.x++;
         lhand_lower_arm.rot.x++;
-    } else {
+    }
+    else
+    {
         flip = true;
         lhand_arm.rot.x--;
         lhand_lower_arm.rot.x--;
-        if(lhand_arm.rot.x < -30) {
+        if (lhand_arm.rot.x < -30)
+        {
             flip = false;
         }
     }
