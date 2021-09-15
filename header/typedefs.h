@@ -49,6 +49,48 @@ struct Vec3f
     }
 };
 
+struct Vec3lf
+{
+    double x;
+    double y;
+    double z;
+
+    Vec3lf operator+(const Vec3lf &a)
+    {
+        Vec3lf ret;
+        ret.x = x + a.x;
+        ret.y = y + a.y;
+        ret.z = z + a.z;
+        return ret;
+    }
+
+    Vec3lf operator-() {
+        Vec3lf ret;
+        ret.x = -x;
+        ret.y = -y;
+        ret.z = -z;
+        return ret;
+    }
+
+    Vec3lf operator-(const Vec3lf &a)
+    {
+        Vec3lf ret;
+        ret.x = x - a.x;
+        ret.y = y - a.y;
+        ret.z = z - a.z;
+        return ret;
+    }
+
+    Vec3lf operator*(const Vec3lf &a)
+    {
+        Vec3lf ret;
+        ret.x = y * a.z - z * a.y;
+        ret.y = -x * a.z + z * a.x;
+        ret.z = x * a.y - y * a.x;
+        return ret;
+    }
+};
+
 struct Vec4f
 {
     float w;
