@@ -115,13 +115,13 @@ void drawMainRobot(Prop3D props)
     props_leg_right.rot.y = 90;
     props_leg_right.scale = {0.5, 0.5, 0.5};
     props_leg_right.pos = {1.5, -6, -1.5};
-    drawRobotLeg(props_leg_right);
+    drawRobotLeg(props_leg_right, 1);
 
     Prop3D props_leg_left;
-    props_leg_left.rot.y = -90;
+    props_leg_left.rot.y = 90;
     props_leg_left.scale = {0.5, 0.5, 0.5};
     props_leg_left.pos = {-1.5, -6, -1.5};
-    drawRobotLeg(props_leg_left);
+    drawRobotLeg(props_leg_left, -1);
 
     ////drawPantShield(props);
     Prop3D props_hand_right;

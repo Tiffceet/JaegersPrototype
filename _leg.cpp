@@ -6,13 +6,19 @@
 #include "texture.h"
 #include "math.h"
 int foot_frame = 0;
-void drawRobotLeg(Prop3D props)
+/**
+ * @param badge_location +1 for right, -1 for left
+ **/
+void drawRobotLeg(Prop3D props, float badge_location)
 {
     Prop3D clean;
     glPushMatrix();
     applyProps(props);
     Prop3D leg_badge_props;
-    leg_badge_props.pos = {0, 6, 1};
+    leg_badge_props.pos = {0, 6, badge_location};
+    if(badge_location == -1.0f) {
+        leg_badge_props.rot.y = 180;
+    }
     drawLegBadge(leg_badge_props);
 
     glPushMatrix();
