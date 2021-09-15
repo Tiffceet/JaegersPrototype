@@ -21,45 +21,26 @@ void drawRobotLeftHand(Prop3D props)
     useDefaultTexture();
     glColor3f(1, 1, 1);
 
-    drawLeftArm(lhand_arm);
-
-    glPopMatrix();
-}
-
-void drawLeftArm(Prop3D props)
-{
     glPushMatrix();
-    applyProps(props);
-
+    applyProps(lhand_arm);
     useTexture("brick");
     drawCube(lhand_upper_joint, {2, 5, 2});
 
-    drawLeftUpperArm(lhand_upper_arm);
-
-    glPopMatrix();
-}
-
-void drawLeftUpperArm(Prop3D props)
-{
     glPushMatrix();
-    applyProps(props);
+    applyProps(lhand_upper_arm);
     useTexture("shiny");
     Prop3D clean;
     drawCylinder(clean, 1, 2, 4, 30, 30);
 
-    drawLeftLowerArm(lhand_lower_arm);
-    glPopMatrix();
-}
-
-void drawLeftLowerArm(Prop3D props) {
     glPushMatrix();
-    applyProps(props);
-
-    Prop3D clean;
+    applyProps(lhand_lower_arm);
     useTexture("box");
     drawCylinder(clean, 2, 1, 4, 30, 30);
-
     drawRobotPalm(lhand_palm);
+
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
     glPopMatrix();
 }
 
