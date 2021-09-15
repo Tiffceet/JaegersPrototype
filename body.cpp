@@ -8,6 +8,7 @@ void drawRobotBody(double x, Prop3D props) {
 	drawAbdomen(x, props);
 	drawGem(x, props);
 	drawArmor(x, props);
+
 	glPushMatrix();
 	Prop3D props_wing_right;
 	props_wing_right.pos.x = 1.25 * x;
@@ -27,7 +28,6 @@ void drawRobotBody(double x, Prop3D props) {
 	applyProps(props_wing_left);
 	drawWingLeft(x, props_wing_left);
 	glPopMatrix();
-
 }
 
 void drawAbdomen(double x, Prop3D props) {

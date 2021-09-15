@@ -6,31 +6,33 @@
 
 void drawRobotHead(double x, Prop3D props) {
 	glPushMatrix();
-	applyProps(props);
-
-	drawRobotEye(x, props);
-	drawRobotCheek(x, props);
+	/*applyProps(props);*/
 	drawRobotMouth(x, props);
+	/*drawRobotEye(x, props);
+
+	drawRobotCheek(x, props);
+	
 	drawRobotForehead(x, props);
 	drawRobotLeftEar(x, props); 
-	drawRobotRightEar(x, props);
+	drawRobotRightEar(x, props);*/
 
-	glPushMatrix();
-	Prop3D props_neek;
-	props_neek.rot.x = 90;
-	//props_neek.pos.y = -2;
-	applyProps(props_neek);
-	drawRobotNeck(x, props_neek);
-	glPopMatrix();
+	//glPushMatrix();
+	//Prop3D props_neek;
+	//props_neek.rot.x = 90;
+	////props_neek.pos.y = -2;
+	//applyProps(props_neek);
+	//drawRobotNeck(x, props_neek);
+	//glPopMatrix();
 
 	glPopMatrix();
 }
 
-void drawRobotEye(double x, Prop3D props) {
+void drawRobotEye(float x, Prop3D props) {
 	useTexture("shiny");
 	//eye
 	glBegin(GL_QUADS);
 	//top
+
 	glTexCoord2f(0, 1);
 	glVertex3f(-2 * x, 3 * x, -2 * x);
 	glTexCoord2f(1, 1);
@@ -39,7 +41,9 @@ void drawRobotEye(double x, Prop3D props) {
 	glVertex3f(2 * x, 3 * x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-2 * x, 3 * x, 2 * x);
+	glEnd();
 
+	glBegin(GL_QUADS);
 	//bottom
 	glTexCoord2f(0, 1);
 	glVertex3f(-2 * x, x, -2 * x);
@@ -49,8 +53,11 @@ void drawRobotEye(double x, Prop3D props) {
 	glVertex3f(2 * x, x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-2 * x, x, 2 * x);
+	glEnd();
 
+	glBegin(GL_QUADS);
 	//front
+	
 	glTexCoord2f(0, 1);
 	glVertex3f(-2 * x, 3 * x, 2 * x);
 	glTexCoord2f(1, 1);
@@ -59,8 +66,12 @@ void drawRobotEye(double x, Prop3D props) {
 	glVertex3f(2 * x, x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-2 * x, x, 2 * x);
+	glEnd();
 
+	glBegin(GL_QUADS);
 	//left
+	Vec3f norm = calculate_normal({ -2 * x, 3 * x, -2 * x }, { -2 * x, 3 * x, 2 * x }, { -2 * x, x, 2 * x });
+	glNormal3f(-norm.x, -norm.y, -norm.z);
 	glTexCoord2f(0, 1);
 	glVertex3f(-2 * x, 3 * x, -2 * x);
 	glTexCoord2f(1, 1);
@@ -69,8 +80,12 @@ void drawRobotEye(double x, Prop3D props) {
 	glVertex3f(-2 * x, x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-2 * x, x, -2 * x);
+	glEnd();
 
+	glBegin(GL_QUADS);
 	//right
+	/*Vec3f norm = calculate_normal(f_1, f_2, f_3);
+	glNormal3f(norm.x, norm.y, norm.z);*/
 	glTexCoord2f(0, 1);
 	glVertex3f(2 * x, 3 * x, -2 * x);
 	glTexCoord2f(1, 1);
@@ -139,7 +154,7 @@ void drawRobotCheek(double x, Prop3D props) {
 
 }
 
-void drawRobotMouth(double x, Prop3D props) {
+void drawRobotMouth(float x, Prop3D props) {
 	useTexture("shiny");
 	//mouth
 	glBegin(GL_QUADS);
@@ -153,7 +168,7 @@ void drawRobotMouth(double x, Prop3D props) {
 	glVertex3f(0.5 * x, -0.75 * x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-0.5 * x, -0.75 * x, 2 * x);
-
+	
 	//top
 	glTexCoord2f(0, 1);
 	glVertex3f(-x, x, 1.5 * x);
@@ -163,8 +178,12 @@ void drawRobotMouth(double x, Prop3D props) {
 	glVertex3f(0.5 * x, 0.75 * x, 2 * x);
 	glTexCoord2f(0, 0);
 	glVertex3f(-0.5 * x, 0.75 * x, 2 * x);
-	
+	glEnd();
+
+	glBegin(GL_QUADS);
 	//bottom
+	/*Vec3f norm = calculate_normal({ 0.5 * x, -0.75 * x, 2 * x }, { -0.5 * x, -0.75 * x, 2 * x }, { -x, -x, x });
+	glNormal3f(-norm.x, -norm.y, -norm.z);*/
 	glTexCoord2f(0, 1);
 	glVertex3f(0.5 * x, -0.75 * x, 2 * x);
 	glTexCoord2f(1, 1);
@@ -173,7 +192,9 @@ void drawRobotMouth(double x, Prop3D props) {
 	glVertex3f(-x, -x, x);
 	glTexCoord2f(0, 0);
 	glVertex3f(x, -x, x);
+	glEnd();
 
+	glBegin(GL_QUADS);
 	//left
 	glTexCoord2f(0, 1);
 	glVertex3f(-x, x, 1.5 * x);
