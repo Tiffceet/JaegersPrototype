@@ -4,15 +4,11 @@
 #include "primitives.h"
 #include "texture.h"
 
-int gemrot = 0;
+int wing_left_rot = 0, wing_right_rot = 0;
 
-void drawRobotBody(double x, Prop3D props) {
+void drawRobotBody(double x, Prop3D props, int animation_fly) {
 	drawAbdomen(x, props);
-
-
 	drawGem(x, props);
-
-
 	drawArmor(x, props);
 
 	glPushMatrix();
@@ -20,9 +16,25 @@ void drawRobotBody(double x, Prop3D props) {
 	props_wing_right.pos.x = 1.25 * x;
 	props_wing_right.pos.z = (-3.6 * x);
 	props_wing_right.pos.y = (5 * x);
-	//props_wing_right.rot.z = (75);
-	applyProps(props_wing_right);
-	drawWingRight(x, props_wing_right);
+	if (animation_fly == 1) {
+		if (wing_right_rot < 75) {
+			props_wing_right.rot.z = wing_right_rot++;
+			drawWingRight(x, props_wing_right);
+		}
+		else {
+			props_wing_right.rot.z = 75;
+			drawWingRight(x, props_wing_right);
+		}
+	}
+	else {
+		if (wing_right_rot > 0) {
+			props_wing_right.rot.z = wing_right_rot--;
+			drawWingRight(x, props_wing_right);
+		}
+		else {
+			drawWingRight(x, props_wing_right);
+		}
+	}
 	glPopMatrix();
 
 	glPushMatrix();
@@ -30,9 +42,25 @@ void drawRobotBody(double x, Prop3D props) {
 	props_wing_left.pos.x = -1.25 * x;
 	props_wing_left.pos.z = (-3.6 * x);
 	props_wing_left.pos.y = (5 * x);
-	//props_wing_left.rot.z = (-75);
-	applyProps(props_wing_left);
-	drawWingLeft(x, props_wing_left);
+	if (animation_fly == 1) {
+		if (wing_left_rot > -75) {
+			props_wing_left.rot.z = wing_left_rot--;
+			drawWingLeft(x, props_wing_left);
+		}
+		else {
+			props_wing_left.rot.z = -75;
+			drawWingLeft(x, props_wing_left);
+		}
+	}
+	else {
+		if (wing_left_rot < 0) {
+			props_wing_left.rot.z = wing_left_rot++;
+			drawWingLeft(x, props_wing_left);
+		}
+		else {
+			drawWingLeft(x, props_wing_left);
+		}
+	}
 	glPopMatrix();
 }
 
@@ -443,44 +471,60 @@ void drawArmor(double x, Prop3D props) {
 }
 
 void drawWingLeft(double x, Prop3D props) {
+	applyProps(props);
+
+	useTexture("shiny");
 
 	drawSphere(1.2 * x);
 
-	glBegin(GL_QUADS);
-	glColor3f(0, 0, 0);
 	//back
+	glBegin(GL_QUADS);
+	glColor3f(1, 1, 1);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(x, 0, 0);
 	glVertex3f(x, -9.5 * x, 0);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
-	glColor3f(1, 0, 0);
 	//top
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(x, 0, 0);
 	glVertex3f(x, 0, -0.5 * x);
 	glVertex3f(-0.75 * x, 0, -0.5 * x);
+	glEnd();
 
 	//left
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(x, 0, 0);
 	glVertex3f(x, 0, -0.5 * x);
 	glVertex3f(x, -9.25 * x, -0.5 * x);
 	glVertex3f(x, -9.5 * x, 0);
+	glEnd();
 
 	//right
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(-0.75 * x, 0, -0.5 * x);
 	glVertex3f(0.25 * x, -8.75 * x, -0.5 * x);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
 	//bottom
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(x, -9.5 * x, 0);
 	glVertex3f(x, -9.25 * x, -0.5 * x);
 	glVertex3f(0.25 * x, -8.75 * x, -0.5 * x);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
 	//front
-	glColor3f(0, 0, 0);
+	glBegin(GL_QUADS);
+	glColor3f(1, 1, 1);
 	glVertex3f(-0.75 * x, 0, -0.5 * x);
 	glVertex3f(x, 0, -0.5 * x);
 	glVertex3f(x, -9.25 * x, -0.5 * x);
@@ -489,44 +533,60 @@ void drawWingLeft(double x, Prop3D props) {
 }
 
 void drawWingRight(double x, Prop3D props) {
+	applyProps(props);
+
+	useTexture("shiny");
 
 	drawSphere(1.2 * x);
 
-	glBegin(GL_QUADS);
-	glColor3f(0, 0, 0);
 	//back
+	glBegin(GL_QUADS);
+	glColor3f(1, 1, 1);
 	glVertex3f(x, 0, 0);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(-x, -9.5 * x, 0);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
-	glColor3f(1, 0, 0);
 	//top
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(x, 0, 0);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(-x, 0, -0.5 * x);
 	glVertex3f(0.75 * x, 0, -0.5 * x);
+	glEnd();
 
 	//left
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(-x, 0, 0);
 	glVertex3f(-x, 0, -0.5 * x);
 	glVertex3f(-x, -9.25 * x, -0.5 * x);
 	glVertex3f(-x, -9.5 * x, 0);
+	glEnd();
 
 	//right
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(x, 0, 0);
 	glVertex3f(0.75 * x, 0, -0.5 * x);
 	glVertex3f(-0.25 * x, -8.75 * x, -0.5 * x);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
 	//bottom
+	glBegin(GL_QUADS);
+	glColor3f(1, 0, 0);
 	glVertex3f(-x, -9.5 * x, 0);
 	glVertex3f(-x, -9.25 * x, -0.5 * x);
 	glVertex3f(-0.25 * x, -8.75 * x, -0.5 * x);
 	glVertex3f(0, -9 * x, 0);
+	glEnd();
 
 	//front
-	glColor3f(0, 0, 0);
+	glBegin(GL_QUADS);
+	glColor3f(1, 1, 1);
 	glVertex3f(0.75 * x, 0, -0.5 * x);
 	glVertex3f(-x, 0, -0.5 * x);
 	glVertex3f(-x, -9.25 * x, -0.5 * x);

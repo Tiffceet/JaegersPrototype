@@ -12,7 +12,7 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
-int frameNum = 0;
+int frameNum = 0, animation_fly_angle = 0, animation_fly_confirmation = 0;
 const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
@@ -81,6 +81,14 @@ void kbKeyUp(unsigned char key, int x, int y)
     case '\'':
         moveLightPosition({0, 0, -movement_spd});
         break;
+    case 'f':
+        if (animation_fly_confirmation == 0) {
+            animation_fly_confirmation = 1;
+        }
+        else {
+            animation_fly_confirmation = 0;
+        }
+        break;
     }
 }
 
@@ -94,7 +102,7 @@ void drawMainRobot(Prop3D props) {
     drawRobotHead(0.5, propsA);
 
     Prop3D propsB;
-    drawRobotBody(0.5, propsB);
+    drawRobotBody(0.5, propsB, animation_fly_confirmation);
 
     Prop3D props_leg_right;
     props_leg_right.rot.y = 90;
@@ -143,8 +151,26 @@ void displayMe(void)
     useDefaultTexture();
 
     Prop3D props_hold;
-    props_hold.rot.x = frameNum;
-    drawMainRobot(props_hold);
+    if (animation_fly_confirmation == 1) {
+        if (animation_fly_angle < 45) {
+            props_hold.rot.x = animation_fly_angle++;
+            drawMainRobot(props_hold);
+        }
+        else {
+            props_hold.rot.x = 45;
+            drawMainRobot(props_hold);
+        }
+    }
+    else {
+        if (animation_fly_angle > 0) {
+            props_hold.rot.x = animation_fly_angle--;
+            drawMainRobot(props_hold);
+        }
+        else {
+            drawMainRobot(props_hold);
+        }
+    }
+    
     
     
     
