@@ -80,12 +80,14 @@ void LeftArmGrab()
     {
         lhand_arm.rot.x++;
         lhand_lower_arm.rot.x++;
+        lhand_palm.rot.x++;
     }
     else
     {
         flip = true;
         lhand_arm.rot.x--;
         lhand_lower_arm.rot.x--;
+        lhand_palm.rot.x--;
         if (lhand_arm.rot.x < -30)
         {
             flip = false;
