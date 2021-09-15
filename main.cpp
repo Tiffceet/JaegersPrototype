@@ -84,6 +84,45 @@ void kbKeyUp(unsigned char key, int x, int y)
     }
 }
 
+void drawMainRobot(Prop3D props) {
+    glPushMatrix();
+    applyProps(props);
+
+    Prop3D propsA;
+    propsA.pos.y = 9 * 0.5;
+    propsA.pos.z = -2.5 * 0.5;
+    drawRobotHead(0.5, propsA);
+
+    Prop3D propsB;
+    drawRobotBody(0.5, propsB);
+
+    Prop3D props_leg_right;
+    props_leg_right.rot.y = 90;
+    props_leg_right.scale = { 0.5, 0.5 , 0.5 };
+    props_leg_right.pos = { 1.5, -6 , -1.5 };
+    drawRobotLeg(props_leg_right);
+
+    Prop3D props_leg_left;
+    props_leg_left.rot.y = -90;
+    props_leg_left.scale = { 0.5, 0.5 , 0.5 };
+    props_leg_left.pos = { -1.5, -6 , -1.5 };
+    drawRobotLeg(props_leg_left);
+
+    ////drawPantShield(props);
+    Prop3D props_hand_right;
+    props_hand_right.scale = { 0.3, 0.3 , 0.3 };
+    props_hand_right.pos = { 5, 10 , -3 };
+    drawRobotHand(props_hand_right);
+
+    Prop3D props_hand_left;
+    props_hand_left.rot.y = 180;
+    props_hand_left.scale = { 0.3, 0.3 , 0.3 };
+    props_hand_left.pos = { -5, 10 , -3 };
+    drawRobotHand(props_hand_left);
+
+    glPopMatrix();
+}
+
 void displayMe(void)
 {
     // Register key listeners
@@ -103,37 +142,12 @@ void displayMe(void)
     //ApplyLight();
     useDefaultTexture();
 
-    Prop3D propsA;
-    propsA.pos.y = 9* 0.5;
-    propsA.pos.z = -2.5* 0.5;
-    drawRobotHead(0.5, propsA);
-
-    Prop3D propsB;
-    drawRobotBody(0.5, propsB);
-
-    Prop3D props_leg_right;
-    props_leg_right.rot.y = 90;
-    props_leg_right.scale = {0.5, 0.5 , 0.5 };
-    props_leg_right.pos = { 1.5, -6 , -1.5 };
-    drawRobotLeg(props_leg_right);
-
-    Prop3D props_leg_left;
-    props_leg_left.rot.y = -90;
-    props_leg_left.scale = { 0.5, 0.5 , 0.5 };
-    props_leg_left.pos = { -1.5, -6 , -1.5 };
-    drawRobotLeg(props_leg_left);
-
-    ////drawPantShield(props);
-    Prop3D props_hand_right;
-    props_hand_right.scale = { 0.3, 0.3 , 0.3 };
-    props_hand_right.pos = { 5, 10 , -3 };
-    drawRobotHand(props_hand_right);
-
-    Prop3D props_hand_left; 
-    props_hand_left.rot.y = 180;
-    props_hand_left.scale = { 0.3, 0.3 , 0.3 };
-    props_hand_left.pos = { -5, 10 , -3 };
-    drawRobotHand(props_hand_left);
+    Prop3D props_hold;
+    props_hold.rot.x = frameNum;
+    drawMainRobot(props_hold);
+    
+    
+    
     glFlush();
 }
 
