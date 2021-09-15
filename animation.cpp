@@ -1,6 +1,23 @@
 #include "animation.h"
 #include "_hand.h"
-bool _state_LeftArmGrab = false;
+#include <map>
+
+std::map<std::string, bool> animation_sequences;
+void InitAnimationSequencesState()
+{
+    animation_sequences["LeftArmGrab"] = false;
+}
+
+void PlaySequence(std::string seq_name)
+{
+    InitObjectsPosition();
+    animation_sequences[seq_name] = true;
+}
+
+// =============================================
+// Init Functions
+// =============================================
+
 void InitObjectsPosition()
 {
     InitLeftHandPosition();
@@ -28,17 +45,34 @@ void InitLeftHandPosition()
     lhand_fing_5.rot.y = 30;
     lhand_fing_5.pos = {1, 0, 2};
 }
+// =============================================
+// =============================================
 
-void ProcessAnimation() {
+// =============================================
+// Animation Functions
+// =============================================
+
+void ProcessAnimation()
+{
     LeftArmGrab();
 }
 
-void LeftArmGrab() {
-    if(!_state_LeftArmGrab) {
+void LeftArmGrab()
+{
+    if (!animation_sequences["LeftArmGrab"])
+    {
         return;
     }
 
-    if(lhand_upper_joint.rot.x < 30) {
+    if (lhand_upper_joint.rot.x < 30)
+    {
         lhand_upper_joint.rot.x++;
     }
+
+    if (lhand_upper_joint.rot.x > 30)
+    {
+        animation_sequences["LeftArmGrab"] = false;
+    }
 }
+// =============================================
+// =============================================

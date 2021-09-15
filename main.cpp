@@ -64,6 +64,9 @@ void kbKeyUp(unsigned char key, int x, int y)
     case 'p':
         setViewMode('p');
         break;
+    case 'r':
+        PlaySequence("LeftArmGrab");
+        break;
     case 'i':
         moveLightPosition({0, movement_spd, 0});
         break;
@@ -196,6 +199,7 @@ void init()
 {
     LoadAllTexture();
     InitObjectsPosition();
+    InitAnimationSequencesState();
     SetDistantLighting(
         {1.0, 0.0, 0.0, -2},  // Pos
         {0.1, 0.1, 0.1, 1.0}, // Amb
