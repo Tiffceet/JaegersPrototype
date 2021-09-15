@@ -28,14 +28,11 @@ void drawRobotLeg(Prop3D props)
     foot_joint.pos = {0, -3, -1};
     useTexture("brick");
     drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
-    
-    glPushMatrix();
-    Prop3D lower_foot_cont;
-    lower_foot_cont.origin = {-1, -9, 0};
-    applyProps(lower_foot_cont);
 
     Prop3D lower_leg;
-    lower_leg.pos = {1, 3.5, 0};
+    lower_leg.pos = {1, -3, 0};
+    lower_leg.origin = {-1, -2.5, 0};
+    // lower_leg.rot.x = foot_frame++;
     glPushMatrix();
     applyProps(lower_leg);
     useTexture("shiny");
@@ -57,7 +54,6 @@ void drawRobotLeg(Prop3D props)
     useTexture("shiny");
     drawSphere(blueball_1, 0.75, 30, 30);
 
-    glPopMatrix();
     glPopMatrix();
     glPopMatrix();
     glPopMatrix();
