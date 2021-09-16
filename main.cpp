@@ -266,6 +266,7 @@ void displayMe(void)
     glutKeyboardFunc(kbKeyUp);
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_NORMALIZE);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     useTexture("sky");
@@ -329,6 +330,7 @@ void displayMe(void)
             drawMainRobot(MainRobotProps);
         }
     }
+    setMaterial(MAT_WHITE);
     glFlush();
 }
 
