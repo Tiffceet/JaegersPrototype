@@ -77,9 +77,11 @@ void kbKeyUp(unsigned char key, int x, int y)
         break;
     case 'o':
         setViewMode('o');
+        setCameraAt({0, 0, 50}, {0, 0, 0}, 1);
         break;
     case 'p':
         setViewMode('p');
+        setCameraAt({0, 0, 11}, {39.15, -25.8751, 0}, 0.3);
         break;
     case 'r':
         PlaySequence("LeftArmGrab_1");

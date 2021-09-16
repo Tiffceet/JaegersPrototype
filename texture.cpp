@@ -7,9 +7,7 @@ std::map<std::string, GLuint> textures;
 
 void LoadAllTexture()
 {
-    loadTexture((LPCSTR) "texture/Brick.bmp", "brick");
     loadTexture((LPCSTR) "texture/Body.bmp", "body");
-    loadTexture((LPCSTR) "texture/Box.bmp", "box");
     loadTexture((LPCSTR) "texture/sky.bmp", "sky");
     loadTexture((LPCSTR)"texture/Gem.bmp", "gem");
     loadTexture((LPCSTR)"texture/Armor.bmp", "armor");
