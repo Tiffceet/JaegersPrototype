@@ -53,18 +53,18 @@ void drawRobotLeftHand(Prop3D props)
 
     glPushMatrix();
     applyProps(lhand_arm);
-    useTexture("brick");
+    useTexture("shiny");
     drawCube(lhand_upper_joint, {2, 5, 2});
 
     glPushMatrix();
     applyProps(lhand_upper_arm);
-    useTexture("shiny");
+    useTexture("armor");
     Prop3D clean;
     drawCylinder(clean, 1, 2, 4, 30, 30);
 
     glPushMatrix();
     applyProps(lhand_lower_arm);
-    useTexture("box");
+    useTexture("armor");
     drawCylinder(clean, 2, 1, 4, 30, 30);
     drawRobotPalm(lhand_palm, 'l');
 
@@ -82,18 +82,18 @@ void drawRobotRightHand(Prop3D props)
 
     glPushMatrix();
     applyProps(rhand_arm);
-    useTexture("brick");
+    useTexture("shiny");
     drawCube(rhand_upper_joint, {2, 5, 2});
 
     glPushMatrix();
     applyProps(rhand_upper_arm);
-    useTexture("shiny");
+    useTexture("armor");
     Prop3D clean;
     drawCylinder(clean, 1, 2, 4, 30, 30);
 
     glPushMatrix();
     applyProps(rhand_lower_arm);
-    useTexture("box");
+    useTexture("armor");
     drawCylinder(clean, 2, 1, 4, 30, 30);
     drawRobotPalm(rhand_palm, 'r');
 
@@ -109,7 +109,7 @@ void drawRobotPalm(Prop3D props, char side)
     applyProps(props);
     Prop3D palm;
     palm.origin = {0, 0, 1};
-    useTexture("brick");
+    useTexture("shiny");
     drawCube(palm, {3, 1, 3});
     if (side == 'l')
     {
@@ -147,11 +147,11 @@ void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_r
     applyProps(lower_fing);
     drawCube(clean_props, {0.5, 0.5, 2});
 
-    useTexture("brick");
+    useTexture("armor");
     finger_joint.pos = {0, 0, 1};
     drawSphere(finger_joint, 0.2, 30, 30);
 
-    useTexture("box");
+    useTexture("shiny");
     upper_fing.pos = {0, 0, 1.15};
     upper_fing.rot = upper_fing_rotation;
     upper_fing.origin = {0, 0, 0.75};

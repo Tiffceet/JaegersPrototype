@@ -28,7 +28,7 @@ void drawRobotHead(double x, Prop3D props) {
 }
 
 void drawRobotEye(double x, Prop3D props) {
-	useTexture("shiny");
+	useTexture("body");
 	//eye
 
 	//top
@@ -103,7 +103,7 @@ void drawRobotEye(double x, Prop3D props) {
 }
 
 void drawRobotCheek(double x, Prop3D props) {
-	useTexture("brick");
+	useTexture("shiny");
 	//mouth
 	
 	//bottom
@@ -178,7 +178,7 @@ void drawRobotCheek(double x, Prop3D props) {
 }
 
 void drawRobotMouth(double x, Prop3D props) {
-	useTexture("shiny");
+	useTexture("armor");
 	//mouth
 	
 	//front
@@ -254,7 +254,7 @@ void drawRobotMouth(double x, Prop3D props) {
 }
 
 void drawRobotForehead(double x, Prop3D props) {
-	useTexture("brick");
+	useTexture("shiny");
 	//forehead
 	
 	//top
@@ -343,7 +343,7 @@ void drawRobotForehead(double x, Prop3D props) {
 }
 
 void drawRobotLeftEar(double x, Prop3D props) {
-	useTexture("box");
+	useTexture("armor");
 	//left ear
 
 	//front
@@ -418,7 +418,7 @@ void drawRobotLeftEar(double x, Prop3D props) {
 }
 
 void drawRobotRightEar(double x, Prop3D props) {
-	useTexture("box");
+	useTexture("armor");
 	//right ear
 	
 	//front
@@ -493,7 +493,7 @@ void drawRobotRightEar(double x, Prop3D props) {
 }
 
 void drawRobotNeck(double x, Prop3D props) {
-	useTexture("box");
+	useTexture("shiny");
 	GLUquadricObj* cylinder = NULL;
 	cylinder = gluNewQuadric();
 	gluQuadricTexture(cylinder, true);

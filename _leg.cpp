@@ -36,7 +36,7 @@ void drawRobotLeftLeg(Prop3D props)
 
     glPushMatrix();
 
-    useTexture("brick");
+    useTexture("armor");
     drawCylinder(lleg_foot_joint, 0.75, 0.75, 2, 30, 30);
 
     glPushMatrix();
@@ -44,7 +44,7 @@ void drawRobotLeftLeg(Prop3D props)
     useTexture("shiny");
     drawCube(clean, {1.9, 5, 1.9});
 
-    useTexture("box");
+    useTexture("armor");
     drawTrapezoid(lleg_base);
 
     useTexture("shiny");
@@ -74,7 +74,7 @@ void drawRobotRightLeg(Prop3D props)
 
     glPushMatrix();
 
-    useTexture("brick");
+    useTexture("armor");
     drawCylinder(rleg_foot_joint, 0.75, 0.75, 2, 30, 30);
 
     glPushMatrix();
@@ -82,7 +82,7 @@ void drawRobotRightLeg(Prop3D props)
     useTexture("shiny");
     drawCube(clean, {1.9, 5, 1.9});
 
-    useTexture("box");
+    useTexture("armor");
     drawTrapezoid(rleg_base);
 
     useTexture("shiny");

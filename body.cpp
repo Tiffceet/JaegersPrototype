@@ -65,7 +65,7 @@ void drawRobotBody(double x, Prop3D props, int animation_fly) {
 }
 
 void drawAbdomen(double x, Prop3D props) {
-	useTexture("brick");
+	useTexture("shiny");
 
 	glBegin(GL_POLYGON); 
 	Vec3lf ab1 = calculate_normallf({ -2 * x, 5 * x, -3 * x }, { 2 * x, 5 * x, -3 * x }, { 2 * x, 5 * x, -x });
@@ -187,10 +187,9 @@ void drawAbdomen(double x, Prop3D props) {
 }
 
 void drawGem(double x, Prop3D props) {
-	useTexture("shiny");
+	useTexture("gem");
 
 	//back//
-	glColor3f(0, 0, 1);
 	glBegin(GL_POLYGON);
 	Vec3lf gm1 = calculate_normallf({ -0.5 * x, 4 * x, 0 }, { 0.5 * x, 4 * x, 0 }, { x, 3 * x, 0 });
 	glNormal3f(-gm1.x, -gm1.y,- gm1.z);
@@ -312,7 +311,7 @@ void drawGem(double x, Prop3D props) {
 }
 
 void drawArmor(double x, Prop3D props) {
-	useTexture("box");
+	useTexture("armor");
 
 	//Armor_top_top
 	glBegin(GL_QUADS);
