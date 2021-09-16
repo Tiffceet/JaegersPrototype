@@ -9,9 +9,9 @@ void applyProps(Prop3D props)
 {
     glScalef(props.scale.x, props.scale.y, props.scale.z);
     glTranslatef(props.pos.x, props.pos.y, props.pos.z);
-    glRotatef(props.rot.x, 1, 0, 0);
-    glRotatef(props.rot.y, 0, 1, 0);
     glRotatef(props.rot.z, 0, 0, 1);
+    glRotatef(props.rot.y, 0, 1, 0);
+    glRotatef(props.rot.x, 1, 0, 0);
     glTranslatef(props.origin.x, props.origin.y, props.origin.z);
 }
 

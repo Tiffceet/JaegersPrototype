@@ -249,12 +249,25 @@ void displayMe(void)
     {
         if (animation_fly_angle < 45)
         {
-            MainRobotProps.rot.x = animation_fly_angle++;
+            if (RobotFacing.z > 0) {
+                MainRobotProps.rot.x = animation_fly_angle * RobotFacing.z;
+            }
+            else {
+                MainRobotProps.rot.x = animation_fly_angle * -RobotFacing.z;
+            }
+            MainRobotProps.rot.z = animation_fly_angle * -RobotFacing.x;
+            animation_fly_angle++;
             drawMainRobot(MainRobotProps);
         }
         else
         {
-            MainRobotProps.rot.x = 45;
+            if (RobotFacing.z > 0) {
+                MainRobotProps.rot.x = animation_fly_angle * RobotFacing.z;
+            }
+            else {
+                MainRobotProps.rot.x = animation_fly_angle * -RobotFacing.z;
+            }
+            MainRobotProps.rot.z = animation_fly_angle * -RobotFacing.x;
             drawMainRobot(MainRobotProps);
         }
     }
