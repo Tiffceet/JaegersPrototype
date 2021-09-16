@@ -47,10 +47,10 @@ void drawRobotLeftLeg(Prop3D props)
     useTexture("armor");
     drawTrapezoid(lleg_base);
 
-    useTexture("shiny");
+    useTexture("water-b");
     drawSphere(lleg_blueball_1, 0.75, 30, 30);
 
-    useTexture("shiny");
+    useTexture("water-b");
     drawSphere(lleg_blueball_2, 0.75, 30, 30);
 
     glPopMatrix();
@@ -85,10 +85,10 @@ void drawRobotRightLeg(Prop3D props)
     useTexture("armor");
     drawTrapezoid(rleg_base);
 
-    useTexture("shiny");
+    useTexture("water-b");
     drawSphere(rleg_blueball_1, 0.75, 30, 30);
 
-    useTexture("shiny");
+    useTexture("water-b");
     drawSphere(rleg_blueball_2, 0.75, 30, 30);
 
     glPopMatrix();
