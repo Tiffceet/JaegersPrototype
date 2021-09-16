@@ -34,22 +34,41 @@ void InitLeftHandPosition()
     clearProps(lhand_lower_arm);
     clearProps(lhand_palm);
     clearProps(lhand_fing_1);
+    lhand_fing_1_lower_rot = {0,0,0};
+    lhand_fing_1_upper_rot = {0,0,0};
     clearProps(lhand_fing_2);
+    lhand_fing_2_lower_rot = {0,0,0};
+    lhand_fing_2_upper_rot = {0,0,0};
     clearProps(lhand_fing_3);
+    lhand_fing_3_lower_rot = {0,0,0};
+    lhand_fing_3_upper_rot = {0,0,0};
     clearProps(lhand_fing_4);
+    lhand_fing_4_lower_rot = {0,0,0};
+    lhand_fing_4_upper_rot = {0,0,0};
     clearProps(lhand_fing_5);
+    lhand_fing_5_lower_rot = {0,0,0};
+    lhand_fing_5_upper_rot = {0,0,0};
     clearProps(rhand_upper_joint);
-    clearProps(rhand_upper_joint);
-    clearProps(rhand_upper_arm);
+    clearProps(rhand_arm);
     clearProps(rhand_upper_arm);
     clearProps(rhand_lower_arm);
     clearProps(rhand_palm);
     clearProps(rhand_fing_1);
+    rhand_fing_1_lower_rot = {0,0,0};
+    rhand_fing_1_upper_rot = {0,0,0};
     clearProps(rhand_fing_2);
+    rhand_fing_2_lower_rot = {0,0,0};
+    rhand_fing_2_upper_rot = {0,0,0};
     clearProps(rhand_fing_3);
+    rhand_fing_3_lower_rot = {0,0,0};
+    rhand_fing_3_upper_rot = {0,0,0};
     clearProps(rhand_fing_4);
+    rhand_fing_4_lower_rot = {0,0,0};
+    rhand_fing_4_upper_rot = {0,0,0};
     clearProps(rhand_fing_5);
-    clearProps(rhand_fing_5);
+    rhand_fing_5_lower_rot = {0,0,0};
+    rhand_fing_5_upper_rot = {0,0,0};
+
     lhand_upper_joint.origin.y = -2.5;
     lhand_upper_joint.rot.z = 30;
 
@@ -65,6 +84,7 @@ void InitLeftHandPosition()
     lhand_fing_4.pos = {1, 0, 2};
     lhand_fing_5.rot.y = 30;
     lhand_fing_5.pos = {1, 0, 2};
+    lhand_fing_5_upper_rot.y = -30;
 
     rhand_upper_joint.origin.y = -2.5;
     rhand_upper_joint.rot.z = -30;
@@ -79,8 +99,9 @@ void InitLeftHandPosition()
     rhand_fing_2.pos = {-0.4, 0, 2};
     rhand_fing_3.pos = {0.3, 0, 2};
     rhand_fing_4.pos = {1, 0, 2};
-    rhand_fing_5.rot.y = 30;
-    rhand_fing_5.pos = {1, 0, 2};
+    rhand_fing_5.rot.y = -30;
+    rhand_fing_5.pos = {-1, 0, 2};
+    rhand_fing_5_upper_rot.y = 30;
 }
 
 void InitLegPosition()

@@ -10,20 +10,40 @@ Prop3D lhand_upper_arm;
 Prop3D lhand_lower_arm;
 Prop3D lhand_palm;
 Prop3D lhand_fing_1;
+Vec3d lhand_fing_1_lower_rot;
+Vec3d lhand_fing_1_upper_rot;
 Prop3D lhand_fing_2;
+Vec3d lhand_fing_2_lower_rot;
+Vec3d lhand_fing_2_upper_rot;
 Prop3D lhand_fing_3;
+Vec3d lhand_fing_3_lower_rot;
+Vec3d lhand_fing_3_upper_rot;
 Prop3D lhand_fing_4;
+Vec3d lhand_fing_4_lower_rot;
+Vec3d lhand_fing_4_upper_rot;
 Prop3D lhand_fing_5;
+Vec3d lhand_fing_5_lower_rot;
+Vec3d lhand_fing_5_upper_rot;
 Prop3D rhand_upper_joint;
 Prop3D rhand_arm;
 Prop3D rhand_upper_arm;
 Prop3D rhand_lower_arm;
 Prop3D rhand_palm;
 Prop3D rhand_fing_1;
+Vec3d rhand_fing_1_lower_rot;
+Vec3d rhand_fing_1_upper_rot;
 Prop3D rhand_fing_2;
+Vec3d rhand_fing_2_lower_rot;
+Vec3d rhand_fing_2_upper_rot;
 Prop3D rhand_fing_3;
+Vec3d rhand_fing_3_lower_rot;
+Vec3d rhand_fing_3_upper_rot;
 Prop3D rhand_fing_4;
+Vec3d rhand_fing_4_lower_rot;
+Vec3d rhand_fing_4_upper_rot;
 Prop3D rhand_fing_5;
+Vec3d rhand_fing_5_lower_rot;
+Vec3d rhand_fing_5_upper_rot;
 void drawRobotLeftHand(Prop3D props)
 {
     glPushMatrix();
@@ -93,19 +113,19 @@ void drawRobotPalm(Prop3D props, char side)
     drawCube(palm, {3, 1, 3});
     if (side == 'l')
     {
-        drawRobotFinger(lhand_fing_1, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(lhand_fing_2, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(lhand_fing_3, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(lhand_fing_4, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(lhand_fing_1, lhand_fing_1_lower_rot, lhand_fing_1_upper_rot);
+        drawRobotFinger(lhand_fing_2, lhand_fing_2_lower_rot, lhand_fing_2_upper_rot);
+        drawRobotFinger(lhand_fing_3, lhand_fing_3_lower_rot, lhand_fing_3_upper_rot);
+        drawRobotFinger(lhand_fing_4, lhand_fing_4_lower_rot, lhand_fing_4_upper_rot);
         // Thumb
-        drawRobotFinger(lhand_fing_5, {0, 0, 0}, {0, -30, 0});
+        drawRobotFinger(lhand_fing_5, lhand_fing_5_lower_rot, lhand_fing_5_upper_rot);
     } else {
-        drawRobotFinger(rhand_fing_1, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(rhand_fing_2, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(rhand_fing_3, {0, 0, 0}, {0, 0, 0});
-        drawRobotFinger(rhand_fing_4, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(rhand_fing_1, rhand_fing_1_lower_rot, rhand_fing_1_upper_rot);
+        drawRobotFinger(rhand_fing_2, rhand_fing_2_lower_rot, rhand_fing_2_upper_rot);
+        drawRobotFinger(rhand_fing_3, rhand_fing_3_lower_rot, rhand_fing_3_upper_rot);
+        drawRobotFinger(rhand_fing_4, rhand_fing_4_lower_rot, rhand_fing_4_upper_rot);
         // Thumb
-        drawRobotFinger(rhand_fing_5, {0, 0, 0}, {0, -30, 0});
+        drawRobotFinger(rhand_fing_5, rhand_fing_5_lower_rot, rhand_fing_5_upper_rot);
     }
 
     glPopMatrix();
