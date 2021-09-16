@@ -13,5 +13,6 @@ extern std::map<std::string, Prop3D> spawnables_props;
 void InitSpawnables();
 void DrawSpawnables();
 void SpawnSphere();
+void SpawnCyLazer();
 
 #endif
