@@ -10,6 +10,7 @@
 #include "head.h"
 #include "_hand.h"
 #include "_leg.h"
+#include "spawnable_object.h"
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
@@ -65,7 +66,7 @@ void kbKeyUp(unsigned char key, int x, int y)
         setViewMode('p');
         break;
     case 'r':
-        PlaySequence("LeftArmGrab");
+        PlaySequence("LeftArmGrab_1");
         break;
     case 'i':
         moveLightPosition({0, movement_spd, 0});
@@ -225,6 +226,7 @@ void displayMe(void)
 
     initCamera(10, 100);
     ProcessAnimation();
+    DrawSpawnables();
     //ApplyLight();
     useDefaultTexture();
 
@@ -270,6 +272,7 @@ void init()
     LoadAllTexture();
     InitObjectsPosition();
     InitAnimationSequencesState();
+    InitSpawnables();
     SetDistantLighting(
         {1.0, 0.0, 0.0, -2},  // Pos
         {0.1, 0.1, 0.1, 1.0}, // Amb

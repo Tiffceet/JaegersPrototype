@@ -3,6 +3,7 @@
 #include "_leg.h"
 #include <map>
 #include "primitives.h"
+#include "spawnable_object.h"
 
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
@@ -24,6 +25,7 @@ void PlaySequence(std::string seq_name)
 
 void InitObjectsPosition()
 {
+    InitSpawnables();
     InitLeftHandPosition();
     InitLegPosition();
 }
@@ -36,40 +38,40 @@ void InitLeftHandPosition()
     clearProps(lhand_lower_arm);
     clearProps(lhand_palm);
     clearProps(lhand_fing_1);
-    lhand_fing_1_lower_rot = {0,0,0};
-    lhand_fing_1_upper_rot = {0,0,0};
+    lhand_fing_1_lower_rot = {0, 0, 0};
+    lhand_fing_1_upper_rot = {0, 0, 0};
     clearProps(lhand_fing_2);
-    lhand_fing_2_lower_rot = {0,0,0};
-    lhand_fing_2_upper_rot = {0,0,0};
+    lhand_fing_2_lower_rot = {0, 0, 0};
+    lhand_fing_2_upper_rot = {0, 0, 0};
     clearProps(lhand_fing_3);
-    lhand_fing_3_lower_rot = {0,0,0};
-    lhand_fing_3_upper_rot = {0,0,0};
+    lhand_fing_3_lower_rot = {0, 0, 0};
+    lhand_fing_3_upper_rot = {0, 0, 0};
     clearProps(lhand_fing_4);
-    lhand_fing_4_lower_rot = {0,0,0};
-    lhand_fing_4_upper_rot = {0,0,0};
+    lhand_fing_4_lower_rot = {0, 0, 0};
+    lhand_fing_4_upper_rot = {0, 0, 0};
     clearProps(lhand_fing_5);
-    lhand_fing_5_lower_rot = {0,0,0};
-    lhand_fing_5_upper_rot = {0,0,0};
+    lhand_fing_5_lower_rot = {0, 0, 0};
+    lhand_fing_5_upper_rot = {0, 0, 0};
     clearProps(rhand_upper_joint);
     clearProps(rhand_arm);
     clearProps(rhand_upper_arm);
     clearProps(rhand_lower_arm);
     clearProps(rhand_palm);
     clearProps(rhand_fing_1);
-    rhand_fing_1_lower_rot = {0,0,0};
-    rhand_fing_1_upper_rot = {0,0,0};
+    rhand_fing_1_lower_rot = {0, 0, 0};
+    rhand_fing_1_upper_rot = {0, 0, 0};
     clearProps(rhand_fing_2);
-    rhand_fing_2_lower_rot = {0,0,0};
-    rhand_fing_2_upper_rot = {0,0,0};
+    rhand_fing_2_lower_rot = {0, 0, 0};
+    rhand_fing_2_upper_rot = {0, 0, 0};
     clearProps(rhand_fing_3);
-    rhand_fing_3_lower_rot = {0,0,0};
-    rhand_fing_3_upper_rot = {0,0,0};
+    rhand_fing_3_lower_rot = {0, 0, 0};
+    rhand_fing_3_upper_rot = {0, 0, 0};
     clearProps(rhand_fing_4);
-    rhand_fing_4_lower_rot = {0,0,0};
-    rhand_fing_4_upper_rot = {0,0,0};
+    rhand_fing_4_lower_rot = {0, 0, 0};
+    rhand_fing_4_upper_rot = {0, 0, 0};
     clearProps(rhand_fing_5);
-    rhand_fing_5_lower_rot = {0,0,0};
-    rhand_fing_5_upper_rot = {0,0,0};
+    rhand_fing_5_lower_rot = {0, 0, 0};
+    rhand_fing_5_upper_rot = {0, 0, 0};
 
     lhand_upper_joint.origin.y = -2.5;
     lhand_upper_joint.rot.z = 30;
@@ -173,9 +175,18 @@ void LeftArmGrab_1()
         lhand_palm.rot.x--;
     }
 
-    if (lhand_arm.rot.x < -30)
+    if (lhand_arm.rot.x <= -30)
     {
-        animation_sequences["LeftArmGrab"] = false;
+        animation_sequences["LeftArmGrab_1"] = false;
+
+        // Spawn a Sphere
+        spawn_state["sphere"] = true;
+        Prop3D spawn_sphere;
+        spawn_sphere.scale = {0.5, 0.5, 0.5};
+        spawn_sphere.pos = {4.5, 5, 3.5};
+        spawnables_props["sphere"] = spawn_sphere;
+
+        animation_sequences["LeftArmGrab_2"] = true;
     }
 }
 
@@ -186,9 +197,14 @@ void LeftArmGrab_2()
         return;
     }
 
+    float target_pos = 1.5;
 
+    if (spawnables_props["sphere"].pos.y > target_pos)
+    {
+        spawnables_props["sphere"].pos.y -= 0.1;
+    }
 
-    if (false)
+    if (spawnables_props["sphere"].pos.y <= target_pos)
     {
         animation_sequences["LeftArmGrab_2"] = false;
     }
@@ -200,8 +216,6 @@ void LeftArmGrab_3()
     {
         return;
     }
-
-
 
     if (false)
     {
