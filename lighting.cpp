@@ -1,6 +1,7 @@
 #include "lighting.h"
 #include <GL/freeglut.h>
 #include "typedefs.h"
+#include "texture.h"
 
 Vec4f light_pos;
 Rgba4f diffuse_light;
@@ -42,6 +43,7 @@ void ApplyLight()
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 
     // Debug
+    useDefaultTexture();
     glDisable(GL_LIGHTING);
     glPushMatrix();
     glTranslatef(light_pos.x, light_pos.y, light_pos.z);

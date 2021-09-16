@@ -122,6 +122,9 @@ void kbKeyUp(unsigned char key, int x, int y)
     case 'v':
         PlaySequence("RobotTurn90_1");
         break;
+    case '/':
+        toggleLight();
+        break;
     }
 }
 
@@ -242,7 +245,7 @@ void displayMe(void)
 
     initCamera(10, 100);
     ProcessAnimation();
-    // ApplyLight();
+    ApplyLight();
     useDefaultTexture();
 
     if (animation_fly_confirmation == 1)
