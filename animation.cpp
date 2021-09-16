@@ -166,6 +166,11 @@ void ProcessAnimation()
     LeftArmGrab_1();
     LeftArmGrab_2();
     LeftArmGrab_3();
+    RobotJump_1();
+    RobotJump_2();
+    RobotJump_3();
+    RobotJump_4();
+    RobotJump_5();
 }
 
 void LeftArmGrab_1()
@@ -256,6 +261,8 @@ void RobotJump_1() {
     {
         return;
     }
+
+    lleg_lower_leg.rot.z = 45;
 
     if(false) {
         animation_sequences["RobotJump_1"] = false;

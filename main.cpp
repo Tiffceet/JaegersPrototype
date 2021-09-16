@@ -116,6 +116,9 @@ void kbKeyUp(unsigned char key, int x, int y)
             animation_head_confirmation = 0;
         }
         break;
+    case ' ':
+        PlaySequence("RobotJump_1");
+        break;
     }
 }
 
@@ -124,7 +127,7 @@ void drawMainRobot(Prop3D props)
     glPushMatrix();
     applyProps(props);
     DrawSpawnables();
-    
+
     glPushMatrix();
 
     Prop3D propsA;
@@ -135,42 +138,52 @@ void drawMainRobot(Prop3D props)
     glPushMatrix();
 
     Prop3D props_head_rotated;
-    if (animation_head_confirmation == 1) {
-        if (animation_head_angle < 45) {
+    if (animation_head_confirmation == 1)
+    {
+        if (animation_head_angle < 45)
+        {
             props_head_rotated.rot.y = animation_head_angle++;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
-        else {
+        else
+        {
             props_head_rotated.rot.y = 45;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
     }
-    else if (animation_head_confirmation == 2) {
-        if (animation_head_angle > -45) {
+    else if (animation_head_confirmation == 2)
+    {
+        if (animation_head_angle > -45)
+        {
             props_head_rotated.rot.y = animation_head_angle--;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
-        else {
+        else
+        {
             props_head_rotated.rot.y = -45;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
     }
-    else {
-        if (animation_head_angle > 0) {
+    else
+    {
+        if (animation_head_angle > 0)
+        {
             props_head_rotated.rot.y = animation_head_angle--;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
-        else if (animation_head_angle < 0) {
+        else if (animation_head_angle < 0)
+        {
             props_head_rotated.rot.y = animation_head_angle++;
             applyProps(props_head_rotated);
             drawRobotHead(0.5, props);
         }
-        else {
+        else
+        {
             animation_head_angle = 0;
             drawRobotHead(0.5, props);
         }
