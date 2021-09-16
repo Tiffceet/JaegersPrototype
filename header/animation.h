@@ -19,5 +19,6 @@ void RobotWalk_3();
 void RobotWalk_4();
 void RobotTurn90_1();
 void InitLegPosition();
+void ShootLazer_1();
 
 #endif

@@ -20,6 +20,7 @@ void InitAnimationSequencesState()
     animation_sequences["RobotWalk_3"] = false;
     animation_sequences["RobotWalk_4"] = false;
     animation_sequences["RobotTurn90_1"] = false;
+    animation_sequences["ShootLazer_1"] = false;
 }
 
 void PlaySequence(std::string seq_name)
@@ -176,6 +177,7 @@ void ProcessAnimation()
     RobotWalk_3();
     RobotWalk_4();
     RobotTurn90_1();
+    ShootLazer_1();
 }
 
 void LeftArmGrab_1()
@@ -375,6 +377,29 @@ void RobotTurn90_1()
         turn_counter++;
         animation_playing = false;
         RobotFacing = compass[turn_counter % 4];
+    }
+}
+
+void ShootLazer_1()
+{
+    if (!animation_sequences["ShootLazer_1"])
+    {
+        return;
+    }
+    spawnables_props["lazer"].scale = {0.1, 0.1, 0.1};
+    spawnables_props["lazer"].pos.y = 15;
+    animation_playing = true;
+    spawn_state["lazer"] = true;
+    if (spawnables_props["lazer"].pos.z < 1000)
+    {
+        spawnables_props["lazer"].pos.z += 10;
+    }
+
+    if (spawnables_props["lazer"].pos.z >= 1000)
+    {
+        animation_sequences["ShootLazer_1"] = false;
+        animation_playing = false;
+        spawn_state["lazer"] = false;
     }
 }
 // =============================================

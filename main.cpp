@@ -141,6 +141,9 @@ void kbKeyUp(unsigned char key, int x, int y)
     case '/':
         toggleLight();
         break;
+    case 'u':
+        PlaySequence("ShootLazer_1");
+        break;
     }
 }
 
