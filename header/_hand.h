@@ -13,8 +13,19 @@ extern Prop3D lhand_fing_2;
 extern Prop3D lhand_fing_3;
 extern Prop3D lhand_fing_4;
 extern Prop3D lhand_fing_5;
+extern Prop3D rhand_upper_joint;
+extern Prop3D rhand_arm;
+extern Prop3D rhand_upper_arm;
+extern Prop3D rhand_lower_arm;
+extern Prop3D rhand_palm;
+extern Prop3D rhand_fing_1;
+extern Prop3D rhand_fing_2;
+extern Prop3D rhand_fing_3;
+extern Prop3D rhand_fing_4;
+extern Prop3D rhand_fing_5;
 
 void drawRobotLeftHand(Prop3D props);
+void drawRobotRightHand(Prop3D props);
 void drawRobotPalm(Prop3D props);
 void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_rotation);
 #endif

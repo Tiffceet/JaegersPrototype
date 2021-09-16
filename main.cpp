@@ -194,16 +194,16 @@ void drawMainRobot(Prop3D props)
     drawRobotRightLeg(props_leg_right);
 
     ////drawPantShield(props);
-    Prop3D props_hand_right;
-    props_hand_right.scale = {0.3, 0.3, 0.3};
-    props_hand_right.pos = {5, 10, -3};
-    drawRobotLeftHand(props_hand_right);
-
     Prop3D props_hand_left;
-    props_hand_left.rot.y = 180;
     props_hand_left.scale = {0.3, 0.3, 0.3};
-    props_hand_left.pos = {-5, 10, -3};
+    props_hand_left.pos = {5, 10, -3};
     drawRobotLeftHand(props_hand_left);
+
+    Prop3D props_hand_right;
+    // props_hand_right.rot.y = 180;
+    props_hand_right.scale = {0.3, 0.3, 0.3};
+    props_hand_right.pos = {-5, 10, -3};
+    drawRobotRightHand(props_hand_right);
 
     glPopMatrix();
 }
