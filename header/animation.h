@@ -3,6 +3,7 @@
 #include <iostream>
 #include "typedefs.h"
 extern Prop3D MainRobotProps;
+extern Vec3f RobotFacing;
 extern bool animation_playing;
 void InitObjectsPosition();
 void InitAnimationSequencesState();
@@ -16,5 +17,7 @@ void RobotWalk_1();
 void RobotWalk_2();
 void RobotWalk_3();
 void RobotWalk_4();
+void RobotTurn90_1();
 void InitLegPosition();
+
 #endif

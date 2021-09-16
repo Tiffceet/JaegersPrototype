@@ -6,6 +6,7 @@
 #include "spawnable_object.h"
 
 Prop3D MainRobotProps;
+Vec3f RobotFacing = {0, 0, 1};
 bool animation_playing = false;
 
 std::map<std::string, bool> animation_sequences;
@@ -18,12 +19,13 @@ void InitAnimationSequencesState()
     animation_sequences["RobotWalk_2"] = false;
     animation_sequences["RobotWalk_3"] = false;
     animation_sequences["RobotWalk_4"] = false;
+    animation_sequences["RobotTurn90_1"] = false;
 }
 
 void PlaySequence(std::string seq_name)
 {
     InitObjectsPosition();
-    if(!animation_playing)
+    if (!animation_playing)
     {
         animation_sequences[seq_name] = true;
     }
@@ -173,6 +175,7 @@ void ProcessAnimation()
     RobotWalk_2();
     RobotWalk_3();
     RobotWalk_4();
+    RobotTurn90_1();
 }
 
 void LeftArmGrab_1()
@@ -290,7 +293,8 @@ void RobotWalk_2()
 
     if (lleg_upper_foot.rot.z <= 0)
     {
-        MainRobotProps.pos.z += 0.05;
+        MainRobotProps.pos.z += RobotFacing.z * 0.05;
+        MainRobotProps.pos.x += RobotFacing.x * 0.05;
         lleg_upper_foot.rot.z++;
         lleg_lower_leg.rot.z--;
     }
@@ -329,7 +333,8 @@ void RobotWalk_4()
 
     if (rleg_upper_foot.rot.z <= 0)
     {
-        MainRobotProps.pos.z += 0.05;
+        MainRobotProps.pos.z += RobotFacing.z * 0.05;
+        MainRobotProps.pos.x += RobotFacing.x * 0.05;
         rleg_upper_foot.rot.z++;
         rleg_lower_leg.rot.z--;
     }
@@ -338,6 +343,38 @@ void RobotWalk_4()
     {
         animation_sequences["RobotWalk_4"] = false;
         animation_playing = false;
+    }
+}
+
+int rotate_counter;
+int turn_counter = 0;
+void RobotTurn90_1()
+{
+    if (!animation_sequences["RobotTurn90_1"])
+    {
+        return;
+    }
+    animation_playing = true;
+
+    Vec3f compass[4];
+    compass[0] = {0, 0, 1};
+    compass[1] = {1, 0, 0};
+    compass[2] = {0, 0, -1};
+    compass[3] = {-1, 0, 0};
+
+    if ((rotate_counter % 91) < 90)
+    {
+        MainRobotProps.rot.y++;
+        rotate_counter++;
+    }
+
+    if ((rotate_counter % 91) >= 90)
+    {
+        animation_sequences["RobotTurn90_1"] = false;
+        rotate_counter = 0;
+        turn_counter++;
+        animation_playing = false;
+        RobotFacing = compass[turn_counter % 4];
     }
 }
 // =============================================
