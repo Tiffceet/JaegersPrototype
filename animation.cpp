@@ -1,5 +1,6 @@
 #include "animation.h"
 #include "_hand.h"
+#include "_leg.h"
 #include <map>
 #include "primitives.h"
 
@@ -22,6 +23,7 @@ void PlaySequence(std::string seq_name)
 void InitObjectsPosition()
 {
     InitLeftHandPosition();
+    InitLegPosition();
 }
 
 void InitLeftHandPosition()
@@ -55,6 +57,46 @@ void InitLeftHandPosition()
     lhand_fing_4.pos = {1, 0, 2};
     lhand_fing_5.rot.y = 30;
     lhand_fing_5.pos = {1, 0, 2};
+}
+
+void InitLegPosition()
+{
+    clearProps(lleg_leg_badge_props);
+    clearProps(lleg_upper_foot);
+    clearProps(lleg_foot_joint);
+    clearProps(lleg_lower_leg);
+    clearProps(lleg_base);
+    clearProps(lleg_blueball_1);
+    clearProps(lleg_blueball_2);
+    clearProps(rleg_leg_badge_props);
+    clearProps(rleg_upper_foot);
+    clearProps(rleg_foot_joint);
+    clearProps(rleg_lower_leg);
+    clearProps(rleg_base);
+    clearProps(rleg_blueball_1);
+    clearProps(rleg_blueball_2);
+    lleg_leg_badge_props.pos = {0, 6, 1};
+    lleg_upper_foot.origin = {0, -2.5, 0};
+    lleg_upper_foot.pos = {0, 5.5, 0};
+    lleg_foot_joint.pos = {0, -3, -1};
+    lleg_lower_leg.pos = {1, -3, 0};
+    lleg_lower_leg.origin = {-1, -2.5, 0};
+    lleg_base.scale = {2, 2, 2};
+    lleg_base.pos = {-0.5, -1.75, 0};
+    lleg_blueball_1.pos = {0.2, -3.5, 0.75};
+    lleg_blueball_2.pos = {0.2, -3.5, -0.75};
+
+    rleg_leg_badge_props.pos = {0, 6, -1};
+    rleg_leg_badge_props.rot.y = 180;
+    rleg_upper_foot.origin = {0, -2.5, 0};
+    rleg_upper_foot.pos = {0, 5.5, 0};
+    rleg_foot_joint.pos = {0, -3, -1};
+    rleg_lower_leg.pos = {1, -3, 0};
+    rleg_lower_leg.origin = {-1, -2.5, 0};
+    rleg_base.scale = {2, 2, 2};
+    rleg_base.pos = {-0.5, -1.75, 0};
+    rleg_blueball_1.pos = {0.2, -3.5, 0.75};
+    rleg_blueball_2.pos = {0.2, -3.5, -0.75};
 }
 // =============================================
 // =============================================

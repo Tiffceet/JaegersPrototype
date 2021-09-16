@@ -8,4 +8,5 @@ void PlaySequence(std::string seq_name);
 void InitLeftHandPosition();
 void ProcessAnimation();
 void LeftArmGrab();
+void InitLegPosition();
 #endif
