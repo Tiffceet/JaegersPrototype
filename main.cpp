@@ -300,7 +300,16 @@ void displayMe(void)
     {
         if (animation_fly_angle > 0)
         {
-            MainRobotProps.rot.x = animation_fly_angle--;
+            animation_fly_angle--;
+            if (RobotFacing.z > 0)
+            {
+                MainRobotProps.rot.x = animation_fly_angle * RobotFacing.z;
+            }
+            else
+            {
+                MainRobotProps.rot.x = animation_fly_angle * -RobotFacing.z;
+            }
+            MainRobotProps.rot.z = animation_fly_angle * -RobotFacing.x;
             drawMainRobot(MainRobotProps);
         }
         else
