@@ -6,59 +6,109 @@
 #include "texture.h"
 #include "math.h"
 int foot_frame = 0;
-/**
- * @param badge_location +1 for right, -1 for left
- **/
-void drawRobotLeg(Prop3D props, float badge_location)
+void drawRobotLeftLeg(Prop3D props)
 {
     Prop3D clean;
     glPushMatrix();
     applyProps(props);
-    Prop3D leg_badge_props;
-    leg_badge_props.pos = {0, 6, badge_location};
-    if(badge_location == -1.0f) {
-        leg_badge_props.rot.y = 180;
-    }
-    drawLegBadge(leg_badge_props);
+    Prop3D lleg_leg_badge_props;
+    lleg_leg_badge_props.pos = {0, 6, 1};
+    drawLegBadge(lleg_leg_badge_props);
 
     glPushMatrix();
-    Prop3D upper_foot;
-    upper_foot.origin = {0, -2.5, 0};
-    upper_foot.pos = {0, 5.5, 0};
-    applyProps(upper_foot);
+    Prop3D lleg_upper_foot;
+    lleg_upper_foot.origin = {0, -2.5, 0};
+    lleg_upper_foot.pos = {0, 5.5, 0};
+    applyProps(lleg_upper_foot);
     useTexture("shiny");
     drawCube(clean, {1.9, 5, 1.9});
 
     glPushMatrix();
-    Prop3D foot_joint;
-    foot_joint.pos = {0, -3, -1};
+    Prop3D lleg_foot_joint;
+    lleg_foot_joint.pos = {0, -3, -1};
     useTexture("brick");
-    drawCylinder(foot_joint, 0.75, 0.75, 2, 30, 30);
+    drawCylinder(lleg_foot_joint, 0.75, 0.75, 2, 30, 30);
 
-    Prop3D lower_leg;
-    lower_leg.pos = {1, -3, 0};
-    lower_leg.origin = {-1, -2.5, 0};
-    // lower_leg.rot.x = foot_frame++;
+    Prop3D lleg_lower_leg;
+    lleg_lower_leg.pos = {1, -3, 0};
+    lleg_lower_leg.origin = {-1, -2.5, 0};
+    // lleg_lower_leg.rot.x = foot_frame++;
     glPushMatrix();
-    applyProps(lower_leg);
+    applyProps(lleg_lower_leg);
     useTexture("shiny");
     drawCube(clean, {1.9, 5, 1.9});
 
-    Prop3D base;
-    base.scale = {2, 2, 2};
-    base.pos = {-0.5, -1.75, 0};
+    Prop3D lleg_base;
+    lleg_base.scale = {2, 2, 2};
+    lleg_base.pos = {-0.5, -1.75, 0};
     useTexture("box");
-    drawTrapezoid(base);
+    drawTrapezoid(lleg_base);
 
-    Prop3D blueball_1;
-    blueball_1.pos = {0.2, -3.5, 0.75};
+    Prop3D lleg_blueball_1;
+    lleg_blueball_1.pos = {0.2, -3.5, 0.75};
     useTexture("shiny");
-    drawSphere(blueball_1, 0.75, 30, 30);
+    drawSphere(lleg_blueball_1, 0.75, 30, 30);
 
-    Prop3D blueball_2;
-    blueball_1.pos = {0.2, -3.5, -0.75};
+    Prop3D lleg_blueball_2;
+    lleg_blueball_2.pos = {0.2, -3.5, -0.75};
     useTexture("shiny");
-    drawSphere(blueball_1, 0.75, 30, 30);
+    drawSphere(lleg_blueball_2, 0.75, 30, 30);
+
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
+    glPopMatrix();
+}
+void drawRobotRightLeg(Prop3D props)
+{
+    Prop3D clean;
+    glPushMatrix();
+    applyProps(props);
+    Prop3D rleg_leg_badge_props;
+    rleg_leg_badge_props.pos = {0, 6, -1};
+
+    rleg_leg_badge_props.rot.y = 180;
+
+    drawLegBadge(rleg_leg_badge_props);
+
+    glPushMatrix();
+    Prop3D rleg_upper_foot;
+    rleg_upper_foot.origin = {0, -2.5, 0};
+    rleg_upper_foot.pos = {0, 5.5, 0};
+    applyProps(rleg_upper_foot);
+    useTexture("shiny");
+    drawCube(clean, {1.9, 5, 1.9});
+
+    glPushMatrix();
+    Prop3D rleg_foot_joint;
+    rleg_foot_joint.pos = {0, -3, -1};
+    useTexture("brick");
+    drawCylinder(rleg_foot_joint, 0.75, 0.75, 2, 30, 30);
+
+    Prop3D rleg_lower_leg;
+    rleg_lower_leg.pos = {1, -3, 0};
+    rleg_lower_leg.origin = {-1, -2.5, 0};
+    // rleg_lower_leg.rot.x = foot_frame++;
+    glPushMatrix();
+    applyProps(rleg_lower_leg);
+    useTexture("shiny");
+    drawCube(clean, {1.9, 5, 1.9});
+
+    Prop3D rleg_base;
+    rleg_base.scale = {2, 2, 2};
+    rleg_base.pos = {-0.5, -1.75, 0};
+    useTexture("box");
+    drawTrapezoid(rleg_base);
+
+    Prop3D rleg_blueball_1;
+    rleg_blueball_1.pos = {0.2, -3.5, 0.75};
+    useTexture("shiny");
+    drawSphere(rleg_blueball_1, 0.75, 30, 30);
+
+    Prop3D rleg_blueball_2;
+    rleg_blueball_2.pos = {0.2, -3.5, -0.75};
+    useTexture("shiny");
+    drawSphere(rleg_blueball_2, 0.75, 30, 30);
 
     glPopMatrix();
     glPopMatrix();
