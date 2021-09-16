@@ -11,6 +11,11 @@ void InitAnimationSequencesState()
     animation_sequences["LeftArmGrab_1"] = false;
     animation_sequences["LeftArmGrab_2"] = false;
     animation_sequences["LeftArmGrab_3"] = false;
+    animation_sequences["RobotJump_1"] = false;
+    animation_sequences["RobotJump_2"] = false;
+    animation_sequences["RobotJump_3"] = false;
+    animation_sequences["RobotJump_4"] = false;
+    animation_sequences["RobotJump_5"] = false;
 }
 
 void PlaySequence(std::string seq_name)
@@ -238,9 +243,60 @@ void LeftArmGrab_3()
         }
     }
 
-    if (false)
+    if (lhand_fing_1_upper_rot.x <= -90)
     {
         animation_sequences["LeftArmGrab_3"] = false;
+    }
+}
+
+void RobotJump_1() {
+    if (!animation_sequences["RobotJump_1"])
+    {
+        return;
+    }
+
+    if(false) {
+        animation_sequences["RobotJump_1"] = false;
+    }
+}
+void RobotJump_2() {
+    if (!animation_sequences["RobotJump_2"])
+    {
+        return;
+    }
+
+    if(false) {
+        animation_sequences["RobotJump_2"] = false;
+    }
+}
+void RobotJump_3() {
+    if (!animation_sequences["RobotJump_3"])
+    {
+        return;
+    }
+
+    if(false) {
+        animation_sequences["RobotJump_3"] = false;
+    }
+}
+void RobotJump_4() {
+    if (!animation_sequences["RobotJump_4"])
+    {
+        return;
+    }
+
+    if(false) {
+        animation_sequences["RobotJump_4"] = false;
+    }
+}
+void RobotJump_5() {
+    if (!animation_sequences["RobotJump_5"])
+    {
+        return;
+    }
+
+    if(false) {
+        animation_sequences["RobotJump_5"] = false;
     }
 }
 // =============================================
