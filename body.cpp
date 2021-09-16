@@ -6,7 +6,7 @@
 
 int wing_left_rot = 0, wing_right_rot = 0;
 
-void drawRobotBody(double x, Prop3D props, int animation_fly) {
+void drawRobotBody(double x, Prop3D props, int animation_wing) {
 	drawAbdomen(x, props);
 	drawGem(x, props);
 	drawArmor(x, props);
@@ -16,7 +16,7 @@ void drawRobotBody(double x, Prop3D props, int animation_fly) {
 	props_wing_right.pos.x = 1.25 * x;
 	props_wing_right.pos.z = (-3.6 * x);
 	props_wing_right.pos.y = (5 * x);
-	if (animation_fly == 1) {
+	if (animation_wing == 1) {
 		if (wing_right_rot < 75) {
 			props_wing_right.rot.z = wing_right_rot++;
 			drawWingRight(x, props_wing_right);
@@ -42,7 +42,7 @@ void drawRobotBody(double x, Prop3D props, int animation_fly) {
 	props_wing_left.pos.x = -1.25 * x;
 	props_wing_left.pos.z = (-3.6 * x);
 	props_wing_left.pos.y = (5 * x);
-	if (animation_fly == 1) {
+	if (animation_wing == 1) {
 		if (wing_left_rot > -75) {
 			props_wing_left.rot.z = wing_left_rot--;
 			drawWingLeft(x, props_wing_left);

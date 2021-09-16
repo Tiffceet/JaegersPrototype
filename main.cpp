@@ -14,7 +14,7 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
-int frameNum = 0, animation_fly_angle = 0, animation_fly_confirmation = 0, animation_head_angle = 0, animation_head_confirmation = 0;
+int frameNum = 0, animation_fly_angle = 0, animation_fly_confirmation = 0, animation_head_angle = 0, animation_head_confirmation = 0, animation_wing_confirmation = 0;
 const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
@@ -103,6 +103,7 @@ void kbKeyUp(unsigned char key, int x, int y)
         moveLightPosition({0, 0, -movement_spd});
         break;
     case 'f':
+        if (animation_wing_confirmation != 1) break;
         if (animation_fly_confirmation == 0)
         {
             animation_fly_confirmation = 1;
@@ -130,6 +131,17 @@ void kbKeyUp(unsigned char key, int x, int y)
         else
         {
             animation_head_confirmation = 0;
+        }
+        break;
+    case 'y':
+        if (animation_fly_angle != 0) break;
+        if (animation_wing_confirmation != 1)
+        {
+            animation_wing_confirmation = 1;
+        }
+        else
+        {
+            animation_wing_confirmation = 0;
         }
         break;
     case ' ':
@@ -218,7 +230,7 @@ void drawMainRobot(Prop3D props)
     glPopMatrix();
 
     Prop3D propsB;
-    drawRobotBody(0.5, propsB, animation_fly_confirmation);
+    drawRobotBody(0.5, propsB, animation_wing_confirmation);
 
     Prop3D props_leg_left;
     props_leg_left.rot.y = 90;
