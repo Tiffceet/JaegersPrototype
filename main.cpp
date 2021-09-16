@@ -123,7 +123,7 @@ void drawMainRobot(Prop3D props)
 {
     glPushMatrix();
     applyProps(props);
-
+    DrawSpawnables();
     
     glPushMatrix();
 
@@ -226,7 +226,6 @@ void displayMe(void)
 
     initCamera(10, 100);
     ProcessAnimation();
-    DrawSpawnables();
     //ApplyLight();
     useDefaultTexture();
 
