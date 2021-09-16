@@ -139,18 +139,20 @@ void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_r
     Prop3D lower_fing;
     Prop3D finger_joint;
     Prop3D upper_fing;
-
+    Prop3D clean_props;
+    
     useTexture("shiny");
     lower_fing.origin = {0, 0, 1};
     lower_fing.rot = lower_fing_rotation;
-    drawCube(lower_fing, {0.5, 0.5, 2});
+    applyProps(lower_fing);
+    drawCube(clean_props, {0.5, 0.5, 2});
 
     useTexture("brick");
-    finger_joint.pos = {0, 0, 2};
+    finger_joint.pos = {0, 0, 1};
     drawSphere(finger_joint, 0.2, 30, 30);
 
     useTexture("box");
-    upper_fing.pos = {0, 0, 2.2};
+    upper_fing.pos = {0, 0, 1.15};
     upper_fing.rot = upper_fing_rotation;
     upper_fing.origin = {0, 0, 0.75};
     drawCube(upper_fing, {0.5, 0.5, 1.5});

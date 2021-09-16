@@ -201,12 +201,13 @@ void LeftArmGrab_2()
 
     if (spawnables_props["sphere"].pos.y > target_pos)
     {
-        spawnables_props["sphere"].pos.y -= 0.1;
+        spawnables_props["sphere"].pos.y -= 0.05;
     }
 
     if (spawnables_props["sphere"].pos.y <= target_pos)
     {
         animation_sequences["LeftArmGrab_2"] = false;
+        animation_sequences["LeftArmGrab_3"] = true;
     }
 }
 
@@ -215,6 +216,26 @@ void LeftArmGrab_3()
     if (!animation_sequences["LeftArmGrab_3"])
     {
         return;
+    }
+
+    if (lhand_fing_1_lower_rot.x > -50)
+    {
+        lhand_fing_1_lower_rot.x--;
+        lhand_fing_2_lower_rot.x--;
+        lhand_fing_3_lower_rot.x--;
+        lhand_fing_4_lower_rot.x--;
+        lhand_fing_5_lower_rot.x--;
+    }
+    else
+    {
+        if (lhand_fing_1_upper_rot.x > -90)
+        {
+            lhand_fing_1_upper_rot.x--;
+            lhand_fing_2_upper_rot.x--;
+            lhand_fing_3_upper_rot.x--;
+            lhand_fing_4_upper_rot.x--;
+            lhand_fing_5_upper_rot.x--;
+        }
     }
 
     if (false)
