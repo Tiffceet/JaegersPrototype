@@ -7,7 +7,9 @@
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
 {
-    animation_sequences["LeftArmGrab"] = false;
+    animation_sequences["LeftArmGrab_1"] = false;
+    animation_sequences["LeftArmGrab_2"] = false;
+    animation_sequences["LeftArmGrab_3"] = false;
 }
 
 void PlaySequence(std::string seq_name)
@@ -152,38 +154,58 @@ void InitLegPosition()
 
 void ProcessAnimation()
 {
-    LeftArmGrab();
+    LeftArmGrab_1();
+    LeftArmGrab_2();
+    LeftArmGrab_3();
 }
 
-bool flip = false;
-void LeftArmGrab()
+void LeftArmGrab_1()
 {
-    if (!animation_sequences["LeftArmGrab"])
+    if (!animation_sequences["LeftArmGrab_1"])
     {
         return;
     }
 
-    if (!flip && lhand_arm.rot.x < 30)
+    if (lhand_arm.rot.x > -30)
     {
-        lhand_arm.rot.x++;
-        lhand_lower_arm.rot.x++;
-        lhand_palm.rot.x++;
-    }
-    else
-    {
-        flip = true;
         lhand_arm.rot.x--;
         lhand_lower_arm.rot.x--;
         lhand_palm.rot.x--;
-        if (lhand_arm.rot.x < -30)
-        {
-            flip = false;
-        }
     }
 
-    if (lhand_arm.rot.x > 30)
+    if (lhand_arm.rot.x < -30)
     {
-        animation_sequences["LeftArmGrab"] = true;
+        animation_sequences["LeftArmGrab"] = false;
+    }
+}
+
+void LeftArmGrab_2()
+{
+    if (!animation_sequences["LeftArmGrab_2"])
+    {
+        return;
+    }
+
+
+
+    if (false)
+    {
+        animation_sequences["LeftArmGrab_2"] = false;
+    }
+}
+
+void LeftArmGrab_3()
+{
+    if (!animation_sequences["LeftArmGrab_3"])
+    {
+        return;
+    }
+
+
+
+    if (false)
+    {
+        animation_sequences["LeftArmGrab_3"] = false;
     }
 }
 // =============================================

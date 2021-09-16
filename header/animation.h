@@ -7,6 +7,8 @@ void InitAnimationSequencesState();
 void PlaySequence(std::string seq_name);
 void InitLeftHandPosition();
 void ProcessAnimation();
-void LeftArmGrab();
+void LeftArmGrab_1();
+void LeftArmGrab_2();
+void LeftArmGrab_3();
 void InitLegPosition();
 #endif
