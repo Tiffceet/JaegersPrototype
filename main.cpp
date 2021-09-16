@@ -19,21 +19,37 @@ const int FRAME_RATE = 60;
 
 void arrowKeyUp(int key, int x, int y)
 {
-    // switch (key)
-    // {
-    // case GLUT_KEY_UP:
-    //     rotateCamera({2.0f, 0.0f, 0.0f});
-    //     break;
-    // case GLUT_KEY_DOWN:
-    //     rotateCamera({-2.0f, 0.0f, 0.0f});
-    //     break;
-    // case GLUT_KEY_LEFT:
-    //     rotateCamera({0.0f, -2.0f, 0.0f});
-    //     break;
-    // case GLUT_KEY_RIGHT:
-    //     rotateCamera({0.0f, 2.0f, 0.0f});
-    //     break;
-    // }
+    switch (key)
+    {
+    case GLUT_KEY_UP:
+        rleg_upper_foot.rot.z -= 2;
+        rleg_lower_leg.rot.z += 1;
+        lleg_upper_foot.rot.z -= 2;
+        lleg_lower_leg.rot.z += 1;
+        break;
+    case GLUT_KEY_DOWN:
+        rleg_upper_foot.rot.z += 2;
+        rleg_lower_leg.rot.z -= 1;
+        lleg_upper_foot.rot.z += 2;
+        lleg_lower_leg.rot.z -= 1;
+        break;
+    case GLUT_KEY_LEFT:
+        lhand_arm.rot.x += 3;
+        lhand_upper_arm.rot.x += 2;
+        lhand_lower_arm.rot.x += 1;
+        rhand_arm.rot.x += 3;
+        rhand_upper_arm.rot.x += 2;
+        rhand_lower_arm.rot.x += 1;
+        break;
+    case GLUT_KEY_RIGHT:
+        lhand_arm.rot.x -= 3;
+        lhand_upper_arm.rot.x -= 2;
+        lhand_lower_arm.rot.x -= 1;
+        rhand_arm.rot.x -= 3;
+        rhand_upper_arm.rot.x -= 2;
+        rhand_lower_arm.rot.x -= 1;
+        break;
+    }
 }
 
 void kbKeyUp(unsigned char key, int x, int y)
@@ -252,10 +268,12 @@ void displayMe(void)
     {
         if (animation_fly_angle < 45)
         {
-            if (RobotFacing.z > 0) {
+            if (RobotFacing.z > 0)
+            {
                 MainRobotProps.rot.x = animation_fly_angle * RobotFacing.z;
             }
-            else {
+            else
+            {
                 MainRobotProps.rot.x = animation_fly_angle * -RobotFacing.z;
             }
             MainRobotProps.rot.z = animation_fly_angle * -RobotFacing.x;
@@ -264,10 +282,12 @@ void displayMe(void)
         }
         else
         {
-            if (RobotFacing.z > 0) {
+            if (RobotFacing.z > 0)
+            {
                 MainRobotProps.rot.x = animation_fly_angle * RobotFacing.z;
             }
-            else {
+            else
+            {
                 MainRobotProps.rot.x = animation_fly_angle * -RobotFacing.z;
             }
             MainRobotProps.rot.z = animation_fly_angle * -RobotFacing.x;
