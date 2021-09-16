@@ -38,7 +38,7 @@ void arrowKeyUp(int key, int x, int y)
 
 void kbKeyUp(unsigned char key, int x, int y)
 {
-    float movement_spd = 0.1;
+    float movement_spd = 1;
     switch (key)
     {
     case 'w':
@@ -117,7 +117,7 @@ void kbKeyUp(unsigned char key, int x, int y)
         }
         break;
     case ' ':
-        PlaySequence("RobotJump_1");
+        PlaySequence("RobotWalk_1");
         break;
     }
 }
@@ -239,7 +239,7 @@ void displayMe(void)
 
     initCamera(10, 100);
     ProcessAnimation();
-    //ApplyLight();
+    // ApplyLight();
     useDefaultTexture();
 
     if (animation_fly_confirmation == 1)
@@ -290,7 +290,7 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
-    toggleLight();
+    // toggleLight();
 }
 
 bool isDragging = false;

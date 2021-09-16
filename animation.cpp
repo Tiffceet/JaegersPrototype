@@ -6,6 +6,7 @@
 #include "spawnable_object.h"
 
 Prop3D MainRobotProps;
+bool animation_playing = false;
 
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
@@ -13,17 +14,19 @@ void InitAnimationSequencesState()
     animation_sequences["LeftArmGrab_1"] = false;
     animation_sequences["LeftArmGrab_2"] = false;
     animation_sequences["LeftArmGrab_3"] = false;
-    animation_sequences["RobotJump_1"] = false;
-    animation_sequences["RobotJump_2"] = false;
-    animation_sequences["RobotJump_3"] = false;
-    animation_sequences["RobotJump_4"] = false;
-    animation_sequences["RobotJump_5"] = false;
+    animation_sequences["RobotWalk_1"] = false;
+    animation_sequences["RobotWalk_2"] = false;
+    animation_sequences["RobotWalk_3"] = false;
+    animation_sequences["RobotWalk_4"] = false;
 }
 
 void PlaySequence(std::string seq_name)
 {
     InitObjectsPosition();
-    animation_sequences[seq_name] = true;
+    if(!animation_playing)
+    {
+        animation_sequences[seq_name] = true;
+    }
 }
 
 // =============================================
@@ -166,11 +169,10 @@ void ProcessAnimation()
     LeftArmGrab_1();
     LeftArmGrab_2();
     LeftArmGrab_3();
-    RobotJump_1();
-    RobotJump_2();
-    RobotJump_3();
-    RobotJump_4();
-    RobotJump_5();
+    RobotWalk_1();
+    RobotWalk_2();
+    RobotWalk_3();
+    RobotWalk_4();
 }
 
 void LeftArmGrab_1()
@@ -179,6 +181,7 @@ void LeftArmGrab_1()
     {
         return;
     }
+    animation_playing = true;
 
     if (lhand_arm.rot.x > -30)
     {
@@ -253,59 +256,88 @@ void LeftArmGrab_3()
     if (lhand_fing_1_upper_rot.x <= -90)
     {
         animation_sequences["LeftArmGrab_3"] = false;
+        animation_playing = false;
     }
 }
 
-void RobotJump_1() {
-    if (!animation_sequences["RobotJump_1"])
+void RobotWalk_1()
+{
+    if (!animation_sequences["RobotWalk_1"])
     {
         return;
     }
 
-    lleg_lower_leg.rot.z = 45;
+    animation_playing = true;
 
-    if(false) {
-        animation_sequences["RobotJump_1"] = false;
+    if (lleg_upper_foot.rot.z > -45)
+    {
+        lleg_upper_foot.rot.z--;
+        lleg_lower_leg.rot.z++;
+    }
+
+    if (lleg_upper_foot.rot.z <= -45)
+    {
+        animation_sequences["RobotWalk_1"] = false;
+        animation_sequences["RobotWalk_2"] = true;
     }
 }
-void RobotJump_2() {
-    if (!animation_sequences["RobotJump_2"])
+void RobotWalk_2()
+{
+    if (!animation_sequences["RobotWalk_2"])
     {
         return;
     }
 
-    if(false) {
-        animation_sequences["RobotJump_2"] = false;
+    if (lleg_upper_foot.rot.z <= 0)
+    {
+        MainRobotProps.pos.z += 0.05;
+        lleg_upper_foot.rot.z++;
+        lleg_lower_leg.rot.z--;
+    }
+
+    if (lleg_upper_foot.rot.z > 0)
+    {
+        animation_sequences["RobotWalk_2"] = false;
+        animation_sequences["RobotWalk_3"] = true;
     }
 }
-void RobotJump_3() {
-    if (!animation_sequences["RobotJump_3"])
+void RobotWalk_3()
+{
+    if (!animation_sequences["RobotWalk_3"])
     {
         return;
     }
 
-    if(false) {
-        animation_sequences["RobotJump_3"] = false;
+    if (rleg_upper_foot.rot.z > -45)
+    {
+        rleg_upper_foot.rot.z--;
+        rleg_lower_leg.rot.z++;
+    }
+
+    if (rleg_upper_foot.rot.z <= -45)
+    {
+        animation_sequences["RobotWalk_3"] = false;
+        animation_sequences["RobotWalk_4"] = true;
     }
 }
-void RobotJump_4() {
-    if (!animation_sequences["RobotJump_4"])
+void RobotWalk_4()
+{
+    if (!animation_sequences["RobotWalk_4"])
     {
         return;
     }
 
-    if(false) {
-        animation_sequences["RobotJump_4"] = false;
-    }
-}
-void RobotJump_5() {
-    if (!animation_sequences["RobotJump_5"])
+    if (rleg_upper_foot.rot.z <= 0)
     {
-        return;
+        MainRobotProps.pos.z += 0.05;
+        rleg_upper_foot.rot.z++;
+        rleg_lower_leg.rot.z--;
     }
 
-    if(false) {
-        animation_sequences["RobotJump_5"] = false;
+    if (rleg_upper_foot.rot.z > 0)
+    {
+        animation_sequences["RobotWalk_4"] = false;
+        animation_playing = false;
     }
 }
 // =============================================

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "typedefs.h"
 extern Prop3D MainRobotProps;
+extern bool animation_playing;
 void InitObjectsPosition();
 void InitAnimationSequencesState();
 void PlaySequence(std::string seq_name);
@@ -11,10 +12,9 @@ void ProcessAnimation();
 void LeftArmGrab_1();
 void LeftArmGrab_2();
 void LeftArmGrab_3();
-void RobotJump_1();
-void RobotJump_2();
-void RobotJump_3();
-void RobotJump_4();
-void RobotJump_5();
+void RobotWalk_1();
+void RobotWalk_2();
+void RobotWalk_3();
+void RobotWalk_4();
 void InitLegPosition();
 #endif
