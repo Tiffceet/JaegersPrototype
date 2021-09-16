@@ -103,7 +103,8 @@ void kbKeyUp(unsigned char key, int x, int y)
         moveLightPosition({0, 0, -movement_spd});
         break;
     case 'f':
-        if (animation_wing_confirmation != 1) break;
+        if (animation_wing_confirmation != 1)
+            break;
         if (animation_fly_confirmation == 0)
         {
             animation_fly_confirmation = 1;
@@ -134,7 +135,8 @@ void kbKeyUp(unsigned char key, int x, int y)
         }
         break;
     case 'y':
-        if (animation_fly_angle != 0) break;
+        if (animation_fly_angle != 0)
+            break;
         if (animation_wing_confirmation != 1)
         {
             animation_wing_confirmation = 1;
@@ -155,6 +157,18 @@ void kbKeyUp(unsigned char key, int x, int y)
         break;
     case 'u':
         PlaySequence("ShootLazer_1");
+        break;
+    case '1':
+        setMaterial(MAT_RED);
+        break;
+    case '2':
+        setMaterial(MAT_GREEN);
+        break;
+    case '3':
+        setMaterial(MAT_BLUE);
+        break;
+    case '4':
+        setMaterial(MAT_WHITE);
         break;
     }
 }
@@ -277,8 +291,8 @@ void displayMe(void)
     initCamera(10, 100);
     ProcessAnimation();
     ApplyLight();
-    useDefaultTexture();
 
+    useDefaultTexture();
     if (animation_fly_confirmation == 1)
     {
         if (animation_fly_angle < 45)
@@ -330,7 +344,6 @@ void displayMe(void)
             drawMainRobot(MainRobotProps);
         }
     }
-    setMaterial(MAT_WHITE);
     glFlush();
 }
 
@@ -353,6 +366,7 @@ void init()
         {1.0, 1.0, 1.0, 1.0}, // Diff
         {1.0, 1.0, 1.0, 1.0}  // Spec
     );
+    setMaterial(MAT_WHITE);
     // toggleLight();
 }
 
