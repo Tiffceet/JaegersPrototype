@@ -350,6 +350,7 @@ int main(int argc, char **argv)
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Title is here");
     glutDisplayFunc(displayMe);
+    glutReshapeFunc(reshapeWindow);
     glutTimerFunc(0, timer, 0);
 
     glutMouseFunc(mouse);

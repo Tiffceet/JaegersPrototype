@@ -7,18 +7,23 @@ Vec3f look_direction = {0, 0, -1};
 Vec3f camera_rot = {0, 0, 0};
 float zoom_factor = 1;
 char view_mode = 'o';
+float w_size;
+float v_sight;
+float win_ratio = 1;
 
 void initCamera(float world_size, float view_sight)
 {
+    w_size = world_size;
+    v_sight = view_sight;
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     switch (view_mode)
     {
     case 'o':
-        glOrtho(-world_size * zoom_factor, world_size * zoom_factor, -world_size * zoom_factor, world_size * zoom_factor, 1, view_sight);
+        glOrtho(-w_size * zoom_factor * win_ratio, w_size * zoom_factor * win_ratio, -w_size * zoom_factor, w_size * zoom_factor, 1, v_sight);
         break;
     case 'p':
-        glFrustum(-world_size * zoom_factor, world_size * zoom_factor, -world_size * zoom_factor, world_size * zoom_factor, 1, view_sight);
+        glFrustum(-w_size * zoom_factor * win_ratio, w_size * zoom_factor * win_ratio, -w_size * zoom_factor, w_size * zoom_factor, 1, v_sight);
         break;
     }
     glMatrixMode(GL_MODELVIEW);
@@ -31,6 +36,19 @@ void initCamera(float world_size, float view_sight)
     std::cout << "Pos: {" << camera_pos.x << ", " << camera_pos.y << ", " << camera_pos.z << "}; ";
     std::cout << "Cam Rotate: {" << camera_rot.x << ", " << camera_rot.y << ", " << camera_rot.z << "}; ";
     std::cout << "Zoom: " << zoom_factor << std::endl;
+}
+
+void reshapeWindow(int w, int h)
+{
+    // Prevent a divide by zero, when window is too short
+    // (you cant make a window of zero width).
+    if (h == 0)
+        h = 1;
+
+    float ratio = w * 1.0 / h;
+    win_ratio = ratio;
+
+    glViewport(0, 0, w, h);
 }
 
 void setCameraAt(Vec3f pos, Vec3f rot, float zoom)
