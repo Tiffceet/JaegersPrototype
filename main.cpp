@@ -329,8 +329,6 @@ void displayMe(void)
             drawMainRobot(MainRobotProps);
         }
     }
-
-    setMaterial(MAT_WHITE);
     glFlush();
 }
 
