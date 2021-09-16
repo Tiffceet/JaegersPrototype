@@ -1,7 +1,8 @@
 #ifndef _ANIMATION_H_
 #define _ANIMATION_H_
 #include <iostream>
-
+#include "typedefs.h"
+extern Prop3D MainRobotProps;
 void InitObjectsPosition();
 void InitAnimationSequencesState();
 void PlaySequence(std::string seq_name);

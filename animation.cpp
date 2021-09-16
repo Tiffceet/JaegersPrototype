@@ -5,6 +5,8 @@
 #include "primitives.h"
 #include "spawnable_object.h"
 
+Prop3D MainRobotProps;
+
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
 {

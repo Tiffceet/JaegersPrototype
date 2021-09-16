@@ -229,30 +229,29 @@ void displayMe(void)
     //ApplyLight();
     useDefaultTexture();
 
-    Prop3D props_hold;
     if (animation_fly_confirmation == 1)
     {
         if (animation_fly_angle < 45)
         {
-            props_hold.rot.x = animation_fly_angle++;
-            drawMainRobot(props_hold);
+            MainRobotProps.rot.x = animation_fly_angle++;
+            drawMainRobot(MainRobotProps);
         }
         else
         {
-            props_hold.rot.x = 45;
-            drawMainRobot(props_hold);
+            MainRobotProps.rot.x = 45;
+            drawMainRobot(MainRobotProps);
         }
     }
     else
     {
         if (animation_fly_angle > 0)
         {
-            props_hold.rot.x = animation_fly_angle--;
-            drawMainRobot(props_hold);
+            MainRobotProps.rot.x = animation_fly_angle--;
+            drawMainRobot(MainRobotProps);
         }
         else
         {
-            drawMainRobot(props_hold);
+            drawMainRobot(MainRobotProps);
         }
     }
 
