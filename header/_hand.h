@@ -26,6 +26,6 @@ extern Prop3D rhand_fing_5;
 
 void drawRobotLeftHand(Prop3D props);
 void drawRobotRightHand(Prop3D props);
-void drawRobotPalm(Prop3D props);
+void drawRobotPalm(Prop3D props, char side);
 void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_rotation);
 #endif

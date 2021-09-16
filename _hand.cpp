@@ -46,7 +46,7 @@ void drawRobotLeftHand(Prop3D props)
     applyProps(lhand_lower_arm);
     useTexture("box");
     drawCylinder(clean, 2, 1, 4, 30, 30);
-    drawRobotPalm(lhand_palm);
+    drawRobotPalm(lhand_palm, 'l');
 
     glPopMatrix();
     glPopMatrix();
@@ -75,7 +75,7 @@ void drawRobotRightHand(Prop3D props)
     applyProps(rhand_lower_arm);
     useTexture("box");
     drawCylinder(clean, 2, 1, 4, 30, 30);
-    drawRobotPalm(rhand_palm);
+    drawRobotPalm(rhand_palm, 'r');
 
     glPopMatrix();
     glPopMatrix();
@@ -83,7 +83,7 @@ void drawRobotRightHand(Prop3D props)
     glPopMatrix();
 }
 
-void drawRobotPalm(Prop3D props)
+void drawRobotPalm(Prop3D props, char side)
 {
     glPushMatrix();
     applyProps(props);
@@ -91,18 +91,22 @@ void drawRobotPalm(Prop3D props)
     palm.origin = {0, 0, 1};
     useTexture("brick");
     drawCube(palm, {3, 1, 3});
-
-    drawRobotFinger(lhand_fing_1, {0, 0, 0}, {0, 0, 0});
-
-    drawRobotFinger(lhand_fing_2, {0, 0, 0}, {0, 0, 0});
-
-    drawRobotFinger(lhand_fing_3, {0, 0, 0}, {0, 0, 0});
-
-    drawRobotFinger(lhand_fing_4, {0, 0, 0}, {0, 0, 0});
-
-    // Thumb
-
-    drawRobotFinger(lhand_fing_5, {0, 0, 0}, {0, -30, 0});
+    if (side == 'l')
+    {
+        drawRobotFinger(lhand_fing_1, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(lhand_fing_2, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(lhand_fing_3, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(lhand_fing_4, {0, 0, 0}, {0, 0, 0});
+        // Thumb
+        drawRobotFinger(lhand_fing_5, {0, 0, 0}, {0, -30, 0});
+    } else {
+        drawRobotFinger(rhand_fing_1, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(rhand_fing_2, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(rhand_fing_3, {0, 0, 0}, {0, 0, 0});
+        drawRobotFinger(rhand_fing_4, {0, 0, 0}, {0, 0, 0});
+        // Thumb
+        drawRobotFinger(rhand_fing_5, {0, 0, 0}, {0, -30, 0});
+    }
 
     glPopMatrix();
 }
