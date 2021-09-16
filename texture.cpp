@@ -14,6 +14,7 @@ void LoadAllTexture()
     loadTexture((LPCSTR)"texture/Gem.bmp", "gem");
     loadTexture((LPCSTR)"texture/Armor.bmp", "armor");
     loadTexture((LPCSTR)"texture/shiny.bmp", "shiny");
+    loadTexture((LPCSTR)"texture/water-badge.bmp", "water-b");
 }
 
 // "resources/Brick.bmp"
