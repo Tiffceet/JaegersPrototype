@@ -104,6 +104,20 @@ void drawRobotEye(double x, Prop3D props)
     glVertex3f(-2 * x, x, 2 * x);
     glEnd();
 
+    //back
+    glBegin(GL_QUADS);
+    Vec3lf eye_back = calculate_normallf({-2 * x, 3 * x, 2 * x}, {2 * x, 3 * x, 2 * x}, {2 * x, x, 2 * x});
+    glNormal3f(eye_back.x, eye_back.y, eye_back.z);
+    glTexCoord2f(0, 1);
+    glVertex3f(-2 * x, 3 * x, -2 * x);
+    glTexCoord2f(1, 1);
+    glVertex3f(2 * x, 3 * x, -2 * x);
+    glTexCoord2f(1, 0);
+    glVertex3f(2 * x, x, -2 * x);
+    glTexCoord2f(0, 0);
+    glVertex3f(-2 * x, x, -2 * x);
+    glEnd();
+
     //left
     glBegin(GL_QUADS);
     Vec3lf eye4 = calculate_normallf({-2 * x, 3 * x, -2 * x}, {-2 * x, 3 * x, 2 * x}, {-2 * x, x, 2 * x});
