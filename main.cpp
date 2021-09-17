@@ -22,18 +22,30 @@ void arrowKeyUp(int key, int x, int y)
     switch (key)
     {
     case GLUT_KEY_UP:
+        if (rleg_upper_foot.rot.z <= -90)
+        {
+            break;
+        }
         rleg_upper_foot.rot.z -= 2;
         rleg_lower_leg.rot.z += 1;
         lleg_upper_foot.rot.z -= 2;
         lleg_lower_leg.rot.z += 1;
         break;
     case GLUT_KEY_DOWN:
+        if (rleg_upper_foot.rot.z >= 90)
+        {
+            break;
+        }
         rleg_upper_foot.rot.z += 2;
         rleg_lower_leg.rot.z -= 1;
         lleg_upper_foot.rot.z += 2;
         lleg_lower_leg.rot.z -= 1;
         break;
     case GLUT_KEY_LEFT:
+        if (lhand_arm.rot.x >= 90)
+        {
+            break;
+        }
         lhand_arm.rot.x += 3;
         lhand_upper_arm.rot.x += 2;
         lhand_lower_arm.rot.x += 1;
@@ -42,6 +54,10 @@ void arrowKeyUp(int key, int x, int y)
         rhand_lower_arm.rot.x += 1;
         break;
     case GLUT_KEY_RIGHT:
+        if (lhand_arm.rot.x <= -90)
+        {
+            break;
+        }
         lhand_arm.rot.x -= 3;
         lhand_upper_arm.rot.x -= 2;
         lhand_lower_arm.rot.x -= 1;
@@ -438,7 +454,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_SINGLE);
     glutInitWindowSize(WIN_WIDTH, WIN_HEIGHT);
     glutInitWindowPosition(100, 100);
-    glutCreateWindow("Title is here");
+    glutCreateWindow("JaegarsPrototype");
     glutDisplayFunc(displayMe);
     glutReshapeFunc(reshapeWindow);
     glutTimerFunc(0, timer, 0);
