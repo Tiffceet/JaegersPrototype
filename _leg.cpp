@@ -36,6 +36,10 @@ void drawRobotLeftLeg(Prop3D props)
 
     glPushMatrix();
 
+    Prop3D lleg_ankle_pad;
+    lleg_ankle_pad.pos = {-1.1, -3, 0};
+    lleg_ankle_pad.rot = {0, -90, 0};
+    drawAnklePad(lleg_ankle_pad);
     useTexture("armor");
     drawCylinder(lleg_foot_joint, 0.75, 0.75, 2, 30, 30);
 
@@ -74,6 +78,10 @@ void drawRobotRightLeg(Prop3D props)
 
     glPushMatrix();
 
+    Prop3D rleg_ankle_pad;
+    rleg_ankle_pad.pos = {-1.1, -3, 0};
+    rleg_ankle_pad.rot = {0, -90, 0};
+    drawAnklePad(rleg_ankle_pad);
     useTexture("armor");
     drawCylinder(rleg_foot_joint, 0.75, 0.75, 2, 30, 30);
 
@@ -398,5 +406,38 @@ void drawLegBadge(Prop3D props)
     badge_cont_props.scale = {1.5, 1.5, 1.5};
     useTexture("armor");
     drawOctoid(badge_cont_props, 0.5);
+    glPopMatrix();
+}
+
+void drawAnklePad(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+
+    Prop3D frontCube;
+    Prop3D leftCube;
+    leftCube.origin = {-1, 0, -0.25};
+    leftCube.pos = {-1, 0, 0.25};
+    leftCube.rot.y = -80;
+    Prop3D rightCube;
+    rightCube.origin = {1, 0, -0.25};
+    rightCube.pos = {1, 0, 0.25};
+    rightCube.rot.y = 80;
+    Prop3D topCube;
+    topCube.origin = {0, 1, -0.25};
+    topCube.pos = {0, 1, 0.25};
+    topCube.rot.x = -10;
+    Prop3D bottomCube;
+    bottomCube.origin = {0, -1, -0.25};
+    bottomCube.pos = {0, -1, 0.25};
+    bottomCube.rot.x = 10;
+
+    useTexture("armor");
+    drawCube(frontCube, {2, 2, 0.5});
+    drawCube(leftCube, {2, 2, 0.5});
+    drawCube(rightCube, {2, 2, 0.5});
+    drawCube(topCube, {2, 2, 0.5});
+    drawCube(bottomCube, {2, 2, 0.5});
+
     glPopMatrix();
 }

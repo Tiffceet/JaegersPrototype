@@ -32,7 +32,7 @@ void arrowKeyUp(int key, int x, int y)
         lleg_lower_leg.rot.z += 1;
         break;
     case GLUT_KEY_DOWN:
-        if (rleg_upper_foot.rot.z >= 90)
+        if (rleg_upper_foot.rot.z >= 0)
         {
             break;
         }
