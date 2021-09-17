@@ -51,4 +51,5 @@ void drawRobotRightHand(Prop3D props);
 void drawRobotPalm(Prop3D props, char side);
 void drawRobotFinger(Prop3D props, Vec3d lower_fing_rotation, Vec3d upper_fing_rotation);
 void drawShoulderPad(Prop3D props);
+void drawHandBadge(Prop3D props);
 #endif

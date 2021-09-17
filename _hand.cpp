@@ -57,6 +57,10 @@ void drawRobotLeftHand(Prop3D props)
     applyProps(lhand_arm);
 
     drawShoulderPad(lhand_shoulder_pad);
+    Prop3D lhand_hand_badge;
+    lhand_hand_badge.pos = {2.75, -2.25, 0};
+    lhand_hand_badge.rot = {-90, 0, -60};
+    drawHandBadge(lhand_hand_badge);
 
     useTexture("shiny");
     drawCube(lhand_upper_joint, {2, 5, 2});
@@ -87,8 +91,12 @@ void drawRobotRightHand(Prop3D props)
 
     glPushMatrix();
     applyProps(rhand_arm);
-    
+
     drawShoulderPad(rhand_shoulder_pad);
+    Prop3D lhand_hand_badge;
+    lhand_hand_badge.pos = {-2.75, -2.25, 0};
+    lhand_hand_badge.rot = {-90, 0, 60};
+    drawHandBadge(lhand_hand_badge);
     useTexture("shiny");
     drawCube(rhand_upper_joint, {2, 5, 2});
 
@@ -199,5 +207,21 @@ void drawShoulderPad(Prop3D props)
     drawCube(topCube, {2, 2, 0.5});
     drawCube(bottomCube, {2, 2, 0.5});
 
+    glPopMatrix();
+}
+
+void drawHandBadge(Prop3D props)
+{
+    glPushMatrix();
+    applyProps(props);
+    Prop3D badge_props;
+    badge_props.pos = {0, 0, 0.5};
+    useTexture("water-b");
+    drawOctoid(badge_props, 0.2);
+
+    Prop3D badge_cont_props;
+    badge_cont_props.scale = {1.5, 1.5, 1.5};
+    useTexture("armor");
+    drawOctoid(badge_cont_props, 0.5);
     glPopMatrix();
 }
