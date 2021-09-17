@@ -102,6 +102,9 @@ void InitLeftHandPosition()
     lhand_fing_5.rot.y = 30;
     lhand_fing_5.pos = {1, 0, 2};
     lhand_fing_5_upper_rot.y = -30;
+    lhand_shoulder_pad.pos = {1, 1, 0};
+    lhand_shoulder_pad.scale = {1.3, 1.3, 1.3};
+    lhand_shoulder_pad.rot = {-90, 0, -30};
 
     rhand_upper_joint.origin.y = -2.5;
     rhand_upper_joint.rot.z = -30;
@@ -119,6 +122,9 @@ void InitLeftHandPosition()
     rhand_fing_5.rot.y = -30;
     rhand_fing_5.pos = {-1, 0, 2};
     rhand_fing_5_upper_rot.y = 30;
+    rhand_shoulder_pad.pos = {-1, 1, 0};
+    rhand_shoulder_pad.scale = {1.3, 1.3, 1.3};
+    rhand_shoulder_pad.rot = {-90, 0, 30};
 }
 
 void InitLegPosition()
