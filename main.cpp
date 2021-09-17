@@ -286,6 +286,7 @@ void displayMe(void)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
 
+    glDisable(GL_LIGHTING);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-1, 1, -1, 1, -1, 1);
@@ -295,6 +296,10 @@ void displayMe(void)
     Prop3D background;
     drawCube(background, {2, 2, 2});
     glDepthMask(GL_TRUE);
+    if (light_state)
+    {
+        glEnable(GL_LIGHTING);
+    }
 
     initCamera(10, 100);
     ProcessAnimation();
