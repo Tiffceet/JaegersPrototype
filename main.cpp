@@ -285,10 +285,16 @@ void displayMe(void)
     glEnable(GL_NORMALIZE);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    glOrtho(-1, 1, -1, 1, -1, 1);
+    glMatrixMode(GL_MODELVIEW);
+    glDepthMask(GL_FALSE);
     useTexture("sky");
     Prop3D background;
-    background.pos = {0, 0, -200};
-    drawCube(background, {200, 200, 200});
+    drawCube(background, {2, 2, 2});
+    glDepthMask(GL_TRUE);
 
     initCamera(10, 100);
     ProcessAnimation();
