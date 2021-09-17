@@ -9,10 +9,10 @@ void drawRobotHead(double x, Prop3D props)
 
     glPushMatrix();
 
-    Prop3D modified_prop = props;
-    modified_prop.scale = {0.5, 0.5, 0.5};
-    modified_prop.pos.y = 4;
-    drawRobotHorn(modified_prop);
+    Prop3D clean;
+    clean.pos.y = 4;
+    clean.scale = {0.5, 0.5, 0.5};
+    drawRobotHorn(clean);
 
     drawRobotMouth(x, props);
     drawRobotEye(x, props);
