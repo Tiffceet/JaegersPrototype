@@ -12,6 +12,7 @@ bool animation_playing = false;
 std::map<std::string, bool> animation_sequences;
 void InitAnimationSequencesState()
 {
+    animation_playing = false;
     animation_sequences["LeftArmGrab_1"] = false;
     animation_sequences["LeftArmGrab_2"] = false;
     animation_sequences["LeftArmGrab_3"] = false;
@@ -25,9 +26,9 @@ void InitAnimationSequencesState()
 
 void PlaySequence(std::string seq_name)
 {
-    InitObjectsPosition();
     if (!animation_playing)
     {
+        InitAnimationSequencesState();
         animation_sequences[seq_name] = true;
     }
 }
@@ -191,6 +192,10 @@ void LeftArmGrab_1()
     if (!animation_sequences["LeftArmGrab_1"])
     {
         return;
+    }
+    if (!animation_playing)
+    {
+        InitObjectsPosition();
     }
     animation_playing = true;
 

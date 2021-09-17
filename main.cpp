@@ -167,6 +167,10 @@ void kbKeyUp(unsigned char key, int x, int y)
     case ' ':
         PlaySequence("RobotWalk_1");
         break;
+    case 't':
+        InitObjectsPosition();
+        InitAnimationSequencesState();
+        break;
     case 'v':
         PlaySequence("RobotTurn90_1");
         break;
