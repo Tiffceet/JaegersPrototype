@@ -1,6 +1,6 @@
 #ifndef TEXTURE_H
 #define TEXTURE_H
-#include <gl/freeglut.h>
+#include <GL/freeglut.h>
 #include <iostream>
 
 void LoadAllTexture();

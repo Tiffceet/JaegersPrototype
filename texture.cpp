@@ -1,5 +1,6 @@
 #include "texture.h"
 #include <GL/freeglut.h>
+#include <GL/glext.h>
 #include <iostream>
 #include <map>
 

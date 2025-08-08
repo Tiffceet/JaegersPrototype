@@ -1,0 +1,1 @@
+cd C:\Users\Looz\Desktop\JaegersPrototype && rm -rf build && mkdir build && cd build && cmake -S .. -G "MinGW Makefiles" && mingw32-make && cp C:\Users\Looz\Desktop\JaegersPrototype\lib\libfreeglut.dll C:\Users\Looz\Desktop\JaegersPrototype\build\ && cp -r C:\Users\Looz\Desktop\JaegersPrototype\texture C:\Users\Looz\Desktop\JaegersPrototype\build\texture
